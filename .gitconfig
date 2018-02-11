@@ -7,3 +7,5 @@
 [alias]
 	clog = log --format='%C(dim)%h    %ad    %<(24)%an    %C(reset)%s' --date=format:'%Y-%m-%d %H:%M'
 	noed = commit --amend --no-edit
+[push]
+	default = simple
