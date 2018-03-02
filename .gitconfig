@@ -5,9 +5,10 @@
 	name = Denis Ivanov
 	email = tetafro@gmail.com
 [alias]
-        clog = log --format='%C(dim)%h    %ad    %<(24)%an    %C(reset)%s' --date=format:'%Y-%m-%d %H:%M' -5
-        noed = commit --amend --no-edit
-        s = status
-        remurl = remote set-url origin
+	clog = log --format='%C(dim)%h    %ad    %<(24)%an    %C(reset)%s' --date=format:'%Y-%m-%d %H:%M' -5
+	noed = commit --amend --no-edit
+	remurl = remote set-url origin
+	s = status
+	b = branch
 [push]
 	default = simple
