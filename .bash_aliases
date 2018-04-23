@@ -1,7 +1,0 @@
-alias rm='rm -iv'
-alias cp='cp -iv'
-alias mv='mv -iv'
-alias mkdir='mkdir -pv'
-alias ls='ls -1 --color=tty'
-alias grep='grep --color'
-alias ping='ping -c 1'
