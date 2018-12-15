@@ -12,5 +12,6 @@
 	s = status
 	b = branch
 	c = checkout
+	remurl = remote set-url origin
 [push]
 	default = simple
