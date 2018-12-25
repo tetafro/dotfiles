@@ -1,0 +1,17 @@
+#!/bin/bash
+# A wrapper for skaffold to check current context before running.
+
+function ask {
+    echo -n 'Do you want to proceed (y/n)? '
+    read -n 1 key
+    echo
+    if [ $key != 'y' ]; then
+        echo 'Exiting...'
+        exit 0
+    fi
+}
+
+echo "Current context: $(kubectl config current-context)"
+ask
+
+/usr/local/bin/skaffold "$@"

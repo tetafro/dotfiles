@@ -1,0 +1,37 @@
+#!/bin/bash
+# Encrypt or decrypt file or directory depending on input.
+
+# Check tools
+for cmd in tar openssl; do
+    if ! [ -x "$(command -v $cmd)" ]; then
+        echo "Command $cmd not found"
+        exit 1
+    fi
+done
+
+# Check input
+if [[ $# -ne 1 ]]; then
+    echo 'USAGE:'
+    echo '  enc INPUT'
+    exit 1
+fi
+
+# Object name with stripped trailing slash
+name=${1%/}
+
+if [ -d "$name" ]; then
+    echo 'Got directory. Encrypting...'
+    tar c "$name" | openssl aes-256-cbc -salt -out "$name.tar.enc"
+elif [ -f "$name" ] && [[ $name != *.enc ]]; then
+    echo 'Got regular file. Encrypting...'
+    openssl aes-256-cbc -salt -int "$name" -out "$name.enc"
+elif [ -f "$name" ] && [[ $name == *.tar.enc ]]; then
+    echo 'Got encrypted directory. Decrypting...'
+    openssl aes-256-cbc -d -salt -in "$name" | tar xf -
+elif [ -f "$name" ] && [[ $name == *.enc ]]; then
+    echo 'Got encrypted file. Decrypting...'
+    openssl aes-256-cbc -d -salt -in "$name" -out "${name%.enc}"
+else
+    echo 'No such file or directory'
+    exit 1
+fi
