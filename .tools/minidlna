@@ -1,0 +1,18 @@
+#!/bin/bash
+# Restart minidlna service and reindex media-files.
+
+echo "Restarting MiniDLNA..."
+
+service minidlna stop && \
+    minidlnad -R && \
+    service minidlna start
+
+echo
+if [ $? -eq 0 ]; then
+    echo "Done"
+else
+    echo "Error"
+fi
+echo "Press any key to continue"
+
+read

@@ -76,10 +76,7 @@ fi
 
 # Go settings.
 export GOPATH="$HOME/IT/projects/go"
-export PATH="$GOPATH/bin:$HOME/.scripts:/usr/local/go/bin:$PATH"
-
-# Custom autocompletion.
-source $HOME/.scripts/autocomplete.sh
+export PATH="$GOPATH/bin:$HOME/.tools:/usr/local/go/bin:$PATH"
 
 # User aliases.
 alias rm='rm -iv'
