@@ -79,6 +79,8 @@ export GOPATH="$HOME/IT/projects/go"
 export PATH="$GOPATH/bin:$HOME/.tools:/usr/local/go/bin:$PATH"
 
 # User aliases.
+
+# Commons.
 alias rm='rm -iv'
 alias cp='cp -iv'
 alias mv='mv -iv'
@@ -87,3 +89,6 @@ alias ls='ls -1 --color=tty'
 alias grep='grep --color'
 alias ping='ping -c 1'
 alias rand='cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1'
+# External tools.
+alias k='kubectl'
+alias tmx='tmux attach -t main || tmux new -s main'
