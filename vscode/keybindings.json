@@ -1,0 +1,42 @@
+[
+    {
+        "key": "f9",
+        "command": "editor.action.sortLinesAscending"
+    },
+    {
+        "key": "alt+left",
+        "command": "workbench.files.action.showActiveFileInExplorer"
+    },
+    {
+        "key": "alt+up",
+        "command": "editor.action.insertCursorAbove",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "alt+down",
+        "command": "editor.action.insertCursorBelow",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "alt+j",
+        "command": "extension.prettifyJSON"
+    },
+    {
+        "key": "ctrl+shift+space",
+        "command": "-editor.action.smartSelect.grow",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "alt+b",
+        "command": "gitblame.quickInfo"
+    },
+    {
+        "key": "ctrl+i",
+        "command": "-expandLineSelection",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "ctrl+i",
+        "command": "go.import.add"
+    }
+]
