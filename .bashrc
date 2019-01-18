@@ -92,3 +92,4 @@ alias rand='cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1'
 # External tools.
 alias k='kubectl'
 alias tmx='tmux attach -t main || tmux new -s main'
+alias vpn="sudo openvpn --config $HOME/.inet.ovpn"
