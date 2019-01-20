@@ -74,11 +74,19 @@ if [ -x /usr/bin/mint-fortune ]; then
      /usr/bin/mint-fortune
 fi
 
-# Go settings.
-export GOPATH="$HOME/IT/projects/go"
-export PATH="$GOPATH/bin:$HOME/.tools:/usr/local/go/bin:$PATH"
-
-# User aliases.
+# Paths settings.
+if [ -d "/usr/local/go/bin" ] ; then
+    export GOPATH="$HOME/Dev/projects/go"
+fi
+if [ -d "/usr/local/go/bin" ] ; then
+    export PATH="/usr/local/go/bin:$PATH"
+fi
+if [ -d "$GOPATH/bin" ] ; then
+    export PATH="$GOPATH/bin:$PATH"
+fi
+if [ -d "$HOME/.local/bin" ] ; then
+    export PATH="$HOME/.local/bin:$PATH"
+fi
 
 # Commons.
 alias rm='rm -iv'
