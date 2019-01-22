@@ -75,8 +75,8 @@ if [ -x /usr/bin/mint-fortune ]; then
 fi
 
 # Paths settings.
-if [ -d "/usr/local/go/bin" ] ; then
-    export GOPATH="$HOME/Dev/projects/go"
+if [ -d "$HOME/dev/projects/go" ] ; then
+    export GOPATH="$HOME/dev/projects/go"
 fi
 if [ -d "/usr/local/go/bin" ] ; then
     export PATH="/usr/local/go/bin:$PATH"
@@ -86,6 +86,14 @@ if [ -d "$GOPATH/bin" ] ; then
 fi
 if [ -d "$HOME/.local/bin" ] ; then
     export PATH="$HOME/.local/bin:$PATH"
+fi
+
+# Kubernetes autocomplete.
+if [ -f "$HOME/.kube/kubectl.completion.bash" ]; then
+    source $HOME/.kube/kubectl.completion.bash
+fi
+if [ -f "$HOME/.kube/k.completion.bash" ]; then
+    source $HOME/.kube/k.completion.bash
 fi
 
 # Commons.
