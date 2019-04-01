@@ -41,10 +41,9 @@ fi
 if [ "$color_prompt" = yes ]; then
     time='\[\e[32m\]\t\[\e[m\]'
     chroot='${debian_chroot:+($debian_chroot)}'
-    userhost='\[\e[34m\]\u\[\e[m\]\[\e[34m\]@\[\e[m\]\[\e[34m\]\h\[\e[m\]'
     dir='\[\e[01;34m\]\w\[\e[m\]'
     prompt_symbol='\[\e[34m\]\\$\[\e[m\]'
-    PS1="$time $chroot$userhost $dir $prompt_symbol "
+    PS1="$time $dir $prompt_symbol "
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h \w \$ '
 fi
