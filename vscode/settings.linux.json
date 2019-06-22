@@ -1,4 +1,5 @@
 {
+    "breadcrumbs.enabled": false,
     "diffEditor.ignoreTrimWhitespace": false,
     "editor.fontFamily": "Fira Code",
     "editor.fontLigatures": true,
@@ -11,12 +12,16 @@
         100
     ],
     "editor.snippetSuggestions": "top",
+    "editor.wordWrap": "on",
     "explorer.openEditors.visible": 0,
     "extensions.ignoreRecommendations": false,
     "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true,
     "files.trimTrailingWhitespace": true,
     "gitblame.infoMessageFormat": "${time.custom,YYYY-MM-DD} ${commit.summary} [${commit.hash_short, 8}]",
+    "githd.blameView.enabled": false,
+    "githd.logView.commitsCount": 100,
+    "githd.logView.displayExpressStatus": false,
     "go.buildOnSave": "package",
     "go.buildTags": "e2e",
     "go.enableCodeLens": {
@@ -27,9 +32,37 @@
     "go.formatFlags": [
         "-s"
     ],
+    "go.useLanguageServer": true,
+    "nasc-touchbar.addCursorBelow": false,
+    "nasc-touchbar.togglePanel": false,
+    "nasc-touchbar.showCommands": false,
+    "nasc-touchbar.showReferences": true,
     "python.linting.flake8Enabled": true,
     "python.linting.flake8Path": "/usr/local/bin/flake8",
     "python.linting.pylintEnabled": false,
+    "python.formatting.provider": "none",
+    "todohighlight.keywords": [
+        {
+            "text": "NOTE:",
+            "color": "white",
+            "backgroundColor": "rgb(200, 160, 50)"
+        },
+        {
+            "text": "WARNING:",
+            "color": "white",
+            "backgroundColor": "rgb(200, 160, 50)"
+        },
+        {
+            "text": "CAUTION:",
+            "color": "white",
+            "backgroundColor": "rgb(200, 160, 50)"
+        },
+        {
+            "text": "TODO:",
+            "color": "white",
+            "backgroundColor": "rgb(190, 80, 80)"
+        }
+    ],
     "window.titleBarStyle": "custom",
     "window.zoomLevel": 0,
     "workbench.colorCustomizations": {
