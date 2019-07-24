@@ -73,6 +73,11 @@ if [ -x /usr/bin/mint-fortune ]; then
      /usr/bin/mint-fortune
 fi
 
+# Bash aliases.
+if [ -f "$HOME/.bash_aliases" ]; then
+    . "$HOME/.bash_aliases"
+fi
+
 # Paths settings.
 if [ -d "$HOME/dev/projects/go" ] ; then
     export GOPATH="$HOME/dev/projects/go"
