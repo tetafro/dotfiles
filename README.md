@@ -5,7 +5,7 @@ A collection of dotfiles and scripts I use for customizing my OS.
 ## Install
 
 ```sh
-mv .bash_aliases \
+cp .bash_aliases \
     .bashrc \
     .gitconfig \
     .gitignore \
@@ -13,6 +13,6 @@ mv .bash_aliases \
     .profile \
     .tmux.conf \
     $HOME
-mv vlc/* $HOME/.config/
-mv vscode/* .config/Code/User/
+cp vlc/* $HOME/.config/vlc/
+cp vscode/* .config/Code/User/
 ```
