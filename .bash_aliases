@@ -7,7 +7,6 @@ alias ls='ls -1 --color=tty'
 alias grep='grep --color'
 alias ping='ping -c 1'
 alias rand='cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1'
-alias ts='date +%s'
 
 # External tools
 alias k='kubectl'
