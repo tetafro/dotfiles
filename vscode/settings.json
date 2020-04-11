@@ -19,9 +19,6 @@
     "files.trimFinalNewlines": true,
     "files.trimTrailingWhitespace": true,
     "gitblame.infoMessageFormat": "${time.custom,YYYY-MM-DD} ${commit.summary} [${commit.hash_short, 8}]",
-    "githd.blameView.enabled": false,
-    "githd.logView.commitsCount": 100,
-    "githd.logView.displayExpressStatus": false,
     "go.buildOnSave": "package",
     "go.buildTags": "e2e",
     "go.enableCodeLens": {
