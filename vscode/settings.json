@@ -29,6 +29,11 @@
     "go.formatFlags": [
         "-s"
     ],
+    "go.lintTool": "golangci-lint",
+    "go.lintFlags": [
+        "--config=${workspaceFolder}/.golangci.yml",
+        "--fast"
+    ],
     "go.useLanguageServer": true,
     "python.formatting.provider": "none",
     "python.linting.flake8Enabled": true,
