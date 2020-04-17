@@ -34,6 +34,10 @@
         "--config=${workspaceFolder}/.golangci.yml",
         "--fast"
     ],
+    "go.toolsEnvVars": {
+        "GO111MODULE": "on",
+        "GOFLAGS": "-mod=vendor"
+    },
     "go.useLanguageServer": true,
     "python.formatting.provider": "none",
     "python.linting.flake8Enabled": true,
