@@ -79,17 +79,20 @@ if [ -f "$HOME/.bash_aliases" ]; then
 fi
 
 # Paths settings.
-if [ -d "$HOME/dev/projects/go" ] ; then
-    export GOPATH="$HOME/dev/projects/go"
+if [ -d "$HOME/.local/bin" ] ; then
+    export PATH="$HOME/.local/bin:$PATH"
 fi
 if [ -d "/usr/local/go/bin" ] ; then
     export PATH="/usr/local/go/bin:$PATH"
 fi
+if [ -d "$HOME/.go" ] ; then
+    export GOPATH="$HOME/.go"
+fi
 if [ -d "$GOPATH/bin" ] ; then
     export PATH="$GOPATH/bin:$PATH"
 fi
-if [ -d "$HOME/.local/bin" ] ; then
-    export PATH="$HOME/.local/bin:$PATH"
+if [ -d "$HOME/.cargo/bin" ] ; then
+    export PATH="$HOME/.cargo/bin:$PATH"
 fi
 
 # Kubernetes autocomplete.
@@ -99,3 +102,12 @@ fi
 if [ -f "$HOME/.kube/k.completion.bash" ]; then
     source $HOME/.kube/k.completion.bash
 fi
+
+# kaf autocomplete.
+if [ -f "$HOME/.kaf/completion.bash" ]; then
+    source $HOME/.kaf/completion.bash
+fi
+
+# Go.
+# export GOFLAGS='-mod=vendor'
+export GO111MODULE=on
