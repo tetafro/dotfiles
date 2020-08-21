@@ -1,6 +1,6 @@
 {
     "breadcrumbs.enabled": false,
-    "diffEditor.ignoreTrimWhitespace": false,
+    "diffEditor.ignoreTrimWhitespace": true,
     "editor.fontFamily": "Fira Code",
     "editor.fontLigatures": true,
     "editor.fontSize": 14,
@@ -13,6 +13,15 @@
     ],
     "editor.snippetSuggestions": "top",
     "editor.wordWrap": "on",
+    "emeraldwalk.runonsave": {
+        "commands": [
+            {
+                "match": ".go",
+                "isAsync": false,
+                "cmd": "gofumports -w ${file}"
+            }
+        ]
+    },
     "explorer.openEditors.visible": 0,
     "extensions.ignoreRecommendations": false,
     "files.insertFinalNewline": true,
@@ -39,6 +48,12 @@
         "GOFLAGS": "-mod=vendor"
     },
     "go.useLanguageServer": true,
+    "partialDiff.commandsOnContextMenu": {
+        "diffSelectionWithClipboard": false,
+        "diffVisibleEditors": false,
+        "togglePreComparisonTextNormalizationRules": false
+    },
+    "partialDiff.enableTelemetry": false,
     "python.formatting.provider": "none",
     "python.linting.flake8Enabled": true,
     "python.linting.flake8Path": "/usr/local/bin/flake8",
@@ -68,14 +83,23 @@
     "window.titleBarStyle": "custom",
     "window.zoomLevel": 0,
     "workbench.colorCustomizations": {
-        "statusBar.background": "#303030",
-        "statusBar.noFolderBackground": "#222225",
-        "statusBar.debuggingBackground": "#511f1f",
-        "editorRuler.foreground": "#333333",
-        "editorIndentGuide.background": "#333333",
-        "editor.selectionHighlightBackground": "#333333ee"
+        // Theme: Tomorrow Night
+        // "statusBar.background": "#303030",
+        // "statusBar.noFolderBackground": "#222225",
+        // "statusBar.debuggingBackground": "#511f1f",
+        // "editorRuler.foreground": "#333333",
+        // "editorIndentGuide.background": "#333333",
+        // "editor.selectionHighlightBackground": "#333333ee"
+        // Theme: Tomorrow
+        "activityBar.background": "#efefef",
+        "activityBar.foreground": "#555555",
+        "statusBar.background": "#efefef",
+        "statusBar.foreground": "#555555",
+        "statusBar.debuggingBackground": "#efefef"
     },
-    "workbench.colorTheme": "Tomorrow Night",
+    // "workbench.colorTheme": "Tomorrow Night",
+    "workbench.colorTheme": "Tomorrow",
+    "workbench.settings.editor": "json",
     "workbench.startupEditor": "newUntitledFile",
     "workbench.tree.renderIndentGuides": "none"
 }
