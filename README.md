@@ -9,10 +9,12 @@ cp .bash_aliases \
     .bashrc \
     .gitconfig \
     .gitignore \
+    .golnagci.yml \
     .inputrc \
     .profile \
     .tmux.conf \
     $HOME
 cp vlc/* $HOME/.config/vlc/
-cp vscode/* .config/Code/User/
+cp vscode/* $HOME/.config/Code/User/
+cp flake8 $HOME/.config
 ```
