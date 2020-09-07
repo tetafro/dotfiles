@@ -1,6 +1,8 @@
 #!/bin/bash
 # Encrypt or decrypt file or directory depending on input.
 
+set -euo pipefail
+
 # Check tools
 for cmd in tar openssl; do
     if ! [ -x "$(command -v $cmd)" ]; then
