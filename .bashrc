@@ -26,28 +26,28 @@ if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
 
-# Set a fancy prompt (non-color, unless we know we "want" color).
-case "$TERM" in
-    xterm|xterm-color|*-256color) color_prompt=yes;;
-esac
+# Generate PS1 after each command.
+PS1='\t \w \$ ' # default
+__prompt_command() {
+    local EXIT="$?" # needs to be first
 
-# Force colored prompt.
-force_color_prompt=yes
+    # Skip setting PS1 if it's not a colored terminal.
+    case "$TERM" in
+        xterm|xterm-color|*-256color) ;;
+        *) return ;;
+    esac
 
-if [ -n "$force_color_prompt" ]; then
-    color_prompt=yes
-fi
-
-if [ "$color_prompt" = yes ]; then
     time='\[\e[32m\]\t\[\e[m\]'
-    chroot='${debian_chroot:+($debian_chroot)}'
     dir='\[\e[01;34m\]\w\[\e[m\]'
-    prompt_symbol='\[\e[34m\]\\$\[\e[m\]'
+    prompt_symbol_color='34m'
+    if [ $EXIT != 0 ]; then
+        prompt_symbol_color='91m'
+    fi
+    prompt_symbol='\[\e['$prompt_symbol_color'\]\\$\[\e[m\]'
+
     PS1="$time $dir $prompt_symbol "
-else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h \w \$ '
-fi
-unset color_prompt force_color_prompt
+}
+PROMPT_COMMAND=__prompt_command
 
 # If this is an xterm set the title to current directory.
 case "$TERM" in
