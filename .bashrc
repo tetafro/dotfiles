@@ -98,7 +98,7 @@ if [ -d "/opt/kafka/bin" ] ; then
     export PATH="/opt/kafka/bin:$PATH"
 fi
 
-# Kubernetes autocomplete.
+# kubectl autocomplete.
 if [ -f "$HOME/.kube/kubectl.completion.bash" ]; then
     source $HOME/.kube/kubectl.completion.bash
 fi
