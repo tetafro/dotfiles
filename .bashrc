@@ -41,6 +41,10 @@ __prompt_command() {
     prompt_symbol='\[\e['$prompt_symbol_color'\]\\$\[\e[m\]'
 
     PS1="$time $dir $prompt_symbol "
+
+    # Set directory name as a title for shell tab.
+    title=$(basename "$PWD")
+    echo -en "\e]0;${title}\a"
 }
 PROMPT_COMMAND=__prompt_command
 
