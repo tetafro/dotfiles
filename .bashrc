@@ -94,6 +94,9 @@ fi
 if [ -d "$HOME/.cargo/bin" ] ; then
     export PATH="$HOME/.cargo/bin:$PATH"
 fi
+if [ -d "/opt/kafka/bin" ] ; then
+    export PATH="/opt/kafka/bin:$PATH"
+fi
 
 # Kubernetes autocomplete.
 if [ -f "$HOME/.kube/kubectl.completion.bash" ]; then
