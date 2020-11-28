@@ -40,7 +40,10 @@ __prompt_command() {
     fi
     prompt_symbol='\[\e['$prompt_symbol_color'\]\\$\[\e[m\]'
 
-    PS1="$time $dir $prompt_symbol "
+    prefix=''
+    [ ! -z $VIRTUAL_ENV ] && prefix='(venv) '
+
+    PS1="$prefix$time $dir $prompt_symbol "
 
     # Set directory name as a title for shell tab.
     title=$(basename "$PWD")
