@@ -49,3 +49,5 @@ linters:
 
 issues:
   exclude-use-default: false
+  exclude:
+    - "G404: Use of weak random number generator"
