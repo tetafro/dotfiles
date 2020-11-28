@@ -1,0 +1,45 @@
+#!/bin/bash
+# Backup files from local computer to network storage.
+
+set -euo pipefail
+
+# Magic variable for duration
+SECONDS=0
+
+nas=/run/user/1000/gvfs/smb-share:server=nas.local,share=denis
+smb=smb://nas.local/denis/
+date=$(date +%Y_%m_%d)
+dst=$nas/backup/$date
+
+echo "Starting..."
+
+gio mount $smb &> /dev/null || if [[ $? == 2 ]]; then
+    echo "SMB is already mounted"
+else
+    echo "Failed to mount SMB"
+    exit 1
+fi
+
+echo "Create destination directory"
+mkdir -p $dst
+
+echo "Archive configs"
+tar -czf $dst/configs.tar.gz -C /home/tetafro \
+    .config/openvpn \
+    .kube \
+    .notable \
+    .ssh \
+    .bash_aliases \
+    .bashrc \
+    .gitconfig \
+    .gitignore \
+    .inputrc
+
+dirs=( dev docs work etc )
+for dir in "${dirs[@]}"; do
+    echo "Archive $dir"
+    tar -czf $dst/$dir.tar.gz -C /home/tetafro/ $dir
+done
+
+duration=$SECONDS
+echo "Finished in $(($duration / 60))m $(($duration % 60))s"
