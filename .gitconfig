@@ -7,13 +7,23 @@
 	email = tetafro@gmail.com
 [alias]
 	clog = log --format='%C(dim)%h    %ad    %<(24)%an    %C(reset)%s' --date=format:'%Y-%m-%d %H:%M' -5
-	history = log --decorate --all --oneline --graph
+	history = log --decorate --all --oneline --graph -5
 	noed = commit --amend --no-edit
-	remurl = remote set-url origin
+	remset = remote set-url origin
+	remget = remote get-url origin
+	rmtag = tag -d
+	rmtagrem = push --delete origin
 	t = tag --sort=-v:refname
 	v = describe --tags --abbrev=0
 	s = status
 	b = branch
 	c = checkout
+	bc = checkout -b
+	m = checkout master
 [push]
 	default = simple
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
