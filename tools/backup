@@ -23,19 +23,21 @@ fi
 echo "Create destination directory"
 mkdir -p $dst
 
-echo "Archive configs"
+echo "Archive configs and scripts"
 tar -czf $dst/configs.tar.gz -C /home/tetafro \
+    .local/bin \
     .config/openvpn \
     .kube \
     .notable \
     .ssh \
     .bash_aliases \
     .bashrc \
+    .inputrc \
+    .profile \
     .gitconfig \
-    .gitignore \
-    .inputrc
+    .gitignore
 
-dirs=( dev docs work etc )
+dirs=( dev docs etc )
 for dir in "${dirs[@]}"; do
     echo "Archive $dir"
     tar -czf $dst/$dir.tar.gz -C /home/tetafro/ $dir
