@@ -14,7 +14,7 @@ cp .bash_aliases \
     .profile \
     .tmux.conf \
     $HOME
-cp tools/* $HOME/.local/bin/
+ln -s "$PWD"/tools/* $HOME/.local/bin/
 cp vlc/* $HOME/.config/vlc/
 cp vscode/* $HOME/.config/Code/User/
 cp flake8 $HOME/.config/
