@@ -23,16 +23,16 @@ name=${1%/}
 
 if [ -d "$name" ]; then
     echo 'Got directory. Encrypting...'
-    tar c "$name" | openssl aes-256-cbc -md sha256 -salt -out "$name.tar.enc"
+    tar c "$name" | openssl aes-256-cbc -md sha512 -iter 1000 -pbkdf2 -salt -out "$name.tar.enc"
 elif [ -f "$name" ] && [[ $name != *.enc ]]; then
     echo 'Got regular file. Encrypting...'
-    openssl aes-256-cbc -md sha256 -salt -int "$name" -out "$name.enc"
+    openssl aes-256-cbc -md sha512 -iter 1000 -pbkdf2 -salt -in "$name" -out "$name.enc"
 elif [ -f "$name" ] && [[ $name == *.tar.enc ]]; then
     echo 'Got encrypted directory. Decrypting...'
-    openssl aes-256-cbc -d -md sha256 -salt -in "$name" | tar xf -
+    openssl aes-256-cbc -d -md sha512 -iter 1000 -pbkdf2 -salt -in "$name" | tar xf -
 elif [ -f "$name" ] && [[ $name == *.enc ]]; then
     echo 'Got encrypted file. Decrypting...'
-    openssl aes-256-cbc -d -md sha256 -salt -in "$name" -out "${name%.enc}"
+    openssl aes-256-cbc -d -md sha512 -iter 1000 -pbkdf2 -salt -in "$name" -out "${name%.enc}"
 else
     echo 'No such file or directory'
     exit 1
