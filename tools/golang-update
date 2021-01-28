@@ -1,4 +1,5 @@
 #!/bin/bash
+# Update local golang installation to the latest version.
 
 set -euo pipefail
 
