@@ -6,41 +6,40 @@ set -euo pipefail
 # Magic variable for duration
 SECONDS=0
 
-nas=/run/user/1000/gvfs/smb-share:server=nas.local,share=denis
-smb=smb://nas.local/denis/
-date=$(date +%Y_%m_%d)
-dst=$nas/backup/$date
+nfs=$HOME/mnt/denis
+dst=$nfs/backup/$(date +%Y_%m_%d)
 
 echo "Starting..."
 
-gio mount $smb &> /dev/null || if [[ $? == 2 ]]; then
-    echo "SMB is already mounted"
-else
-    echo "Failed to mount SMB"
-    exit 1
-fi
+echo -n "Mount remote storage"
+mount $nfs
+echo ": done"
 
-echo "Create destination directory"
+echo -n "Create destination directory"
 mkdir -p $dst
+echo ": done"
 
-echo "Archive configs and scripts"
+echo -n "Archive configs and scripts"
 tar -czf $dst/configs.tar.gz -C /home/tetafro \
     .local/bin \
     .config/openvpn \
     .kube \
     .notable \
     .ssh \
+    docs/passwd.kdbx \
     .bash_aliases \
     .bashrc \
     .inputrc \
     .profile \
     .gitconfig \
     .gitignore
+echo ": done"
 
 dirs=( dev docs etc )
 for dir in "${dirs[@]}"; do
-    echo "Archive $dir"
+    echo -n "Archive $dir"
     tar -czf $dst/$dir.tar.gz -C /home/tetafro/ $dir
+    echo ": done"
 done
 
 duration=$SECONDS
