@@ -23,6 +23,7 @@ echo -n "Archive configs and scripts"
 tar -czf $dst/configs.tar.gz -C /home/tetafro \
     .local/bin \
     .config/openvpn \
+    .config/starship.toml \
     .kube \
     .notable \
     .ssh \

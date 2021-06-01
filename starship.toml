@@ -1,0 +1,34 @@
+add_newline = false
+
+format = """
+$cmd_duration\
+$time\
+$directory\
+$git_branch\
+$python\
+$character"""
+
+[cmd_duration]
+min_time = 10_000
+format = "took [$duration]($style)\n"
+
+[time]
+disabled = false
+format = "[$time]($style) "
+style = "green"
+
+[directory]
+truncation_length = -1
+truncate_to_repo = false
+format = "[$path]($style) "
+style = "bold blue"
+
+[git_branch]
+format = '[\[$branch\]]($style) '
+
+[python]
+format = '[\($virtualenv\)]($style) '
+
+[character]
+success_symbol = '[\$](blue)'
+error_symbol = '[\$](red)'

@@ -116,3 +116,6 @@ fi
 # Go.
 # export GOFLAGS='-mod=vendor'
 export GO111MODULE=on
+
+# Run starship prompt.
+eval "$(starship init bash)"
