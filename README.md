@@ -5,13 +5,11 @@ A collection of dotfiles and scripts I use for customizing my OS.
 ## Install
 
 ```sh
-cp .bash_aliases \
-    .bashrc \
+cp bash/* \
     .gitconfig \
     .gitignore \
     .golnagci.yml \
     .inputrc \
-    .profile \
     .tmux.conf \
     $HOME
 ln -s "$PWD"/tools/* $HOME/.local/bin/
