@@ -71,11 +71,7 @@ if ! shopt -oq posix; then
     fi
 fi
 
-if [ -x /usr/bin/mint-fortune ]; then
-     /usr/bin/mint-fortune
-fi
-
-# Bash aliases.
+# Aliases.
 if [ -f "$HOME/.bash_aliases" ]; then
     . "$HOME/.bash_aliases"
 fi
@@ -115,7 +111,6 @@ fi
 
 # Go.
 # export GOFLAGS='-mod=vendor'
-export GO111MODULE=on
 
 # Run starship prompt.
 eval "$(starship init bash)"
