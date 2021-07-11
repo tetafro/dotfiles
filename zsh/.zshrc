@@ -23,6 +23,12 @@ if [ -d "/opt/kafka/bin" ]; then
     export PATH="/opt/kafka/bin:$PATH"
 fi
 
+# Enable autocompletion.
+autoload -Uz compinit && compinit
+
+# Fix autocompletion for makefiles.
+zstyle ':completion:*:*:make:*' tag-order 'targets'
+
 # kubectl autocomplete.
 if [ -f "$HOME/.kube/kubectl.completion.zsh" ]; then
     source $HOME/.kube/kubectl.completion.zsh
