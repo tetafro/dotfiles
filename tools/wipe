@@ -1,0 +1,8 @@
+#!/bin/bash
+# Remove data completly from disk.
+
+set -euo pipefail
+
+cat /dev/urandom > wipe.file || echo 'Disk is full'
+sync
+rm -f wipe.file
