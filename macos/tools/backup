@@ -6,40 +6,34 @@ set -euo pipefail
 # Magic variable for duration
 SECONDS=0
 
-nfs=$HOME/mnt/denis
-dst=$nfs/backup/$(date +%Y_%m_%d)
+nfs=$HOME/Mount/denis
+dst=$nfs/backup/macos/$(date +%Y_%m_%d)
 
 echo "Starting..."
-
-echo -n "Mount remote storage"
-mount $nfs
-echo ": done"
 
 echo -n "Create destination directory"
 mkdir -p $dst
 echo ": done"
 
 echo -n "Archive configs and scripts"
-tar -czf $dst/configs.tar.gz -C /home/tetafro \
+tar -czf $dst/configs.tar.gz -C $HOME \
     .local/bin \
-    .config/openvpn \
     .config/starship.toml \
     .kube \
     .notable \
     .ssh \
-    docs/passwd.kdbx \
-    .bash_aliases \
-    .bashrc \
+    Documents/*.kdbx \
+    .zsh_aliases \
+    .zshrc \
     .inputrc \
-    .profile \
     .gitconfig \
     .gitignore
 echo ": done"
 
-dirs=( dev docs etc )
+dirs=( Dev Documents )
 for dir in "${dirs[@]}"; do
     echo -n "Archive $dir"
-    tar -czf $dst/$dir.tar.gz -C /home/tetafro/ $dir
+    tar -czf $dst/$dir.tar.gz -C $HOME $dir
     echo ": done"
 done
 

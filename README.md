@@ -5,16 +5,10 @@ A collection of dotfiles and scripts I use for customizing my OS.
 ## Install
 
 ```sh
-cp bash/* \
-    .gitconfig \
-    .gitignore \
-    .golnagci.yml \
-    .inputrc \
-    .tmux.conf \
-    $HOME
-ln -s "$PWD"/tools/* $HOME/.local/bin/
-cp vlc/* $HOME/.config/vlc/
-cp vscode/* $HOME/.config/Code/User/
-cp flake8 $HOME/.config/
-cp starship.toml $HOME/.config/
+platform=$(case $(uname -s) in Darwin) echo macos;; Linux) echo linux;; esac)
+
+cp configs/* $platform/configs/* $HOME
+mv $HOME/vlcrc $HOME/.config/vlc/
+mv $HOME/starship.toml $HOME/flake8 $HOME/.config/
+ln -s "$PWD"/tools/* "$PWD"/$platform/tools/* $HOME/.local/bin/
 ```

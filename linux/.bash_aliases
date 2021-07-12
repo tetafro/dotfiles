@@ -17,6 +17,3 @@ alias tmx='tmux attach -t main || tmux new -s main'
 alias vpn-home="sudo openvpn --cd $HOME/.config/openvpn/home --config config.ovpn"
 alias venv='if [ -d ./venv ]; then source venv/bin/activate; else virtualenv -p python3 venv && source venv/bin/activate; fi'
 alias go-cover='go test -coverprofile=./profile.out ./... && go tool cover -html=./profile.out'
-
-# Routine
-alias backup='/home/tetafro/dev/pet/dotfiles/tools/backup'

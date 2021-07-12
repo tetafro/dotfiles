@@ -17,6 +17,5 @@ alias tmx='tmux attach -t main || tmux new -s main'
 alias vpn-home="sudo openvpn --cd $HOME/.config/openvpn/home --config config.ovpn"
 alias venv='if [ -d ./venv ]; then source venv/bin/activate; else virtualenv -p python3 venv && source venv/bin/activate; fi'
 alias go-cover='go test -coverprofile=./profile.out ./... && go tool cover -html=./profile.out'
-
-# Routine
-alias backup='/home/tetafro/dev/pet/dotfiles/tools/backup'
+alias go-deps="go list -m -u -f '{{.Indirect}} {{.}}' all | grep '^false' | cut -d ' ' -f 2,3,4 | grep --color=never '\['"
+alias minikube-start='minikube start --embed-certs=true --vm-driver=virtualbox'

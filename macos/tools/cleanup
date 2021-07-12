@@ -1,0 +1,7 @@
+#!/bin/bash
+# Clean garbage files from the system.
+
+set -euo pipefail
+
+# Docker
+docker system prune --volumes
