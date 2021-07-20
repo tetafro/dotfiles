@@ -5,6 +5,17 @@
 [user]
 	name = Denis Krivak
 	email = tetafro@gmail.com
+[fetch]
+	prune = true
+[pull]
+	rebase = true
+[push]
+	default = simple
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
 [alias]
 	clog = log --format='%C(dim)%h    %ad    %<(24)%an    %C(reset)%s' --date=format:'%Y-%m-%d %H:%M' -5
 	history = log --decorate --all --oneline --graph -5
@@ -20,14 +31,3 @@
 	c = checkout
 	bc = checkout -b
 	m = checkout master
-[push]
-	default = simple
-[filter "lfs"]
-	process = git-lfs filter-process
-	required = true
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-[fetch]
-	prune = true
-[pull]
-	rebase = true
