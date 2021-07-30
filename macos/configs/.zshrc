@@ -3,6 +3,11 @@ if [ -f "$HOME/.zsh_aliases" ]; then
     . "$HOME/.zsh_aliases"
 fi
 
+# Read inputrc.
+if [ -f "$HOME/.inputrc" ]; then
+    . "$HOME/.inputrc"
+fi
+
 # Paths settings.
 if [ -d "$HOME/.local/bin" ]; then
     export PATH="$HOME/.local/bin:$PATH"
@@ -22,6 +27,13 @@ fi
 if [ -d "/opt/kafka/bin" ]; then
     export PATH="/opt/kafka/bin:$PATH"
 fi
+if [ -d "/usr/local/opt/mysql-client/bin" ]; then
+    export PATH="/usr/local/opt/mysql-client/bin:$PATH"
+fi
+
+# Change word delimiters.
+autoload -U select-word-style
+select-word-style bash
 
 # Enable autocompletion.
 autoload -Uz compinit && compinit
@@ -44,6 +56,11 @@ fi
 
 # Go.
 # export GOFLAGS='-mod=vendor'
+
+# Rust.
+if [[ -f "$HOME/.cargo/env" ]]; then
+    . "$HOME/.cargo/env"
+fi
 
 # Run starship prompt.
 eval "$(starship init zsh)"
