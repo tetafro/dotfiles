@@ -54,6 +54,9 @@ if [ -f "$HOME/.kaf/completion.zsh" ]; then
     source $HOME/.kaf/completion.zsh
 fi
 
+# Direnv.
+eval "$(direnv hook zsh)"
+
 # Go.
 # export GOFLAGS='-mod=vendor'
 
