@@ -1,2 +1,8 @@
 .vscode/
+tmp/
+vendor/
+*.log
 .DS_Store
+.env
+.envrc
+id_rsa
