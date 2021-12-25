@@ -8,4 +8,4 @@ sudo apt autoremove -y
 sudo apt autoclean
 
 # Docker
-docker system prune --volumes
+docker system prune --all --volumes

@@ -4,4 +4,4 @@
 set -euo pipefail
 
 # Docker
-docker system prune --volumes
+docker system prune --all --volumes
