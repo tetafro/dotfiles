@@ -11,11 +11,16 @@ alias top='top -d 30'
 alias htop='htop -d 30'
 alias python='python3'
 
+# Replacements
+alias ls='exa -1 --group-directories-first'
+alias cat='bat -pP'
+
 # External tools
 alias k='kubectl'
 alias tmx='tmux attach -t main || tmux new -s main'
-alias vpn-home="sudo openvpn --cd $HOME/.config/openvpn/home --config config.ovpn"
+alias vpn="sudo openvpn --cd $HOME/.config/openvpn/home --config config.ovpn"
 alias venv='if [ -d ./venv ]; then source venv/bin/activate; else virtualenv -p python3 venv && source venv/bin/activate; fi'
-alias go-cover='go test -coverprofile=./profile.out ./... && go tool cover -html=./profile.out'
+alias go-test="gotest ./..."
+alias go-cover='go test -coverprofile=./profile.out -coverpkg=./... ./... && go tool cover -html=./profile.out'
+alias go-lint="golangci-lint run -c ~/.golangci.yml"
 alias go-deps="go list -m -u -f '{{.Indirect}} {{.}}' all | grep '^false' | cut -d ' ' -f 2,3,4 | grep --color=never '\['"
-alias minikube-start='minikube start --embed-certs=true --vm-driver=virtualbox'
