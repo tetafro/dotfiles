@@ -9,43 +9,60 @@ linters:
   enable:
     - asciicheck
     - bodyclose
+    - cyclop
     - deadcode
     - depguard
     - dogsled
+    - durationcheck
     - errcheck
+    - errname
+    - errorlint
+    - exhaustive
     - exportloopref
+    - gci
+    - gochecknoglobals
     - gochecknoinits
+    - gocognit
     - goconst
     - gocritic
     - gocyclo
     - godot
+    - goerr113
     - gofmt
+    - gofumpt
     - goimports
-    - goprintffuncname
     - golint
+    - goprintffuncname
     - gosec
     - gosimple
     - govet
+    - importas
     - ineffassign
     - lll
     - maligned
     - misspell
     - nakedret
     - nestif
+    - noctx
     - nolintlint
     - prealloc
+    - revive
     - rowserrcheck
     - scopelint
+    - sqlclosecheck
+    - sqlclosecheck
     - staticcheck
     - structcheck
     - stylecheck
-    - sqlclosecheck
     - typecheck
     - unconvert
     - unparam
     - unused
     - varcheck
+    - wastedassign
     - whitespace
+    - wrapcheck
+    - wsl
 
 issues:
   exclude-use-default: false
