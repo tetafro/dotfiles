@@ -6,8 +6,8 @@ set -euo pipefail
 # Magic variable for duration
 SECONDS=0
 
-nfs=$HOME/Mount/denis
-dst=$nfs/backup/macos/$(date +%Y_%m_%d)
+share=/Volumes/Denis
+dst=$share/backup/macos/$(date +%Y_%m_%d)
 
 echo "Starting..."
 
