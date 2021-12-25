@@ -24,19 +24,18 @@ tar -czf $dst/configs.tar.gz -C $HOME \
     .local/bin \
     .config/openvpn \
     .config/starship.toml \
-    .kube \
     .notable \
     .ssh \
-    docs/passwd.kdbx \
     .bash_aliases \
     .bashrc \
     .inputrc \
     .profile \
     .gitconfig \
-    .gitignore
+    .gitignore \
+    .passwd.kdbx
 echo ": done"
 
-dirs=( dev docs etc )
+dirs=( dev )
 for dir in "${dirs[@]}"; do
     echo -n "Archive $dir"
     tar -czf $dst/$dir.tar.gz -C $HOME $dir
