@@ -1,0 +1,20 @@
+#!/bin/bash
+set -euo pipefail
+
+cd $HOME/.notable
+
+# No local changes
+if [ -z "$(git status --porcelain)" ]; then
+    git pull
+    exit 0
+fi
+
+# Pull
+git stash
+git pull
+git stash pop
+
+# Push
+git add .
+git commit -m "$(date +%H:%M\ %d-%m-%Y)"
+git push
