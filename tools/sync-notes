@@ -1,20 +1,29 @@
 #!/bin/bash
 set -euo pipefail
 
+ps aux | grep -i notable | grep -v 'grep' > /dev/null && \
+    echo 'Notable is running' && \
+    exit 1
+
 cd $HOME/.notable
 
 # No local changes
 if [ -z "$(git status --porcelain)" ]; then
+    echo "No local changes, pull from remote"
     git pull
     exit 0
 fi
 
 # Pull
+echo "Stash current changes"
 git stash
+echo "Pull from remote"
 git pull
+echo "Pop from stash"
 git stash pop
 
 # Push
+echo "Save current changes"
 git add .
 git commit -m "$(date +%H:%M\ %d-%m-%Y)"
 git push
