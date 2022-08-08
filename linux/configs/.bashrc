@@ -51,15 +51,6 @@ __prompt_command() {
 }
 PROMPT_COMMAND=__prompt_command
 
-# If this is an xterm set the title to current directory.
-case "$TERM" in
-    xterm*|rxvt*)
-        PS1="\[\e]0;\W\a\]$PS1"
-    ;;
-    *)
-    ;;
-esac
-
 # Enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
