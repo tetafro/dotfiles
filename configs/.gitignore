@@ -6,3 +6,4 @@ vendor/
 .env
 .envrc
 id_rsa
+id_ed25519
