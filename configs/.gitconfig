@@ -33,3 +33,4 @@
 	c = checkout
 	bc = checkout -b
 	m = checkout master
+	pull = pull --autostash
