@@ -66,6 +66,9 @@ fi
 if [ -f "$HOME/.bash_aliases" ]; then
     . "$HOME/.bash_aliases"
 fi
+if [ -f "$HOME/.bash_aliases_work" ]; then
+    . "$HOME/.bash_aliases_work"
+fi
 
 # Paths settings.
 if [ -d "$HOME/.local/bin" ] ; then
