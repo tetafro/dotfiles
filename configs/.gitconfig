@@ -34,3 +34,5 @@
 	bc = checkout -b
 	m = checkout master
 	pull = pull --autostash
+[blame]
+	ignoreRevsFile = .git-blame-ignore-revs
