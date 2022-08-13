@@ -19,7 +19,7 @@ linters:
     - errorlint
     - exhaustive
     - exportloopref
-    - gci
+    - exportloopref
     - gochecknoglobals
     - gochecknoinits
     - gocognit
@@ -31,7 +31,6 @@ linters:
     - gofmt
     - gofumpt
     - goimports
-    - golint
     - goprintffuncname
     - gosec
     - gosimple
@@ -39,7 +38,6 @@ linters:
     - importas
     - ineffassign
     - lll
-    - maligned
     - misspell
     - nakedret
     - nestif
@@ -48,7 +46,6 @@ linters:
     - prealloc
     - revive
     - rowserrcheck
-    - scopelint
     - sqlclosecheck
     - sqlclosecheck
     - staticcheck
@@ -62,9 +59,9 @@ linters:
     - wastedassign
     - whitespace
     - wrapcheck
-    - wsl
 
 issues:
   exclude-use-default: false
   exclude:
     - "G404: Use of weak random number generator"
+    - "do not define dynamic errors, use wrapped static errors instead"
