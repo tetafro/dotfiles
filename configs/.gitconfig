@@ -12,7 +12,9 @@
 [rebase]
 	autoStash = true
 [push]
-	default = simple
+	default = current
+[blame]
+	ignoreRevsFile = .git-blame-ignore-revs
 [filter "lfs"]
 	process = git-lfs filter-process
 	required = true
@@ -34,5 +36,3 @@
 	bc = checkout -b
 	m = checkout master
 	pull = pull --autostash
-[blame]
-	ignoreRevsFile = .git-blame-ignore-revs
