@@ -45,8 +45,13 @@ __prompt_command() {
 
     PS1="$prefix$time $dir $prompt_symbol "
 
-    # Set directory name as a title for shell tab.
+    # Set directory name as a title for local shell tab,
+    # hostname without domain - for SSH sessions.
+    if [[ -z $SSH_TTY ]]; then
     title=$(basename "$PWD")
+    else
+        title="[${HOSTNAME%%.*}]"
+    fi
     echo -en "\e]0;${title}\a"
 }
 PROMPT_COMMAND=__prompt_command
