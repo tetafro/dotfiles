@@ -48,7 +48,7 @@ __prompt_command() {
     # Set directory name as a title for local shell tab,
     # hostname without domain - for SSH sessions.
     if [[ -z $SSH_TTY ]]; then
-    title=$(basename "$PWD")
+        title=$(basename "$PWD")
     else
         title="[${HOSTNAME%%.*}]"
     fi
@@ -70,9 +70,6 @@ fi
 # Aliases.
 if [ -f "$HOME/.bash_aliases" ]; then
     . "$HOME/.bash_aliases"
-fi
-if [ -f "$HOME/.bash_aliases_work" ]; then
-    . "$HOME/.bash_aliases_work"
 fi
 
 # Paths settings.
@@ -110,6 +107,11 @@ fi
 
 # Go.
 # export GOFLAGS='-mod=vendor'
+
+# Settings for work.
+if [ -f "$HOME/.bashrc_work" ]; then
+    . "$HOME/.bashrc_work"
+fi
 
 # Run starship prompt.
 eval "$(starship init bash)"
