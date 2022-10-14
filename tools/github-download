@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+repo=$1
+file=$2
+
+resp=$(curl -s https://api.github.com/repos/$repo/releases/latest)
+version=$(echo $resp | jq -r '.tag_name')
+url=$(echo $resp | jq -r -c '.assets[] | select((.name | contains("linux")) and (.name | contains("amd64"))) | .browser_download_url')
+
+echo "version: $version"
+if [[ $url == *.tar.gz ]]; then
+    curl -L $url | tar xzf -
+else
+    curl -L -o $file $url
+fi
