@@ -3,6 +3,9 @@
 
 set -euo pipefail
 
+echo -n "Set password for configs: "
+read -s password
+
 # Magic variable for duration
 SECONDS=0
 
@@ -20,8 +23,7 @@ mkdir -p $dst
 echo ": done"
 
 echo -n "Archive configs and scripts"
-tar -czf $dst/configs.tar.gz -C $HOME \
-    .local/bin \
+tar -cz -C $HOME \
     .config/openvpn \
     .config/starship.toml \
     .notable \
@@ -31,8 +33,10 @@ tar -czf $dst/configs.tar.gz -C $HOME \
     .inputrc \
     .profile \
     .gitconfig \
-    .gitignore \
-    .passwd.kdbx
+    .gitignore | \
+    openssl aes-256-cbc -md sha512 -iter 1000 -pbkdf2 -salt \
+    -k "$password" \
+    -out "$dst/configs.tar.gz.enc"
 echo ": done"
 
 dirs=( dev )
