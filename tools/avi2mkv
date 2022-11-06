@@ -1,0 +1,11 @@
+#!/bin/bash
+# Convert avi to mkv without re-encoding.
+
+input=$1
+output=${input%.avi}.mkv
+
+ffmpeg -hide_banner -loglevel error \
+    -fflags +genpts \
+    -i "$input" \
+    -c copy -map 0 \
+    "$output"
