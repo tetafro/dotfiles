@@ -23,20 +23,14 @@ mkdir -p $dst
 echo ": done"
 
 echo -n "Archive configs and scripts"
-tar -cz -C $HOME \
+tar -c -C $HOME \
     .config/openvpn \
     .config/starship.toml \
     .notable \
-    .ssh \
-    .bash_aliases \
-    .bashrc \
-    .inputrc \
-    .profile \
-    .gitconfig \
-    .gitignore | \
+    .ssh | \
     openssl aes-256-cbc -md sha512 -iter 1000 -pbkdf2 -salt \
     -k "$password" \
-    -out "$dst/configs.tar.gz.enc"
+    -out "$dst/configs.tar.enc"
 echo ": done"
 
 dirs=( dev )
