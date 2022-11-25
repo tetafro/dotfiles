@@ -13,6 +13,7 @@ alias rand='cat /dev/urandom | tr -dc "a-zA-Z0-9" | fold -w 32 | head -n 1'
 alias top='top -d 30'
 alias htop='htop -d 30'
 alias python='python3'
+alias ports='sudo ss -ntlp4 | columnt -t'
 
 # External tools
 alias k='kubectl'
