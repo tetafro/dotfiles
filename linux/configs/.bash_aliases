@@ -13,8 +13,9 @@ alias rand='cat /dev/urandom | tr -dc "a-zA-Z0-9" | fold -w 32 | head -n 1'
 alias top='top -d 30'
 alias htop='htop -d 30'
 alias python='python3'
-alias ports='sudo ss -ntlp | columnt -t'
+alias ports='sudo ss -ntlp4 | columnt -t'
 alias lifetime='sudo tune2fs -l $(findmnt -n -o SOURCE /) | grep "Filesystem created:"'
+alias lsof-stats='for pid in /proc/[0-9]*; do p=$(basename $pid); printf "%4d %6d / %s\n" $(sudo ls $pid/fd | wc -l) $p "$(ps -p $p -o comm=)"; done | sort -nr'
 
 # External tools
 alias k='kubectl'
