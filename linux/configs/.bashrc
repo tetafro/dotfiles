@@ -118,3 +118,4 @@ fi
 
 # Run starship prompt.
 eval "$(starship init bash)"
+. "$HOME/.cargo/env"
