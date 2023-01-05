@@ -23,6 +23,7 @@ alias tmx='tmux attach -t main || tmux new -s main'
 alias git-cleanup='git branch --merged master | grep -v "[* ] master" | xargs git branch -d'
 alias vpn-eu="sudo openvpn --cd $HOME/.config/openvpn/home-eu --config config.ovpn"
 alias vpn-ru="sudo openvpn --cd $HOME/.config/openvpn/home-ru --config config.ovpn"
+alias git-clean="git branch --merged | grep -v 'master\|main' | xargs git branch -d"
 alias go-deps="go list -m -u -f '{{.Indirect}} {{.}}' all | grep '^false' | cut -d ' ' -f 2,3,4 | grep --color=never '\['"
 alias go-test="set -o pipefail && go test -json -count=1 -cover | tparse"
 # alias go-test="gotest ./..."
