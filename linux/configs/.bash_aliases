@@ -18,6 +18,7 @@ alias ports='sudo ss -ntlp | columnt -t'
 # External tools
 alias k='kubectl'
 alias tmx='tmux attach -t main || tmux new -s main'
+alias git-cleanup='git branch --merged master | grep -v "[* ] master" | xargs git branch -d'
 alias vpn-eu="sudo openvpn --cd $HOME/.config/openvpn/home-eu --config config.ovpn"
 alias vpn-ru="sudo openvpn --cd $HOME/.config/openvpn/home-ru --config config.ovpn"
 alias venv='if [ -d ./venv ]; then source venv/bin/activate; else virtualenv -p python3 venv && source venv/bin/activate; fi'
