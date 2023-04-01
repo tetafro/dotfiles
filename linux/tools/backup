@@ -36,7 +36,10 @@ echo ": done"
 dirs=( dev )
 for dir in "${dirs[@]}"; do
     echo -n "Archive $dir"
-    tar -czf $dst/$dir.tar.gz -C $HOME $dir
+    tar -cz -C $HOME $dir | \
+    openssl aes-256-cbc -md sha512 -iter 1000 -pbkdf2 -salt \
+    -k "$password" \
+    -out "$dst/$dir.tar.gz.enc"
     echo ": done"
 done
 
