@@ -14,6 +14,7 @@ alias top='top -d 30'
 alias htop='htop -d 30'
 alias python='python3'
 alias ports='sudo ss -ntlp | columnt -t'
+alias lifetime='sudo tune2fs -l $(findmnt -n -o SOURCE /) | grep "Filesystem created:"'
 
 # External tools
 alias k='kubectl'
