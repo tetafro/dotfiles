@@ -91,8 +91,8 @@ fi
 if [ -d "/opt/kafka/bin" ] ; then
     export PATH="/opt/kafka/bin:$PATH"
 fi
-if [ -d "/home/denis/.gem/ruby/2.7.0/bin" ] ; then
-    export PATH="/home/denis/.gem/ruby/2.7.0/bin:$PATH"
+if [ -d "$HOME/.local/share/gem/ruby/3.0.0/bin" ] ; then
+    export PATH="$HOME/.local/share/gem/ruby/3.0.0/bin:$PATH"
 fi
 
 # kubectl autocomplete.
