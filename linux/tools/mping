@@ -1,0 +1,14 @@
+#!/bin/bash
+
+if ! tmux has-session -t main 2>/dev/null; then
+    tmux new-session -d -s main
+fi
+tmux split-window -v -t main
+tmux split-window -v -t main
+tmux select-layout -t main even-vertical
+
+tmux send-keys -t "main:0.0" "gping --watch-interval 1 --buffer 300 192.168.178.1"
+tmux send-keys -t "main:0.1" "gping --watch-interval 1 --buffer 300 10.164.191.254"
+tmux send-keys -t "main:0.2" "gping --watch-interval 1 --buffer 300 1.1.1.1"
+
+tmux attach-session -t main
