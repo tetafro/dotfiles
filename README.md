@@ -19,7 +19,7 @@ ln -sf $PWD/configs/starship.toml ~/.config/
 ln -sf $PWD/configs/vlcrc $HOME/.config/vlc/
 
 mkdir -p $HOME/.local/bin
-ln -s "$PWD"/tools/* "$PWD"/linux/tools/* $HOME/.local/bin/
+ln -sf "$PWD"/tools/* "$PWD"/linux/tools/* $HOME/.local/bin/
 ```
 
 MacOS
@@ -29,5 +29,5 @@ mv $HOME/vlcrc $HOME/Library/Preferences/org.videolan.vlc/
 mv $HOME/starship.toml $HOME/flake8 $HOME/.config/
 
 mkdir -p $HOME/.local/bin
-ln -s "$PWD"/tools/* "$PWD"/macos/tools/* $HOME/.local/bin/
+ln -sf "$PWD"/tools/* "$PWD"/macos/tools/* $HOME/.local/bin/
 ```
