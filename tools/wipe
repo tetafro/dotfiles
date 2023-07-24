@@ -11,7 +11,7 @@ while true; do
         echo -ne "\rSpace left: $space"
     else
         sync
-        echo "\nNo more space left on device"
+        echo -e "\nNo more space left on device"
         break
     fi
 done
