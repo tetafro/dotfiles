@@ -1,8 +1,22 @@
 #!/bin/bash
-# Remove data completly from disk.
+# Physically wipe previously deleted data from disk by filling all free space
+# with random data.
 
-set -euo pipefail
+file="random.bin"
 
-cat /dev/urandom > wipe.file || echo 'Disk is full'
-sync
-rm -f wipe.file
+echo "Writing random data to $file..."
+while true; do
+    if dd if=/dev/urandom bs=4K count=1024 status=none >> $file; then
+        space=$(df -h --output=avail . | tail -1 | tr -d '[:space:]')
+        echo -ne "\rSpace left: $space"
+    else
+        sync
+        echo "\nNo more space left on device"
+        break
+    fi
+done
+echo "Done"
+
+size=$(du -h $file | cut -f 1)
+rm -f $file
+echo "Removed $file ($size)"
