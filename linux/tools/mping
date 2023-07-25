@@ -1,25 +1,23 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Run tmux with a few gping in separate panes. Ping each IP gateway from
 # the routing table and 1.1.1.1 as an indicator for external Internet.
+set -euo pipefail
 
 if ! tmux has-session -t main 2>/dev/null; then
     tmux new-session -d -s main
 fi
 
-gateways="$(
-    ip route | \
-    grep -Eo 'via [0-9]+\.[0-9]+\.[0-9]+\.[0-9]+' | \
-    cut -d ' ' -f 2 | \
-    sort | \
-    uniq
-)"
-i=0
-for gw in $gateways; do
-    tmux send-keys -t "main:0.$i" "gping --watch-interval 1 --buffer 300 $gw"
-    tmux split-window -v -t main
-    (( i++ ))
-done
-tmux send-keys -t "main:0.$i" "gping --watch-interval 1 --buffer 300 1.1.1.1"
+defaultgw=$(
+    ip route show default | \
+    grep -Eo '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+'
+)
 
+tmux send-keys -t "main:0.0" "gping --watch-interval 1 --buffer 300 $defaultgw"
+tmux split-window -v -t main
+tmux send-keys -t "main:0.1" "gping --watch-interval 1 --buffer 300 gitlab.booking.com"
+tmux split-window -v -t main
+tmux send-keys -t "main:0.2" "gping --watch-interval 1 --buffer 300 1.1.1.1"
+
+tmux set-window-option synchronize-panes
 tmux select-layout -t main even-vertical
 tmux attach-session -t main
