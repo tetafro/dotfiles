@@ -2,9 +2,11 @@
 	editor = vim
 	excludesfile = ~/.gitignore
 	pager = less -F -X
+[init]
+	defaultBranch = master
 [user]
 	name = Denis Krivak
-	email = tetafro@gmail.com
+	email = inbox@dkrv.me
 [fetch]
 	prune = true
 [pull]
