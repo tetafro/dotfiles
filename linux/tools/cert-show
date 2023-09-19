@@ -1,0 +1,23 @@
+#!/bin/bash
+# Show information about a certificate (remote or local).
+
+cert="$1"
+
+if [[ -f "$cert" ]]; then
+    echo "Checking local file..."
+    echo "---"
+    count=$(grep -c "BEGIN CERTIFICATE" "$cert")
+    if [[ "$count" -gt 1 ]]; then
+        openssl storeutl -noout -text -certs "$cert"
+    else
+        openssl x509 -text -noout -in "$cert"
+    fi
+else
+    echo "Checking remote certificate..."
+    echo "---"
+    echo | \
+    openssl s_client -showcerts \
+        -servername "$cert" \
+        -connect "$cert":443 | \
+    openssl x509 -inform pem -noout -text
+fi
