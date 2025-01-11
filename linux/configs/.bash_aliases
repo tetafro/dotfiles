@@ -18,6 +18,7 @@ alias lifetime='sudo tune2fs -l $(findmnt -n -o SOURCE /) | grep "Filesystem cre
 alias lsof-stats='for pid in /proc/[0-9]*; do p=$(basename $pid); printf "%4d %6d / %s\n" $(sudo ls $pid/fd | wc -l) $p "$(ps -p $p -o comm=)"; done | sort -nr'
 
 # External tools
+alias sn='sync-notes'
 alias cat='bat --plain --paging=never'
 alias tmx='tmux attach -t main || tmux new -s main'
 alias git-cleanup='git branch --merged master | grep -v "master\|main" | xargs --no-run-if-empty git branch -d'
