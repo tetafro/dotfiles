@@ -15,7 +15,7 @@ dst=$nfs/backup/linux/$(date +%Y_%m_%d)
 echo "Starting..."
 
 echo -n "Mount remote storage"
-mount $nfs
+# mount $nfs
 echo ": done"
 
 echo -n "Create destination directory"
