@@ -1,0 +1,30 @@
+#!/bin/bash
+set -euo pipefail
+
+input=$1
+filename=$(basename "$input")
+
+codec=$(ffprobe -v error -select_streams v:0 -show_entries stream=codec_name -of csv=p=0 "$input")
+#if [[ $codec == "h264" ]]; then
+#    echo "The file is already h264-encoded"
+#    exit 0
+#fi
+
+output="$HOME/dump/tmp/$filename"
+mkdir -p "$HOME/dump/tmp"
+rm -fv "$output"
+
+echo "Converting '$input' [$codec] to '$output' [h264]..."
+ffmpeg -i "$input" \
+    -stats \
+    -hide_banner \
+    -loglevel error \
+    -fflags +genpts \
+    -map 0 \
+    -crf 16 \
+    -preset slow \
+    -c:v libx264 \
+    -c:a copy \
+    -c:s copy \
+    -default_mode infer_no_subs \
+    "$output"
