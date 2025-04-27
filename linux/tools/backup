@@ -15,7 +15,7 @@ dst=$nfs/backup/linux/$(date +%Y_%m_%d)
 echo "Starting..."
 
 echo -n "Mount remote storage"
-# mount $nfs
+mount $nfs
 echo ": done"
 
 echo -n "Create destination directory"
@@ -25,7 +25,6 @@ echo ": done"
 echo -n "Archive configs and scripts"
 tar -c -C $HOME \
     .config/openvpn \
-    .config/starship.toml \
     .notable \
     .ssh | \
     openssl aes-256-cbc -md sha512 -iter 1000 -pbkdf2 -salt \
@@ -33,8 +32,10 @@ tar -c -C $HOME \
     -out "$dst/configs.tar.enc"
 echo ": done"
 
-dirs=( dev )
+dirs=( dev etc )
 for dir in "${dirs[@]}"; do
+    echo -n "Ensure permissions $dir"
+    sudo chown -R $USER:$USER $dir
     echo -n "Archive $dir"
     tar -cz -C $HOME $dir | \
     openssl aes-256-cbc -md sha512 -iter 1000 -pbkdf2 -salt \
