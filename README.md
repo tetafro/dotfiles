@@ -19,7 +19,7 @@ ln -sf $PWD/configs/starship.toml ~/.config/
 ln -sf $PWD/configs/mpc ~/.config/
 
 mkdir -p $HOME/.local/bin
-ln -sf "$PWD"/tools/* "$PWD"/linux/tools/* $HOME/.local/bin/
+ln -sf $PWD/tools/* $PWD/linux/tools/* $HOME/.local/bin/
 ```
 
 MacOS
@@ -29,5 +29,5 @@ ln -sf $PWD/configs/mpv $HOME/.config/
 mv $HOME/starship.toml $HOME/flake8 $HOME/.config/
 
 mkdir -p $HOME/.local/bin
-ln -sf "$PWD"/tools/* "$PWD"/macos/tools/* $HOME/.local/bin/
+ln -sf $PWD/tools/* $PWD/macos/tools/* $HOME/.local/bin/
 ```
