@@ -102,6 +102,12 @@ fi
 if [ -f "$HOME/.kube/k.completion.bash" ]; then
     source $HOME/.kube/k.completion.bash
 fi
+if [ -f "$HOME/.kube/kubectx.completion.bash" ]; then
+    source $HOME/.kube/kubectx.completion.bash
+fi
+if [ -f "$HOME/.kube/kubens.completion.bash" ]; then
+    source $HOME/.kube/kubens.completion.bash
+fi
 
 # kaf autocomplete.
 if [ -f "$HOME/.kaf/completion.bash" ]; then
