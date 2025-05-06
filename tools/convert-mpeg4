@@ -5,10 +5,10 @@ input=$1
 filename=$(basename "$input")
 
 codec=$(ffprobe -v error -select_streams v:0 -show_entries stream=codec_name -of csv=p=0 "$input")
-#if [[ $codec == "h264" ]]; then
-#    echo "The file is already h264-encoded"
-#    exit 0
-#fi
+if [[ $codec == "h264" ]]; then
+    echo "The file is already h264-encoded"
+    exit 0
+fi
 
 output="$HOME/dump/tmp/$filename"
 mkdir -p "$HOME/dump/tmp"
