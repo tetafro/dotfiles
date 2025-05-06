@@ -31,6 +31,7 @@ alias go-echo="go run $HOME/dev/playground/echo/main.go"
 alias venv='if [ -d ./venv ]; then source venv/bin/activate; else virtualenv -p python3 venv && source venv/bin/activate; fi'
 alias k='kubectl'
 alias kctx='kubectx'
+alias kns='kubens'
 
 # Directories
 alias cd-playground="cd $HOME/dev/playground"
