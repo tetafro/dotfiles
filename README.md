@@ -16,7 +16,7 @@ ln -sf $PWD/configs/.gitignore ~
 ln -sf $PWD/configs/.golangci.yml ~
 ln -sf $PWD/configs/.tmux.conf ~
 ln -sf $PWD/configs/starship.toml ~/.config/
-ln -sf $PWD/configs/mpc ~/.config/
+ln -sf $PWD/configs/mpv ~/.config/
 
 mkdir -p $HOME/.local/bin
 ln -sf $PWD/tools/* $PWD/linux/tools/* $HOME/.local/bin/
