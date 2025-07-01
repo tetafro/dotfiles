@@ -94,6 +94,9 @@ fi
 if [ -d "$HOME/.local/share/gem/ruby/3.0.0/bin" ] ; then
     export PATH="$HOME/.local/share/gem/ruby/3.0.0/bin:$PATH"
 fi
+if [ -d "$HOME/.krew" ] ; then
+    export PATH="$HOME/.krew/bin:$PATH"
+fi
 
 # kubectl autocomplete.
 if [ -f "$HOME/.kube/kubectl.completion.bash" ]; then
@@ -116,6 +119,11 @@ fi
 
 # Go.
 # export GOFLAGS='-mod=vendor'
+
+# Rust.
+if [ -f "$HOME/.cargo/env" ] ; then
+    source "$HOME/.cargo/env"
+fi
 
 # Settings for work.
 if [ -f "$HOME/.bashrc_work" ]; then
