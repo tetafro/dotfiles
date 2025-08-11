@@ -72,32 +72,6 @@ if [ -f "$HOME/.bash_aliases" ]; then
     . "$HOME/.bash_aliases"
 fi
 
-# Paths settings.
-if [ -d "$HOME/.local/bin" ] ; then
-    export PATH="$HOME/.local/bin:$PATH"
-fi
-if [ -d "/usr/local/go/bin" ] ; then
-    export PATH="/usr/local/go/bin:$PATH"
-fi
-if [ -d "$HOME/.go" ] ; then
-    export GOPATH="$HOME/.go"
-fi
-if [ -d "$GOPATH/bin" ] ; then
-    export PATH="$GOPATH/bin:$PATH"
-fi
-if [ -d "$HOME/.cargo/bin" ] ; then
-    export PATH="$HOME/.cargo/bin:$PATH"
-fi
-if [ -d "/opt/kafka/bin" ] ; then
-    export PATH="/opt/kafka/bin:$PATH"
-fi
-if [ -d "$HOME/.local/share/gem/ruby/3.0.0/bin" ] ; then
-    export PATH="$HOME/.local/share/gem/ruby/3.0.0/bin:$PATH"
-fi
-if [ -d "$HOME/.krew" ] ; then
-    export PATH="$HOME/.krew/bin:$PATH"
-fi
-
 # kubectl autocomplete.
 if [ -f "$HOME/.kube/kubectl.completion.bash" ]; then
     source $HOME/.kube/kubectl.completion.bash
