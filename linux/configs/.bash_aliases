@@ -7,8 +7,6 @@ alias ls='ls -1 --literal --color=tty --group-directories-first --human-readable
 alias grep='grep --color --exclude-dir=.git --binary-files=without-match'
 alias root='sudo -E -s'
 alias ping='ping -c 1 -W 3'
-alias ping-router='ping -c 1 -W 3 192.168.178.1'
-alias ping-exmaple='ping -c 1 -W 3 example.com'
 alias rand='cat /dev/urandom | tr -dc "a-zA-Z0-9" | fold -w 32 | head -n 1'
 alias top='top -d 30'
 alias htop='htop -d 30'
