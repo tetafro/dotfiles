@@ -9,6 +9,7 @@
 		"Jinja2",
 		"LSP",
 		"LSP-gopls",
+		"LSP-pyright",
 		"MoveTab",
 		"Package Control",
 		"Pretty JSON",
@@ -16,5 +17,6 @@
 		"Terraform",
 		"Tomorrow Color Schemes",
 	],
-	"in_process_packages": [],
+	"in_process_packages": [
+	],
 }
