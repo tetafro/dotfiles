@@ -1,0 +1,9 @@
+{
+    "variables": {},
+    "globals": {},
+    "rules": [{
+        "name": "Mapping Key Names",
+        "scope": "meta.mapping.key string",
+        "foreground": "var(red2)",
+    }]
+}

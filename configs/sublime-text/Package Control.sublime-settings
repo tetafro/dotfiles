@@ -1,0 +1,20 @@
+{
+	"bootstrapped": true,
+	"installed_packages":
+	[
+		"A File Icon",
+		"CUE",
+		"Dockerfile Syntax Highlighting",
+		"GitLink",
+		"Jinja2",
+		"LSP",
+		"LSP-gopls",
+		"MoveTab",
+		"Package Control",
+		"Pretty JSON",
+		"Python Output Format",
+		"Terraform",
+		"Tomorrow Color Schemes",
+	],
+	"in_process_packages": [],
+}
