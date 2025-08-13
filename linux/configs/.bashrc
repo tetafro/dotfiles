@@ -6,27 +6,27 @@ case $- in
     *) return;;
 esac
 
-# History settings.
+# History settings
 HISTCONTROL=ignoreboth
 HISTSIZE=1000
 HISTFILESIZE=2000
 
-# Append to the history file, don't overwrite it.
+# Append to the history file, don't overwrite it
 shopt -s histappend
 
 # Check the window size after each command and, if necessary,
-# update the values of LINES and COLUMNS.
+# update the values of LINES and COLUMNS
 shopt -s checkwinsize
 
-# Make less more friendly for non-text input files.
+# Make less more friendly for non-text input files
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-# Generate PS1 after each command.
+# Generate PS1 after each command
 PS1='\t \w \$ ' # default
 __prompt_command() {
     local EXIT="$?" # needs to be first
 
-    # Skip setting PS1 if it's not a colored terminal.
+    # Skip setting PS1 if it's not a colored terminal
     case "$TERM" in
         xterm|xterm-color|*-256color) ;;
         *) return ;;
@@ -46,7 +46,7 @@ __prompt_command() {
     PS1="$prefix$time $dir $prompt_symbol "
 
     # Set directory name as a title for local shell tab,
-    # hostname without domain - for SSH sessions.
+    # hostname without domain - for SSH sessions
     if [[ -z $SSH_TTY ]]; then
         title=$(basename "$PWD")
     else
@@ -58,7 +58,7 @@ PROMPT_COMMAND=__prompt_command
 
 # Enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
+# sources /etc/bash.bashrc)
 if ! shopt -oq posix; then
     if [ -f /usr/share/bash-completion/bash_completion ]; then
         . /usr/share/bash-completion/bash_completion
@@ -67,12 +67,12 @@ if ! shopt -oq posix; then
     fi
 fi
 
-# Aliases.
+# Aliases
 if [ -f "$HOME/.bash_aliases" ]; then
     . "$HOME/.bash_aliases"
 fi
 
-# kubectl autocomplete.
+# kubectl autocomplete
 if [ -f "$HOME/.kube/kubectl.completion.bash" ]; then
     source $HOME/.kube/kubectl.completion.bash
 fi
@@ -86,18 +86,15 @@ if [ -f "$HOME/.kube/kubens.completion.bash" ]; then
     source $HOME/.kube/kubens.completion.bash
 fi
 
-# kaf autocomplete.
+# kaf autocomplete
 if [ -f "$HOME/.kaf/completion.bash" ]; then
     source $HOME/.kaf/completion.bash
 fi
 
-# Go.
-# export GOFLAGS='-mod=vendor'
-
-# Rust.
+# Rust
 if [ -f "$HOME/.cargo/env" ] ; then
     source "$HOME/.cargo/env"
 fi
 
-# Run starship prompt.
+# Run starship prompt
 eval "$(starship init bash)"
