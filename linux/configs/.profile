@@ -1,6 +1,6 @@
 # ~/.profile: executed by the command interpreter for login shells.
 
-# Paths settings.
+# Paths settings
 if [ -d "$HOME/.local/bin" ] ; then
     export PATH="$HOME/.local/bin:$PATH"
 fi
