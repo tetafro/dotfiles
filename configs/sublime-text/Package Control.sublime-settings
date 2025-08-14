@@ -3,6 +3,7 @@
 	"installed_packages":
 	[
 		"A File Icon",
+		"BazelSyntax",
 		"CUE",
 		"Dockerfile Syntax Highlighting",
 		"GitLink",
@@ -13,6 +14,7 @@
 		"MoveTab",
 		"Package Control",
 		"Pretty JSON",
+		"Protobuf Syntax Hightlighting",
 		"Python Output Format",
 		"Terraform",
 		"Tomorrow Color Schemes",
