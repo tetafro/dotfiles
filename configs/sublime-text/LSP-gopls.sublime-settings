@@ -1,0 +1,8 @@
+// Settings in here override those in "LSP-gopls/LSP-gopls.sublime-settings"
+
+{
+    "settings": {
+        "gopls.gofumpt": true,
+        "gopls.linksInHover": false,
+    }
+}

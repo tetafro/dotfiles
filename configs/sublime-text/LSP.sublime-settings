@@ -1,4 +1,17 @@
 // Settings in here override those in "LSP/LSP.sublime-settings"
 {
+  "diagnostics_highlight_style": {
+    "error": "squiggly",
+    "warning": "squiggly",
+    "info": "squiggly",
+    "hint": "squiggly"
+  },
   "document_highlight_style": "",
+  "lsp_code_actions_on_save": {
+    "source.organizeImports": true,
+  },
+  "lsp_format_on_paste": true,
+  "lsp_format_on_save": true,
+  "show_code_actions": "",
+  "show_symbol_action_links": false,
 }

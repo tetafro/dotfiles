@@ -29,6 +29,14 @@
         "args": {"file": "res://Packages/User/duplicate-lines.sublime-macro"}
     },
     {
+        "keys": ["f2"],
+        "command": "lsp_symbol_rename",
+        "context": [{
+            "key": "lsp.session_with_capability",
+            "operand": "renameProvider",
+        }]
+    },
+    {
         "keys": ["f12"],
         "command": "lsp_symbol_definition",
         "args": {"side_by_side": false, "force_group": true, "fallback": false, "group": -1},
