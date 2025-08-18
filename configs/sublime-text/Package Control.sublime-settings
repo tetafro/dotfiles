@@ -11,7 +11,6 @@
 		"Jinja2",
 		"LSP",
 		"LSP-gopls",
-		"LSP-pyright",
 		"MoveTab",
 		"Package Control",
 		"Pretty JSON",
