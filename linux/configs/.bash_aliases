@@ -33,6 +33,7 @@ alias kctx='kubectx'
 alias kns='kubens'
 
 # Directories
+alias cd-dump="cd $HOME/dump"
 alias cd-playground="cd $HOME/dev/playground"
 alias cd-pet="cd $HOME/dev/pet"
 alias cd-opensource="cd $HOME/dev/opensource"
