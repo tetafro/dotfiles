@@ -36,5 +36,5 @@ alias kns='kubens'
 alias cd-dump="cd $HOME/dump"
 alias cd-playground="cd $HOME/dev/playground"
 alias cd-pet="cd $HOME/dev/pet"
-alias cd-opensource="cd $HOME/dev/opensource"
+alias cd-github="cd $HOME/dev/github"
 alias cd-dotfiles="cd $HOME/dev/pet/dotfiles"
