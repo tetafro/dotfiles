@@ -9,6 +9,7 @@
 		"GitLink",
 		"Gomod",
 		"Jinja2",
+		"Kotlin",
 		"LSP",
 		"LSP-gopls",
 		"MoveTab",

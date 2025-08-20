@@ -1,10 +1,22 @@
 {
     "always_show_minimap_viewport": true,
     "color_scheme": "Tomorrow Night.sublime-color-scheme",
+    "draw_white_space": [
+        "selection",
+        "leading",
+        "trailing",
+        "isolated",
+    ],
     "enable_tab_scrolling": false,
-    "folder_exclude_patterns": [".git", "bazel-out", "bazel-bin", "bazel-nebo", "node_modules"],
+    "folder_exclude_patterns": [
+        ".git",
+        "bazel-bin",
+        "bazel-nebo",
+        "bazel-out",
+        "node_modules",
+    ],
     "font_face": "Fira Code",
-    "font_size": 11,
+    "font_size": 13,
     "gitlink_revision_type": "commithash",
     "highlight_line": true,
     "index_files": true,
@@ -16,6 +28,7 @@
     "theme": "Default Dark.sublime-theme",
     "translate_tabs_to_spaces": true,
     "trim_trailing_white_space_on_save": "all",
+    "word_wrap": true,
 
     // Replaced by the SingleTrailingNewLine plugin
     // "ensure_newline_at_eof_on_save": true,
