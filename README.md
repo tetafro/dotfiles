@@ -14,6 +14,7 @@ ln -sf $PWD/configs/.flake8 ~
 ln -sf $PWD/configs/.gitconfig ~
 ln -sf $PWD/configs/.gitignore ~
 ln -sf $PWD/configs/.golangci.yml ~
+ln -sf $PWD/configs/.tfswitch.toml ~
 ln -sf $PWD/configs/.tmux.conf ~
 ln -sf $PWD/configs/starship.toml ~/.config/
 ln -sf $PWD/configs/mpv ~/.config/

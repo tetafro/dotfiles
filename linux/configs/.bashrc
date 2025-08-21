@@ -86,6 +86,11 @@ if [ -f "$HOME/.kube/kubens.completion.bash" ]; then
     source $HOME/.kube/kubens.completion.bash
 fi
 
+# tfswitch autocomplete
+if [ -d "$HOME/.tfswitch" ] ; then
+    source $HOME/.tfswitch/completion.bash
+fi
+
 # kaf autocomplete
 if [ -f "$HOME/.kaf/completion.bash" ]; then
     source $HOME/.kaf/completion.bash
