@@ -12,6 +12,7 @@
   },
   "lsp_format_on_paste": true,
   "lsp_format_on_save": true,
+  "refactoring_auto_save": "always",
   "show_code_actions": "",
   "show_symbol_action_links": false,
 }

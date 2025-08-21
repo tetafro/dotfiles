@@ -20,8 +20,8 @@
     { "keys": ["ctrl+9"], "command": "fold_by_level", "args": {"level": 9} },
     { "keys": ["alt+j"], "command": "pretty_json" },
     { "keys": ["ctrl+j"], "command": "join_lines" },
-    { "keys": ["ctrl+shift+pageup"], "command": "move_tab", "args": {"position": "+1"} },
-    { "keys": ["ctrl+shift+pagedown"], "command": "move_tab", "args": {"position": "-1"} },
+    { "keys": ["ctrl+shift+pageup"], "command": "move_tab", "args": {"position": "-1"} },
+    { "keys": ["ctrl+shift+pagedown"], "command": "move_tab", "args": {"position": "+1"} },
     { "keys": ["alt+z"], "command": "toggle_setting", "args": {"setting": "word_wrap"} },
     {
         "keys": ["ctrl+shift+d"],
