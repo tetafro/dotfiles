@@ -23,7 +23,6 @@ alias tmx='tmux attach -t main || tmux new -s main'
 alias git-cleanup='git branch --merged master | grep -v "master\|main" | xargs --no-run-if-empty git branch -d'
 alias go-deps="go list -m -u -f '{{.Indirect}} {{.}}' all | grep '^false' | cut -d ' ' -f 2,3,4 | grep --color=never '\['"
 alias go-test="set -o pipefail && go test -json -count=1 -cover | tparse"
-# alias go-test="gotest ./..."
 alias go-cover='go test -coverpkg=./... -coverprofile=./profile.out ./... && go tool cover -html=./profile.out'
 alias go-lint="golangci-lint run -c ~/.golangci.yml"
 alias go-echo="go run $HOME/dev/playground/echo/main.go"
