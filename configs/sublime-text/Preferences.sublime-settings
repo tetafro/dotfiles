@@ -1,12 +1,6 @@
 {
     "always_show_minimap_viewport": true,
     "color_scheme": "Tomorrow Night.sublime-color-scheme",
-    "draw_white_space": [
-        "selection",
-        "leading",
-        "trailing",
-        "isolated",
-    ],
     "enable_tab_scrolling": false,
     "folder_exclude_patterns": [
         ".git",
