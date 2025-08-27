@@ -6,6 +6,7 @@
 		"BazelSyntax",
 		"CUE",
 		"Dockerfile Syntax Highlighting",
+		"GitGutter",
 		"GitLink",
 		"Gomod",
 		"Jinja2",

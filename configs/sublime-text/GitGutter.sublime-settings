@@ -1,0 +1,12 @@
+// GitGutter Settings - User
+{
+    "show_in_minimap": 0,
+    "show_markers_on_untracked_file": false,
+    "enable_hover_diff_popup": false,
+    "show_line_annotation": "false",
+    "status_bar_text": [
+        "{% if repo and branch %}",
+        "{% if line_commit and line_commit[:7] != '0000000' %}{{line_author}} ({{line_author_age}}){% endif %}",
+        "{% endif %}",
+    ],
+}
