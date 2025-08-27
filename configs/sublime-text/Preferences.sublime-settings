@@ -10,7 +10,7 @@
         "node_modules",
     ],
     "font_face": "Fira Code",
-    "font_size": 13,
+    "font_size": 12,
     "gitlink_revision_type": "commithash",
     "highlight_line": true,
     "index_files": true,

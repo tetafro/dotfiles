@@ -13,6 +13,7 @@
   },
   "lsp_format_on_paste": true,
   "lsp_format_on_save": true,
+  "popup_max_characters_width": 80,
   "refactoring_auto_save": "always",
   "show_code_actions": "",
   "show_symbol_action_links": false,
