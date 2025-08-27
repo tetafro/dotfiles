@@ -3,6 +3,7 @@
 	"installed_packages":
 	[
 		"A File Icon",
+		"ApplySyntax",
 		"BazelSyntax",
 		"CUE",
 		"Dockerfile Syntax Highlighting",

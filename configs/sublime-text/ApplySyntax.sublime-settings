@@ -1,0 +1,18 @@
+{
+    "debug": false,
+    "syntaxes": [
+        {
+            "syntax": "Go/YAML (Go)",
+            "rules": [
+                {"globmatch": "**/templates/*.@(yml|yaml|tpl)"},
+            ],
+        },
+        {
+            "syntax": "Git Formats/Git Ignore",
+            "rules": [
+                {"globmatch": "**/.helmignore"},
+                {"globmatch": "**/.dockerignore"},
+            ],
+        },
+    ]
+}
