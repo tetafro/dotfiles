@@ -1,11 +1,5 @@
 [
-    { "keys": ["alt+left"], "command": "focus_side_bar"},
-    { "keys": ["alt+up"], "command": "select_lines", "args": {"forward": false} },
-    { "keys": ["alt+down"], "command": "select_lines", "args": {"forward": true} },
-    { "keys": ["ctrl+shift+g"], "command": "sublime_merge_open_repo" },
-    { "keys": ["ctrl+shift+h"], "command": "sublime_merge_file_history" },
-    { "keys": ["ctrl+shift+b"], "command": "sublime_merge_blame_file" },
-    { "keys": ["ctrl+b"], "command": "toggle_side_bar" },
+    // Fold/unfold
     { "keys": ["ctrl+["], "command": "fold" },
     { "keys": ["ctrl+]"], "command": "unfold" },
     { "keys": ["ctrl+0"], "command": "unfold_all" },
@@ -18,17 +12,43 @@
     { "keys": ["ctrl+7"], "command": "fold_by_level", "args": {"level": 7} },
     { "keys": ["ctrl+8"], "command": "fold_by_level", "args": {"level": 8} },
     { "keys": ["ctrl+9"], "command": "fold_by_level", "args": {"level": 9} },
+
+    // Format
     { "keys": ["alt+j"], "command": "pretty_json" },
     { "keys": ["alt+m"], "command": "open_markdown_preview" },
     { "keys": ["ctrl+j"], "command": "join_lines" },
+    { "keys": ["alt+z"], "command": "toggle_setting", "args": {"setting": "word_wrap"} },
+
+    // Tabs
     { "keys": ["ctrl+shift+pageup"], "command": "move_tab", "args": {"position": "-1"} },
     { "keys": ["ctrl+shift+pagedown"], "command": "move_tab", "args": {"position": "+1"} },
-    { "keys": ["alt+z"], "command": "toggle_setting", "args": {"setting": "word_wrap"} },
+
     {
         "keys": ["ctrl+shift+d"],
         "command": "run_macro_file",
         "args": {"file": "res://Packages/User/duplicate-lines.sublime-macro"}
     },
+
+    // Sidebar
+    { "keys": ["alt+left"], "command": "focus_side_bar"},
+    { "keys": ["ctrl+b"], "command": "toggle_side_bar" },
+
+    // Misc commands
+    { "keys": ["ctrl+shift+w"], "command": "copy_path"},
+    { "keys": ["alt+up"], "command": "select_lines", "args": {"forward": false} },
+    { "keys": ["alt+down"], "command": "select_lines", "args": {"forward": true} },
+
+    // Git
+    { "keys": ["ctrl+shift+g"], "command": "sublime_merge_open_repo" },
+    { "keys": ["ctrl+shift+h"], "command": "sublime_merge_file_history" },
+    { "keys": ["ctrl+shift+b"], "command": "sublime_merge_blame_file" },
+    {
+        "keys": ["ctrl+shift+o"],
+        "command": "gitlink",
+        "args": {"blame": false, "line": true, "web": true}
+    },
+
+    // LSP
     {
         "keys": ["f2"],
         "command": "lsp_symbol_rename",
@@ -51,10 +71,5 @@
         "command": "lsp_symbol_references",
         "args": {"side_by_side": true, "force_group": true, "fallback": false, "group": -1},
         "context": [{"key": "lsp.session_with_capability", "operand": "referencesProvider"}]
-    },
-    {
-        "keys": ["ctrl+shift+o"],
-        "command": "gitlink",
-        "args": {"blame": false, "line": true, "web": true}
     },
 ]
