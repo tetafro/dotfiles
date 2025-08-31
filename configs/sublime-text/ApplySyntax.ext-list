@@ -6,15 +6,15 @@
 		"bash",
 		"bashrc",
 		"sh",
-		"zsh"
+		"zsh",
 	],
 	"HAML":
 	[
-		"haml"
+		"haml",
 	],
 	"HTML (Rails)":
 	[
-		"html.erb"
+		"html.erb",
 	],
 	"JSON":
 	[
@@ -25,7 +25,7 @@
 		".jscsrc",
 		".jshintrc",
 		".stylelintrc",
-		"geojson"
+		"geojson",
 	],
 	"PHP":
 	[
@@ -33,12 +33,12 @@
 		"php3",
 		"php4",
 		"php5",
-		"phtml"
+		"phtml",
 	],
 	"Python":
 	[
 		"py3",
-		"pyw"
+		"pyw",
 	],
 	"Ruby":
 	[
@@ -48,7 +48,7 @@
 		"rake",
 		"rb",
 		"simplecov",
-		"thor"
+		"thor",
 	],
 	"Shell-Unix-Generic":
 	[
@@ -57,17 +57,17 @@
 		"bash",
 		"bashrc",
 		"sh",
-		"zsh"
+		"zsh",
 	],
 	"XML":
 	[
-		"xml.dist"
+		"xml.dist",
 	],
 	"YAML":
 	[
 		".gemrc",
 		"YAML-tmLanguage",
 		"yml",
-		"yml.dist"
+		"yml.dist",
 	],
 }
