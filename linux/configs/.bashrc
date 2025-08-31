@@ -96,6 +96,11 @@ if [ -f "$HOME/.kaf/completion.bash" ]; then
     source $HOME/.kaf/completion.bash
 fi
 
+# Codex autocomplete
+if [ -d "$HOME/.codex" ] ; then
+    source $HOME/.codex/completion.bash
+fi
+
 # Rust
 if [ -f "$HOME/.cargo/env" ] ; then
     source "$HOME/.cargo/env"
