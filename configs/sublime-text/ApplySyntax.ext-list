@@ -70,4 +70,8 @@
 		"yml",
 		"yml.dist",
 	],
+	"Zsh":
+	[
+		"zsh"
+	],
 }
