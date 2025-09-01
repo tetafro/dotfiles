@@ -1,7 +1,17 @@
 [
     // Fold/unfold
-    { "keys": ["ctrl+["], "command": "fold" },
-    { "keys": ["ctrl+]"], "command": "unfold" },
+    // { "keys": ["ctrl+["], "command": "fold" },
+    // { "keys": ["ctrl+]"], "command": "unfold" },
+    {
+        "keys": ["ctrl+["],
+        "command": "run_macro_file",
+        "args": {"file": "res://Packages/User/fold.sublime-macro"}
+    },
+    {
+        "keys": ["ctrl+]"],
+        "command": "run_macro_file",
+        "args": {"file": "res://Packages/User/unfold.sublime-macro"}
+    },
     { "keys": ["ctrl+0"], "command": "unfold_all" },
     { "keys": ["ctrl+1"], "command": "fold_by_level", "args": {"level": 1} },
     { "keys": ["ctrl+2"], "command": "fold_by_level", "args": {"level": 2} },
@@ -23,12 +33,6 @@
     { "keys": ["ctrl+shift+pageup"], "command": "move_tab", "args": {"position": "-1"} },
     { "keys": ["ctrl+shift+pagedown"], "command": "move_tab", "args": {"position": "+1"} },
 
-    {
-        "keys": ["ctrl+shift+d"],
-        "command": "run_macro_file",
-        "args": {"file": "res://Packages/User/duplicate-lines.sublime-macro"}
-    },
-
     // Sidebar
     { "keys": ["alt+left"], "command": "focus_side_bar"},
     { "keys": ["ctrl+b"], "command": "toggle_side_bar" },
@@ -37,6 +41,11 @@
     { "keys": ["ctrl+shift+w"], "command": "copy_path"},
     { "keys": ["alt+up"], "command": "select_lines", "args": {"forward": false} },
     { "keys": ["alt+down"], "command": "select_lines", "args": {"forward": true} },
+    {
+        "keys": ["ctrl+shift+d"],
+        "command": "run_macro_file",
+        "args": {"file": "res://Packages/User/duplicate-lines.sublime-macro"}
+    },
 
     // Git
     { "keys": ["ctrl+shift+g"], "command": "sublime_merge_open_repo" },
