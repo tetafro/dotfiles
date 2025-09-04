@@ -1,7 +1,8 @@
 {
     "always_show_minimap_viewport": true,
-    "color_scheme": "Monokai Pro Light.sublime-color-scheme",
+    "color_scheme": "Monokai Pro Light (Filter Sun).sublime-color-scheme",
     "enable_tab_scrolling": false,
+    "fade_fold_buttons": false,
     "folder_exclude_patterns": [
         ".git",
         "bazel-bin",
