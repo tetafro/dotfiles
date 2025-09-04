@@ -24,6 +24,11 @@ if [ -d "$HOME/.krew" ] ; then
     export PATH="$HOME/.krew/bin:$PATH"
 fi
 
+# Work
+if [ -f "$HOME/.profile_work" ]; then
+    source "$HOME/.profile_work"
+fi
+
 # If running bash
 if [ -n "$BASH_VERSION" ]; then
     if [ -f "$HOME/.bashrc" ]; then

@@ -106,5 +106,10 @@ if [ -f "$HOME/.cargo/env" ] ; then
     source "$HOME/.cargo/env"
 fi
 
+# Work
+if [ -f "$HOME/.bashrc_work" ]; then
+    source "$HOME/.bashrc_work"
+fi
+
 # Run starship prompt
 eval "$(starship init bash)"

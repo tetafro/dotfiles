@@ -20,6 +20,9 @@ ln -sf $PWD/configs/starship.toml ~/.config/
 ln -sf $PWD/configs/mpv ~/.config/
 ln -sf $PWD/configs/sublime-text ~/.config/sublime-text/Packages/User
 
+# Only for work
+./work/install.sh
+
 mkdir -p $HOME/.local/bin
 ln -sf $PWD/tools/* $PWD/linux/tools/* $HOME/.local/bin/
 ```
