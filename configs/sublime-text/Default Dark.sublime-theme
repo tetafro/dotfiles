@@ -1,7 +1,7 @@
 {
     "variables":
     {
-        "tabset_medium_dark_bg": "#22262a",
+        "tabset_medium_dark_bg": "color(var(sidebar_bg))",
     },
     "rules":
     [
