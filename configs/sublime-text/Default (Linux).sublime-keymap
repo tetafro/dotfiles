@@ -1,7 +1,5 @@
 [
     // Fold/unfold
-    // { "keys": ["ctrl+["], "command": "fold" },
-    // { "keys": ["ctrl+]"], "command": "unfold" },
     {
         "keys": ["ctrl+["],
         "command": "run_macro_file",
@@ -48,6 +46,7 @@
     },
 
     // Git
+    { "keys": ["alt+g"], "command": "git_gutter_diff_popup" },
     { "keys": ["ctrl+shift+g"], "command": "sublime_merge_open_repo" },
     { "keys": ["ctrl+shift+h"], "command": "sublime_merge_file_history" },
     { "keys": ["ctrl+shift+b"], "command": "sublime_merge_blame_file" },
