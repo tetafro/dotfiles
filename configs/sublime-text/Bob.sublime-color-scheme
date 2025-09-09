@@ -10,9 +10,9 @@
         "gray4": "hsla(210, 20%, 85%, 0.8)",
         "gray5": "hsla(210, 20%, 85%, 0.5)",
 
-        "red": "hsl(360, 50%, 60%)",
+        "red": "hsl(360, 40%, 60%)",
         "orange": "hsl(30, 70%, 55%)",
-        "green": "hsl(100, 30%, 50%)",
+        "green": "hsl(130, 50%, 40%)",
         "blue": "hsl(210, 35%, 50%)",
         "blue2": "hsla(210, 50%, 85%, 0.9)",
         "purple": "hsl(260, 35%, 55%)",
@@ -128,17 +128,17 @@
         {
             "name": "Inherited class",
             "scope": "entity.other.inherited-class",
-            "foreground": "var(alert)",
+            "foreground": "var(purple)",
         },
         {
             "name": "Function argument",
-            "scope": "variable.parameter",
+            "scope": "variable.parameter - variable.parameter.option",
             "foreground": "var(orange)"
         },
         {
             "name": "Language variable",
             "scope": "variable.language",
-            "foreground": "var(purple)",
+            "foreground": "var(red)",
         },
         {
             "name": "Tag name",
@@ -168,7 +168,7 @@
         {
             "name": "Library class/type",
             "scope": "support.type, support.class",
-            "foreground": "var(blue)",
+            "foreground": "var(purple)",
         },
         {
             "name": "Invalid",
