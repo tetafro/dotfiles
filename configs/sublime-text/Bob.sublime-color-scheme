@@ -24,7 +24,7 @@
         "background": "var(white)",
         "foreground": "var(black)",
         "caret": "var(gray)",
-        "line_highlight": "var(gray2)",
+        "line_highlight": "var(gray5)",
 
         // Accents
         "accent": "var(black)",
@@ -72,7 +72,7 @@
         },
         {
             "name": "String",
-            "scope": "string",
+            "scope": "string, meta.string",
             "foreground": "var(green)",
         },
         {
@@ -122,7 +122,7 @@
         },
         {
             "name": "Entity name",
-            "scope": "entity.name - (entity.name.section | entity.name.tag | entity.name.label)",
+            "scope": "entity.name - (entity.name.section | entity.name.tag)",
             "foreground": "var(blue)"
         },
         {
@@ -146,6 +146,11 @@
             "foreground": "var(alert)"
         },
         {
+            "name": "Label name",
+            "scope": "entity.name.label",
+            "foreground": "var(green)"
+        },
+        {
             "name": "Tag attribute",
             "scope": "entity.other.attribute-name",
             "foreground": "var(alert)"
@@ -167,20 +172,20 @@
         },
         {
             "name": "Library class/type",
-            "scope": "support.type, support.class",
+            "scope": "support.type - meta.string, support.class",
             "foreground": "var(purple)",
         },
         {
             "name": "Invalid",
             "scope": "invalid",
-            "foreground": "var(white)",
-            "background": "var(alert)"
+            "foreground": "var(black)",
+            "background": "var(red)"
         },
         {
             "name": "Invalid deprecated",
             "scope": "invalid.deprecated",
-            "foreground": "var(white)",
-            "background": "var(alert)"
+            "foreground": "var(black)",
+            "background": "var(red)"
         },
         {
             "name": "Markup headings",
