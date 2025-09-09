@@ -1,0 +1,258 @@
+{
+    "name": "Bob",
+    "author": "Denis Krivak",
+    "variables": {
+        "white": "hsl(30, 10%, 95%)",
+        "black": "hsl(210, 20%, 25%)",
+        "gray": "hsl(210, 20%, 60%)",
+        "gray2": "hsl(210, 20%, 90%)",
+        "gray3": "hsl(210, 20%, 85%)",
+        "gray4": "hsla(210, 20%, 85%, 0.8)",
+        "gray5": "hsla(210, 20%, 85%, 0.5)",
+
+        "red": "hsl(360, 50%, 60%)",
+        "orange": "hsl(30, 70%, 55%)",
+        "green": "hsl(100, 30%, 50%)",
+        "blue": "hsl(210, 35%, 50%)",
+        "blue2": "hsla(210, 50%, 85%, 0.9)",
+        "purple": "hsl(260, 35%, 55%)",
+
+        "alert": "hsl(120, 100%, 50%)"
+    },
+    "globals": {
+        // Global settings
+        "background": "var(white)",
+        "foreground": "var(black)",
+        "caret": "var(gray)",
+        "line_highlight": "var(gray2)",
+
+        // Accents
+        "accent": "var(black)",
+        "misspelling": "var(alert)",
+        "fold_marker": "var(gray)",
+
+        // Diff
+        "line_diff_added": "var(green)",
+        "line_diff_modified": "var(orange)",
+        "line_diff_deleted": "var(red)",
+
+        // Selection
+        "selection": "var(gray4)",
+        "selection_border": "var(gray3)",
+        "inactive_selection": "var(gray5)",
+        "inactive_selection_border": "var(gray5)",
+
+        // Find
+        "highlight": "var(gray)",
+        "find_highlight": "var(blue2)",
+        "find_highlight_foreground": "var(black)",
+
+        // Guides
+        "active_guide": "var(alert)",
+        "stack_guide": "var(alert)",
+
+        // Brackets
+        "brackets_options": "underline",
+        "brackets_foreground": "var(blue)",
+        "bracket_contents_options": "underline",
+        "bracket_contents_foreground": "var(blue)",
+
+        // Tags
+        "tags_options": "stippled_underline",
+        "tags_foreground": "var(alert)",
+
+        // Shadows
+        "shadow": "var(alert)",
+    },
+    "rules": [
+        {
+            "name": "Comment",
+            "scope": "comment, punctuation.definition.comment",
+            "foreground": "var(gray)",
+        },
+        {
+            "name": "String",
+            "scope": "string",
+            "foreground": "var(green)",
+        },
+        {
+            "name": "String key",
+            "scope": "meta.mapping.key string - meta.mapping.key meta meta, meta.mapping.key meta.mapping.key string - meta.mapping.key meta.mapping.key meta meta",
+            "foreground": "var(blue)",
+        },
+        {
+            "name": "Number",
+            "scope": "constant.numeric",
+            "foreground": "var(orange)",
+        },
+        {
+            "name": "Number suffix",
+            "scope": "storage.type.numeric",
+            "foreground": "var(green)",
+        },
+        {
+            "name": "Constants",
+            "scope": "constant - constant.numeric",
+            "foreground": "var(red)",
+        },
+        {
+            "name": "Member variable",
+            "scope": "variable.member",
+            "foreground": "var(alert)"
+        },
+        {
+            "name": "Keyword",
+            "scope": "keyword - keyword.operator",
+            "foreground": "var(purple)"
+        },
+        {
+            "name": "Operators",
+            "scope": "keyword.operator",
+            "foreground": "var(red)"
+        },
+        {
+            "name": "Storage",
+            "scope": "storage",
+            "foreground": "var(alert)"
+        },
+        {
+            "name": "Storage type",
+            "scope": "storage.type",
+            "foreground": "var(purple)",
+        },
+        {
+            "name": "Entity name",
+            "scope": "entity.name - (entity.name.section | entity.name.tag | entity.name.label)",
+            "foreground": "var(blue)"
+        },
+        {
+            "name": "Inherited class",
+            "scope": "entity.other.inherited-class",
+            "foreground": "var(alert)",
+        },
+        {
+            "name": "Function argument",
+            "scope": "variable.parameter",
+            "foreground": "var(orange)"
+        },
+        {
+            "name": "Language variable",
+            "scope": "variable.language",
+            "foreground": "var(purple)",
+        },
+        {
+            "name": "Tag name",
+            "scope": "entity.name.tag",
+            "foreground": "var(alert)"
+        },
+        {
+            "name": "Tag attribute",
+            "scope": "entity.other.attribute-name",
+            "foreground": "var(alert)"
+        },
+        {
+            "name": "Function call",
+            "scope": "variable.function, variable.annotation",
+            "foreground": "var(blue)"
+        },
+        {
+            "name": "Library function",
+            "scope": "support.function, support.macro",
+            "foreground": "var(purple)",
+        },
+        {
+            "name": "Library constant",
+            "scope": "support.constant",
+            "foreground": "var(alert)",
+        },
+        {
+            "name": "Library class/type",
+            "scope": "support.type, support.class",
+            "foreground": "var(blue)",
+        },
+        {
+            "name": "Invalid",
+            "scope": "invalid",
+            "foreground": "var(white)",
+            "background": "var(alert)"
+        },
+        {
+            "name": "Invalid deprecated",
+            "scope": "invalid.deprecated",
+            "foreground": "var(white)",
+            "background": "var(alert)"
+        },
+        {
+            "name": "Markup headings",
+            "scope": "markup.heading",
+            "font_style": "bold",
+        },
+        {
+            "name": "Markup headings hashes",
+            "scope": "markup.heading punctuation.definition.heading",
+            "foreground": "var(red)",
+        },
+        {
+            "name": "Markup links",
+            "scope": "string.other.link, markup.underline.link",
+            "foreground": "var(green)",
+        },
+        {
+            "name": "Markup bold",
+            "scope": "markup.bold",
+            "font_style": "bold",
+        },
+        {
+            "name": "Markup italic",
+            "scope": "markup.italic",
+            "font_style": "italic",
+        },
+        {
+            "name": "Markup underline",
+            "scope": "markup.underline",
+            "font_style": "underline",
+        },
+        {
+            "name": "Markup bold/italic",
+            "scope": "markup.italic markup.bold | markup.bold markup.italic",
+            "font_style": "bold italic",
+        },
+        {
+            "name": "Markup bold/underline",
+            "scope": "markup.underline markup.bold | markup.bold markup.underline",
+            "font_style": "bold underline",
+        },
+        {
+            "name": "Markup italic/underline",
+            "scope": "markup.underline markup.italic | markup.italic markup.underline",
+            "font_style": "italic underline",
+        },
+        {
+            "name": "Markup bold/italic/underline",
+            "scope": "markup.bold markup.italic markup.underline | markup.bold markup.underline markup.italic | markup.italic markup.bold markup.underline | markup.italic markup.underline markup.bold | markup.underline markup.bold markup.italic | markup.underline markup.italic markup.bold",
+            "font_style": "bold italic underline",
+        },
+        {
+            "name": "Markup numbered list bullet",
+            "scope": "markup.list.numbered.bullet",
+            "foreground": "var(red)",
+        },
+        {
+            "name": "Markup blockquote",
+            "scope": "markup.quote punctuation.definition.blockquote",
+            "foreground": "var(red)",
+        },
+        {
+            "scope": "message.error",
+            "foreground": "var(red)",
+        },
+        {
+            "scope": "message.warning",
+            "foreground": "var(orange)",
+        },
+        {
+            "scope": "message.info",
+            "foreground": "var(blue)",
+        },
+    ]
+}
