@@ -1,21 +1,25 @@
+// Current alerts:
+// - auto-complete popup
+// - Ctrl+Shift+P - Select Color Theme
 {
     "name": "Bob",
     "author": "Denis Krivak",
     "variables": {
         "white": "hsl(30, 10%, 95%)",
         "black": "hsl(210, 20%, 25%)",
-        "gray": "hsl(210, 20%, 60%)",
+        "gray": "hsl(210, 20%, 65%)",
         "gray2": "hsl(210, 20%, 90%)",
         "gray3": "hsl(210, 20%, 85%)",
         "gray4": "hsla(210, 20%, 85%, 0.8)",
         "gray5": "hsla(210, 20%, 85%, 0.5)",
 
-        "red": "hsl(360, 40%, 60%)",
+        "red": "hsl(360, 55%, 55%)",
         "orange": "hsl(30, 70%, 55%)",
+        "brown": "hsl(30, 50%, 45%)",
         "green": "hsl(130, 50%, 40%)",
         "blue": "hsl(210, 35%, 50%)",
         "blue2": "hsla(210, 50%, 85%, 0.9)",
-        "purple": "hsl(260, 35%, 55%)",
+        "purple": "hsl(280, 35%, 55%)",
 
         "alert": "hsl(120, 100%, 50%)"
     },
@@ -62,7 +66,7 @@
         "tags_foreground": "var(alert)",
 
         // Shadows
-        "shadow": "var(alert)",
+        "shadow": "var(gray4)",
     },
     "rules": [
         {
@@ -73,7 +77,7 @@
         {
             "name": "String",
             "scope": "string, meta.string",
-            "foreground": "var(green)",
+            "foreground": "var(brown)",
         },
         {
             "name": "String key",
@@ -83,7 +87,7 @@
         {
             "name": "Number",
             "scope": "constant.numeric",
-            "foreground": "var(orange)",
+            "foreground": "var(green)",
         },
         {
             "name": "Number suffix",
@@ -92,7 +96,7 @@
         },
         {
             "name": "Constants",
-            "scope": "constant - constant.numeric",
+            "scope": "constant - constant.numeric, support.constant",
             "foreground": "var(red)",
         },
         {
@@ -148,7 +152,7 @@
         {
             "name": "Label name",
             "scope": "entity.name.label",
-            "foreground": "var(green)"
+            "foreground": "var(brown)"
         },
         {
             "name": "Tag attribute",
@@ -164,11 +168,6 @@
             "name": "Library function",
             "scope": "support.function, support.macro",
             "foreground": "var(purple)",
-        },
-        {
-            "name": "Library constant",
-            "scope": "support.constant",
-            "foreground": "var(alert)",
         },
         {
             "name": "Library class/type",
