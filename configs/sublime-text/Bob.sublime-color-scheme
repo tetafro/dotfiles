@@ -100,11 +100,6 @@
             "foreground": "var(red)",
         },
         {
-            "name": "Member variable",
-            "scope": "variable.member",
-            "foreground": "var(alert)",
-        },
-        {
             "name": "Keyword",
             "scope": "keyword - keyword.operator",
             "foreground": "var(purple)",
@@ -117,11 +112,6 @@
         {
             "name": "Storage",
             "scope": "storage",
-            "foreground": "var(alert)",
-        },
-        {
-            "name": "Storage type",
-            "scope": "storage.type",
             "foreground": "var(purple)",
         },
         {
@@ -145,19 +135,9 @@
             "foreground": "var(red)",
         },
         {
-            "name": "Tag name",
-            "scope": "entity.name.tag",
-            "foreground": "var(alert)"
-        },
-        {
             "name": "Label name",
             "scope": "entity.name.label",
             "foreground": "var(brown)",
-        },
-        {
-            "name": "Tag attribute",
-            "scope": "entity.other.attribute-name",
-            "foreground": "var(alert)",
         },
         {
             "name": "Function call",
