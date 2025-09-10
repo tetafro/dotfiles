@@ -102,22 +102,22 @@
         {
             "name": "Member variable",
             "scope": "variable.member",
-            "foreground": "var(alert)"
+            "foreground": "var(alert)",
         },
         {
             "name": "Keyword",
             "scope": "keyword - keyword.operator",
-            "foreground": "var(purple)"
+            "foreground": "var(purple)",
         },
         {
             "name": "Operators",
             "scope": "keyword.operator",
-            "foreground": "var(red)"
+            "foreground": "var(red)",
         },
         {
             "name": "Storage",
             "scope": "storage",
-            "foreground": "var(alert)"
+            "foreground": "var(alert)",
         },
         {
             "name": "Storage type",
@@ -137,7 +137,7 @@
         {
             "name": "Function argument",
             "scope": "variable.parameter - variable.parameter.option",
-            "foreground": "var(orange)"
+            "foreground": "var(orange)",
         },
         {
             "name": "Language variable",
@@ -152,17 +152,17 @@
         {
             "name": "Label name",
             "scope": "entity.name.label",
-            "foreground": "var(brown)"
+            "foreground": "var(brown)",
         },
         {
             "name": "Tag attribute",
             "scope": "entity.other.attribute-name",
-            "foreground": "var(alert)"
+            "foreground": "var(alert)",
         },
         {
             "name": "Function call",
             "scope": "variable.function, variable.annotation",
-            "foreground": "var(blue)"
+            "foreground": "var(blue)",
         },
         {
             "name": "Library function",
@@ -178,13 +178,13 @@
             "name": "Invalid",
             "scope": "invalid",
             "foreground": "var(black)",
-            "background": "var(red)"
+            "background": "var(red)",
         },
         {
             "name": "Invalid deprecated",
             "scope": "invalid.deprecated",
             "foreground": "var(black)",
-            "background": "var(red)"
+            "background": "var(red)",
         },
         {
             "name": "Markup headings",
