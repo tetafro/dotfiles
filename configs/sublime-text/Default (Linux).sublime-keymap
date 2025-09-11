@@ -44,6 +44,11 @@
         "command": "run_macro_file",
         "args": {"file": "res://Packages/User/duplicate-lines.sublime-macro"}
     },
+    {
+        "keys": ["alt+m"],
+        "command": "markdown_preview",
+        "args": {"parser": "markdown", "target": "browser"}
+    },
 
     // Git
     { "keys": ["alt+g"], "command": "git_gutter_diff_popup" },

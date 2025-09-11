@@ -1,0 +1,4 @@
+{
+    "path_tempfile": "~/dump",
+    "enabled_parsers": ["markdown"],
+}
