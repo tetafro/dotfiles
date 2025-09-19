@@ -106,6 +106,13 @@ if [ -f "$HOME/.cargo/env" ] ; then
     source "$HOME/.cargo/env"
 fi
 
+# Bash completion
+if [ -d "$HOME/.bash-completion" ] ; then
+    for f in "$HOME/.bash-completion/"*; do
+        source "$f"
+    done
+fi
+
 # Work
 if [ -f "$HOME/.bashrc_work" ]; then
     source "$HOME/.bashrc_work"

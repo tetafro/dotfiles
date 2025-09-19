@@ -6,6 +6,9 @@ A collection of dotfiles and scripts I use for customizing my OS.
 
 Linux
 ```sh
+mkdir -p $HOME/.bash-completion
+mkdir -p $HOME/.local/bin
+
 ln -sf $PWD/linux/configs/.bash_aliases ~
 ln -sf $PWD/linux/configs/.bashrc ~
 ln -sf $PWD/linux/configs/.inputrc ~
@@ -19,20 +22,8 @@ ln -sf $PWD/configs/.tmux.conf ~
 ln -sf $PWD/configs/starship.toml ~/.config/
 ln -sf $PWD/configs/mpv ~/.config/
 ln -sf $PWD/configs/sublime-text ~/.config/sublime-text/Packages/User
+ln -sf $PWD/tools/* $PWD/linux/tools/* $HOME/.local/bin/
 
 # Only for work
 ./work/install.sh
-
-mkdir -p $HOME/.local/bin
-ln -sf $PWD/tools/* $PWD/linux/tools/* $HOME/.local/bin/
-```
-
-MacOS
-```sh
-cp configs/* macos/configs/* $HOME
-ln -sf $PWD/configs/mpv $HOME/.config/
-mv $HOME/starship.toml $HOME/flake8 $HOME/.config/
-
-mkdir -p $HOME/.local/bin
-ln -sf $PWD/tools/* $PWD/macos/tools/* $HOME/.local/bin/
 ```
