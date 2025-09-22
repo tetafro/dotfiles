@@ -80,7 +80,16 @@
         ],
     },
     {
-        "keys": ["primary+shift+f12"],
+        "keys": ["f12"],
+        "command": "open_markdown_link",
+        "context": [{
+            "key": "selector",
+            "operator": "equal",
+            "operand": "markup.underline.link",
+        }],
+    },
+    {
+        "keys": ["shift+f12"],
         "command": "lsp_symbol_references",
         "args": {"side_by_side": true, "force_group": true, "fallback": false, "group": -1},
         "context": [{"key": "lsp.session_with_capability", "operand": "referencesProvider"}],
