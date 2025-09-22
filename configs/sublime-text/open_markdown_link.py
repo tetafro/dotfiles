@@ -9,6 +9,7 @@ class OpenMarkdownLinkCommand(sublime_plugin.TextCommand):
     - local files are opened it in a new tab;
     - http(s) links are opened in the default browser.
     """
+
     def run(self, edit):
         v = self.view
         w = v.window()
