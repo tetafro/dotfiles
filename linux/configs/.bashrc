@@ -72,35 +72,6 @@ if [ -f "$HOME/.bash_aliases" ]; then
     . "$HOME/.bash_aliases"
 fi
 
-# kubectl autocomplete
-if [ -f "$HOME/.kube/kubectl.completion.bash" ]; then
-    source $HOME/.kube/kubectl.completion.bash
-fi
-if [ -f "$HOME/.kube/k.completion.bash" ]; then
-    source $HOME/.kube/k.completion.bash
-fi
-if [ -f "$HOME/.kube/kubectx.completion.bash" ]; then
-    source $HOME/.kube/kubectx.completion.bash
-fi
-if [ -f "$HOME/.kube/kubens.completion.bash" ]; then
-    source $HOME/.kube/kubens.completion.bash
-fi
-
-# tfswitch autocomplete
-if [ -d "$HOME/.tfswitch" ] ; then
-    source $HOME/.tfswitch/completion.bash
-fi
-
-# kaf autocomplete
-if [ -f "$HOME/.kaf/completion.bash" ]; then
-    source $HOME/.kaf/completion.bash
-fi
-
-# Codex autocomplete
-if [ -d "$HOME/.codex" ] ; then
-    source $HOME/.codex/completion.bash
-fi
-
 # Rust
 if [ -f "$HOME/.cargo/env" ] ; then
     source "$HOME/.cargo/env"
@@ -108,8 +79,8 @@ fi
 
 # Bash completion
 if [ -d "$HOME/.bash-completion" ] ; then
-    for f in "$HOME/.bash-completion/"*; do
-        source "$f"
+    for src in "$HOME/.bash-completion/"*.sh; do
+        source "$src"
     done
 fi
 
