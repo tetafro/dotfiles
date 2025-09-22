@@ -34,6 +34,13 @@
     // Sidebar
     { "keys": ["alt+left"], "command": "focus_side_bar"},
     { "keys": ["ctrl+b"], "command": "toggle_side_bar" },
+    {
+        "keys": ["f2"],
+        "command": "rename_active_file",
+        "context": [
+              { "key": "control", "operator": "equal", "operand": "sidebar_tree" },
+        ],
+    },
 
     // Misc commands
     { "keys": ["ctrl+shift+w"], "command": "copy_path"},
