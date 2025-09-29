@@ -1,0 +1,10 @@
+#!/bin/bash
+# Switch current namespace in the kubectl config.
+
+if [[ $# -eq 0 ]]; then
+    ns=$(kubectl config view --minify --output jsonpath='{..namespace}')
+else
+    ns=$1
+    kubectl config set-context --namespace $ns --current
+fi
+echo "Current namespace: $ns"

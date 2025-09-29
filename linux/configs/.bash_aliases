@@ -42,7 +42,6 @@ alias venv='if [ -d ./venv ]; then \
     fi'
 alias k='kubectl'
 alias kctx='kubectx'
-alias kns='kubens'
 
 # Directories
 alias cd-dump="cd $HOME/dump"
