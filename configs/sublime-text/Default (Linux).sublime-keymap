@@ -24,6 +24,7 @@
     // Format
     { "keys": ["alt+j"], "command": "pretty_json" },
     { "keys": ["alt+m"], "command": "open_markdown_preview" },
+    { "keys": ["alt+t"], "command": "format_markdown_table" },
     { "keys": ["ctrl+j"], "command": "join_lines" },
     { "keys": ["alt+z"], "command": "toggle_setting", "args": {"setting": "word_wrap"} },
 
