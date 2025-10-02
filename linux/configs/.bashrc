@@ -7,9 +7,9 @@ case $- in
 esac
 
 # History settings
-HISTCONTROL=ignoreboth
-HISTSIZE=1000
-HISTFILESIZE=2000
+HISTCONTROL=ignoreboth # ignore spaces and duplicates
+HISTSIZE=10000         # for one session
+HISTFILESIZE=50000     # for ~/.bash_history
 
 # Append to the history file, don't overwrite it
 shopt -s histappend
