@@ -1,0 +1,10 @@
+#!/bin/bash
+# Find unwanted chars in my markdown notes.
+
+grep_cmd="grep --color --exclude-dir=.git --binary-files=without-match"
+
+# Fancy typography
+$grep_cmd -RE --color '[—’”“«»]' . || true
+
+# Asterisk lists
+$grep_cmd -RE --color '^\* ' || true
