@@ -57,6 +57,8 @@
         "command": "markdown_preview",
         "args": {"parser": "markdown", "target": "browser"},
     },
+    { "keys": ["alt+d"], "command": "file_diff_clipboard" },
+
 
     // Git
     { "keys": ["alt+g"], "command": "git_gutter_diff_popup" },
