@@ -9,20 +9,39 @@ if [[ "$last_arg" == "-h" || $last_arg == "--help" ]]; then
 fi
 
 cmd=$1
-file=$(which "$cmd")
 
+# Get alias - find the declaration and all following lines that
+# start with a space
+alias=$(awk -v cmd="$cmd" '
+    $0 ~ "^alias " cmd "=" {
+        print
+        in_alias=1
+        next
+    }
+    in_alias && /^ / {
+        print
+        next
+    }
+    in_alias { in_alias=0 }
+' ~/.bash_aliases)
+if [[ ! -z "$alias" ]]; then
+    echo "$alias"
+    exit 0
+fi
+
+file=$(which "$cmd")
 if [[ -z "$file" ]]; then
     echo "Not found"
     exit 1
 fi
-echo "File: $file"
 
-mime=$(file -b --mime-type "$file" | sed 's|/.*||')
+mime=$(file --brief --dereference --mime-type "$file" | sed 's|/.*||')
 if [[ "$mime" != "text" ]]; then
-    echo "Binary file"
+    echo "Binary file: $file"
     exit 0
 fi
 
+echo "File: $file"
 show_cmd=cat
 if [ "$(command -v bat)" ]; then
     show_cmd="bat --plain --paging=never"
