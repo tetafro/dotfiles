@@ -3,15 +3,22 @@
 
 set -euo pipefail
 
+last_arg=${!#}
+if [[ "$last_arg" == "-h" || $last_arg == "--help" ]]; then
+    echo "USAGE:"
+    echo "  go-update [VERSION_NUMBERS]"
+    exit 0
+fi
+
 if [[ $# -eq 1 ]]; then
-    version=$1
+    version="go$1"
 else
     version=$(curl -s "https://go.dev/VERSION?m=text" | head -1)
 fi
 echo "Target version: $version"
 
 echo -n "Downloading... "
-curl -sL -o /tmp/go.tar.gz https://go.dev/dl/go${version}.linux-amd64.tar.gz
+curl -sL -o /tmp/go.tar.gz https://go.dev/dl/${version}.linux-amd64.tar.gz
 echo "Done"
 
 echo -n "Installing... "

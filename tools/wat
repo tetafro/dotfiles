@@ -1,0 +1,30 @@
+#!/bin/bash
+# Run which + cat for a file.
+
+last_arg=${!#}
+if [[ "$last_arg" == "-h" || $last_arg == "--help" ]]; then
+    echo "USAGE:"
+    echo "  wat [COMMAND]"
+    exit 0
+fi
+
+cmd=$1
+file=$(which "$cmd")
+
+if [[ -z "$file" ]]; then
+    echo "Not found"
+    exit 1
+fi
+echo "File: $file"
+
+mime=$(file -b --mime-type "$file" | sed 's|/.*||')
+if [[ "$mime" != "text" ]]; then
+    echo "Binary file"
+    exit 0
+fi
+
+show_cmd=cat
+if [ "$(command -v bat)" ]; then
+    show_cmd="bat --plain --paging=never"
+fi
+$show_cmd "$file"
