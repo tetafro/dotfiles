@@ -1,0 +1,38 @@
+#!/bin/bash
+# Find a file and open it in an editor.
+
+editor=/usr/bin/subl
+
+last_arg=${!#}
+if [[ "$last_arg" == "-h" || $last_arg == "--help" ]]; then
+    echo "USAGE:"
+    echo "  wat [COMMAND]"
+    exit 0
+fi
+
+cmd=$1
+
+# Edit alias
+if grep -q "^alias $cmd" ~/.bash_aliases; then
+    echo "Edit alias in ~/.bash_aliases"
+    $editor ~/.bash_aliases
+    exit 0
+fi
+
+# Find the file
+file=$(which "$cmd")
+if [[ -z "$file" ]]; then
+    echo "Not found"
+    exit 1
+fi
+
+# Skip if binary
+mime=$(file --brief --dereference --mime-type "$file" | sed 's|/.*||')
+if [[ "$mime" != "text" ]]; then
+    echo "Binary file: $file"
+    exit 0
+fi
+
+# Edit file
+echo "Edit file: $file"
+$editor $file
