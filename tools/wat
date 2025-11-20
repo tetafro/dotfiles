@@ -1,40 +1,55 @@
 #!/bin/bash
-# Run which + cat for a file.
+# Show the file behind the command. Edit if `-e` is set.
 
 last_arg=${!#}
 if [[ "$last_arg" == "-h" || $last_arg == "--help" ]]; then
     echo "USAGE:"
-    echo "  wat [COMMAND]"
+    echo "  wat [-e] [COMMAND]"
     exit 0
 fi
 
+edit=false
 cmd=$1
+if [[ $# -eq 2 && $1 == "-e" ]]; then
+    edit=true
+    cmd=$2
+fi
 
-# Get alias - find the declaration and all following lines that
-# start with a space
-alias=$(awk -v cmd="$cmd" '
-    $0 ~ "^alias " cmd "=" {
-        print
-        in_alias=1
-        next
-    }
-    in_alias && /^ / {
-        print
-        next
-    }
-    in_alias { in_alias=0 }
-' ~/.bash_aliases)
-if [[ ! -z "$alias" ]]; then
-    echo "$alias"
+editor=/usr/bin/subl
+
+# Alias
+if grep -q "^alias $cmd" ~/.bash_aliases; then
+    echo "Alias in ~/.bash_aliases"
+    if [[ $edit == "true" ]]; then
+        $editor ~/.bash_aliases
+    else
+        # Find the declaration and all following lines that
+        # start with a space
+        alias=$(awk -v cmd="$cmd" '
+            $0 ~ "^alias " cmd "=" {
+                print
+                in_alias=1
+                next
+            }
+            in_alias && /^ / {
+                print
+                next
+            }
+            in_alias { in_alias=0 }
+        ' ~/.bash_aliases)
+        echo "$alias"
+    fi
     exit 0
 fi
 
+# Find the file
 file=$(which "$cmd")
 if [[ -z "$file" ]]; then
     echo "Not found"
     exit 1
 fi
 
+# Skip if binary
 mime=$(file --brief --dereference --mime-type "$file" | sed 's|/.*||')
 if [[ "$mime" != "text" ]]; then
     echo "Binary file: $file"
@@ -42,8 +57,12 @@ if [[ "$mime" != "text" ]]; then
 fi
 
 echo "File: $file"
-show_cmd=cat
-if [ "$(command -v bat)" ]; then
-    show_cmd="bat --plain --paging=never"
+if [[ $edit == "true" ]]; then
+    $editor $file
+else
+    show_cmd=cat
+    if [ "$(command -v bat)" ]; then
+        show_cmd="bat --plain --paging=never"
+    fi
+    $show_cmd "$file"
 fi
-$show_cmd "$file"
