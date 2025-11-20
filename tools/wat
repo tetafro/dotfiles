@@ -18,7 +18,7 @@ fi
 editor=/usr/bin/subl
 
 # Alias
-if grep -q "^alias $cmd" ~/.bash_aliases; then
+if grep -q "^alias $cmd=" ~/.bash_aliases; then
     echo "Alias in ~/.bash_aliases"
     if [[ $edit == "true" ]]; then
         $editor ~/.bash_aliases
