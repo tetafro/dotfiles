@@ -45,6 +45,7 @@ alias kctx='kubectx'
 
 # Directories
 alias cd-dump="cd $HOME/dump"
+alias cd-dev="cd $HOME/dev"
 alias cd-playground="cd $HOME/dev/playground"
 alias cd-pet="cd $HOME/dev/pet"
 alias cd-github="cd $HOME/dev/github"
