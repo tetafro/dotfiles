@@ -2,6 +2,8 @@
 	editor = vim
 	excludesfile = ~/.gitignore
 	pager = less -F -X
+[protocol]
+	version = 2
 [init]
 	defaultBranch = master
 [user]
