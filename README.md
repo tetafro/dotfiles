@@ -4,15 +4,14 @@ A collection of dotfiles and scripts I use for customizing my OS.
 
 ## Install
 
-Linux
 ```sh
 mkdir -p $HOME/.bash-completion
 mkdir -p $HOME/.local/bin
 
-ln -sf $PWD/linux/configs/.bash_aliases ~
-ln -sf $PWD/linux/configs/.bashrc ~
-ln -sf $PWD/linux/configs/.inputrc ~
-ln -sf $PWD/linux/configs/.profile ~
+ln -sf $PWD/configs/.bash_aliases ~
+ln -sf $PWD/configs/.bashrc ~
+ln -sf $PWD/configs/.inputrc ~
+ln -sf $PWD/configs/.profile ~
 ln -sf $PWD/configs/.flake8 ~
 ln -sf $PWD/configs/.gitconfig ~
 ln -sf $PWD/configs/.gitignore ~
@@ -22,7 +21,7 @@ ln -sf $PWD/configs/.tmux.conf ~
 ln -sf $PWD/configs/starship.toml ~/.config/
 ln -sf $PWD/configs/mpv ~/.config/
 ln -sf $PWD/configs/sublime-text ~/.config/sublime-text/Packages/User
-ln -sf $PWD/tools/* $PWD/linux/tools/* $HOME/.local/bin/
+ln -sf $PWD/tools/* $HOME/.local/bin/
 
 # Only for work
 ./work/install.sh
