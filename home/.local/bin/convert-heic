@@ -1,7 +1,11 @@
 #!/bin/bash
-set -euo pipefail
 
 for img in *.HEIC; do
     heif-convert $img ${img%.HEIC}.jpg
 done
 rm -fv *.HEIC
+
+for img in *.HEIF; do
+    heif-convert $img ${img%.HEIF}.jpg
+done
+rm -fv *.HEIF
