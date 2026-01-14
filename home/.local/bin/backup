@@ -2,13 +2,13 @@
 # Backup files from local computer to network storage.
 set -euo pipefail
 
-read -s password -p "Set password: "
+read -p "Set password: " password
 
 # Magic variable for duration
 SECONDS=0
 
 nfs=$HOME/mnt/denis
-dst=$nfs/backup/linux/$(date +%Y_%m_%d)
+dst=$nfs/backup/os/$(date +%Y_%m_%d)
 
 echo "Starting..."
 
@@ -20,8 +20,21 @@ echo -n "Create destination directory"
 mkdir -p $dst
 echo ": done"
 
-dirs=( dev etc )
-for dir in "${dirs[@]}"; do
+exceptions=( desktop dump mnt )
+for dir in ~/*/; do
+    skip=false
+    for e in "${exceptions[@]}"; do
+        if [[ "$e" == "$(basename "$dir")" ]]; then
+            skip=true
+            break
+        fi
+    done
+    if [[ "$skip" == "true" ]]; then
+        echo "Skip $dir"
+        continue
+    fi
+
+    echo "Backup $dir"
     echo -n "Ensure permissions $dir"
     sudo chown -R $USER:$USER $dir
     echo -n "Archive $dir"
