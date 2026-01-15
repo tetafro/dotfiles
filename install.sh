@@ -19,6 +19,6 @@ ln -sfn $PWD/home/.config/mpv ~/.config/mpv
 ln -sfn $PWD/home/.config/sublime-text/Packages/User ~/.config/sublime-text/Packages/User
 
 # Custom script for work files
-if [[ -f ./home/$item ]]; then
+if [[ -f ./work/install.sh ]]; then
     ./work/install.sh
 fi
