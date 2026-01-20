@@ -12,16 +12,17 @@ dst=$nfs/backup/os/$(date +%Y_%m_%d)
 
 echo "Starting..."
 
-echo -n "Mount remote storage"
+echo "Mount remote storage"
 mount $nfs
-echo ": done"
 
-echo -n "Create destination directory"
+echo "Create destination directory"
 mkdir -p $dst
-echo ": done"
 
-exceptions=( desktop dump mnt )
+exceptions=( desktop mnt )
 for dir in ~/*/; do
+    dir=$(basename "$dir")
+    backup="$dst/$dir.tar.gz.enc"
+
     skip=false
     for e in "${exceptions[@]}"; do
         if [[ "$e" == "$(basename "$dir")" ]]; then
@@ -30,19 +31,18 @@ for dir in ~/*/; do
         fi
     done
     if [[ "$skip" == "true" ]]; then
-        echo "Skip $dir"
+        echo "Skip '$dir'"
         continue
     fi
 
-    echo "Backup $dir"
-    echo -n "Ensure permissions $dir"
+    echo "Backup '$dir' to '$backup'"
+    echo "Ensure permissions $dir"
     sudo chown -R $USER:$USER $dir
-    echo -n "Archive $dir"
+    echo "Archive $dir"
     tar -cz -C $HOME $dir | \
     openssl aes-256-cbc -md sha512 -iter 1000 -pbkdf2 -salt \
     -k "$password" \
     -out "$dst/$dir.tar.gz.enc"
-    echo ": done"
 done
 
 duration=$SECONDS
