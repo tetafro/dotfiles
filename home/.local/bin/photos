@@ -1,0 +1,66 @@
+#!/bin/bash
+# Do regular stuff with imported photos:
+# - convert heic/heif to jpg;
+# - fix metadata.
+
+shopt -s nullglob # protect from empty lists
+
+# Convert HEIC/HEIF
+for img in *.HEIC; do
+    heif-convert $img ${img%.HEIC}.jpg
+done
+for img in *.HEIF; do
+    heif-convert $img ${img%.HEIF}.jpg
+done
+rm -fv *.HEIF *.HEIC
+
+# Fix dates
+for file in *.jpg; do
+    echo "$file"
+
+    if [[ "$file" != *.jpg ]]; then
+        echo "  Skip: not a JPG image"
+        continue
+    fi
+
+    # Use the metadata date as the filename
+    date="$(exiftool -ignoreMinorErrors -DateTimeOriginal "$file")"
+    if [[ "$date" =~ ([0-9]{4}):([0-9]{2}):([0-9]{2})[[:space:]]([0-9]{2}):([0-9]{2}):([0-9]{2}) ]]; then
+        year="${BASH_REMATCH[1]}"
+        month="${BASH_REMATCH[2]}"
+        day="${BASH_REMATCH[3]}"
+        hour="${BASH_REMATCH[4]}"
+        minute="${BASH_REMATCH[5]}"
+        second="${BASH_REMATCH[6]}"
+        file_new="${year}${month}${day}_${hour}${minute}${second}.jpg"
+        if [[ "$file" == "$file_new" ]]; then
+            echo "  Skip: correct metadata and filename"
+        else
+            echo "  Rename: $file_new"
+            mv "$file" "$file_new"
+        fi
+        continue
+    fi
+
+    # Use the filename as the metadata date
+    name="${file%.jpg}"
+    name="${name#IMG_}"
+    # Strip last "_xxx" groups, if there are more than 2 groups (date and time)
+    if [[ "${name//[^_]/}" -eq 2 ]]; then
+        name="${name%_*}"
+    fi
+    if [[ "$name" =~ ([0-9]{4})([0-9]{2})([0-9]{2})_([0-9]{2})([0-9]{2})([0-9]{2}) ]]; then
+        year="${BASH_REMATCH[1]}"
+        month="${BASH_REMATCH[2]}"
+        day="${BASH_REMATCH[3]}"
+        hour="${BASH_REMATCH[4]}"
+        minute="${BASH_REMATCH[5]}"
+        second="${BASH_REMATCH[6]}"
+        date="${year}:${month}:${day} ${hour}:${minute}:${second}"
+        echo "  Set metadata: $date"
+        exiftool -ignoreMinorErrors \
+            -overwrite_original \
+            -DateTimeOriginal="$date" \
+            "$file"
+    fi
+done
