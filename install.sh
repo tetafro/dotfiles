@@ -18,6 +18,16 @@ ln -sf $PWD/home/.config/starship.toml ~/.config/starship.toml
 ln -sfn $PWD/home/.config/mpv ~/.config/mpv
 ln -sfn $PWD/home/.config/sublime-text/Packages/User ~/.config/sublime-text/Packages/User
 
+mkdir -p ~/.claude
+for item in $(ls -A ./home/.claude); do
+    ln -sf "$PWD/home/.claude/$item" ~/.claude/$item
+done
+
+mkdir -p ~/.codex
+for item in $(ls -A ./home/.codex); do
+    ln -sf "$PWD/home/.codex/$item" ~/.codex/$item
+done
+
 # Custom script for work files
 if [[ -f ./work/install.sh ]]; then
     ./work/install.sh
