@@ -17,6 +17,7 @@ done
 ln -sf $PWD/home/.config/starship.toml ~/.config/starship.toml
 ln -sfn $PWD/home/.config/mpv ~/.config/mpv
 ln -sfn $PWD/home/.config/sublime-text/Packages/User ~/.config/sublime-text/Packages/User
+ln -sfn $PWD/home/.config/sublime-text/Packages/Default ~/.config/sublime-text/Packages/Default
 
 mkdir -p ~/.claude
 for item in $(ls -A ./home/.claude); do
