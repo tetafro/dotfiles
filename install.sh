@@ -16,6 +16,8 @@ done
 
 ln -sf $PWD/home/.config/starship.toml ~/.config/starship.toml
 ln -sfn $PWD/home/.config/mpv ~/.config/mpv
+rm -rf ~/.config/sublime-text/Packages/User
+rm -rf ~/.config/sublime-text/Packages/Default
 ln -sfn $PWD/home/.config/sublime-text/Packages/User ~/.config/sublime-text/Packages/User
 ln -sfn $PWD/home/.config/sublime-text/Packages/Default ~/.config/sublime-text/Packages/Default
 
