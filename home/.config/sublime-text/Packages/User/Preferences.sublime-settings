@@ -15,7 +15,6 @@
     "gitlink_revision_type": "commithash",
     "hide_new_tab_button": true,
     "highlight_line": true,
-    "index_files": true,
     "ignored_packages": ["Vintage",
     ],
     "line_padding_top": 2,
