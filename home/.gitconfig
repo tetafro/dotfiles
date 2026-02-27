@@ -8,7 +8,7 @@
 	defaultBranch = master
 [user]
 	name = Denis Krivak
-	email = inbox@dkrv.me
+	email = denis.krivak@nebius.com
 [fetch]
 	prune = true
 [pull]
@@ -38,3 +38,7 @@
 	bc = checkout -b
 	m = checkout master
 	pull = pull --autostash
+
+# Work
+[url "git@gitlab.nebius.dev:"]
+	insteadOf = https://gitlab.nebius.dev/
