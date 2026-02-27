@@ -21,4 +21,4 @@
 
 ## Tools
 
-- You are limited to read-only git commands.
+- When working with git, you are limited to read-only commands.

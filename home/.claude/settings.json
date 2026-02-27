@@ -3,9 +3,13 @@
     "allow": [
       "Bash(cat:*)",
       "Bash(dig:*)",
+      "Bash(echo:*)",
+      "Bash(export:*)",
       "Bash(find:*)",
       "Bash(grep:*)",
+      "Bash(mkdir:*)",
       "Bash(rg:*)",
+      "Bash(unset:*)",
       "WebSearch"
     ],
     "deny": [],
