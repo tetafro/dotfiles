@@ -1,6 +1,7 @@
 {
   "permissions": {
     "allow": [
+      "Bash(awk:*)",
       "Bash(cat:*)",
       "Bash(dig:*)",
       "Bash(echo:*)",
@@ -9,6 +10,7 @@
       "Bash(grep:*)",
       "Bash(mkdir:*)",
       "Bash(rg:*)",
+      "Bash(sed:*)",
       "Bash(unset:*)",
       "WebSearch"
     ],
