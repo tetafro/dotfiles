@@ -31,6 +31,8 @@ for item in $(ls -A ./home/.codex); do
     ln -sf "$PWD/home/.codex/$item" ~/.codex/$item
 done
 
+dconf load /org/gnome/terminal/ < $PWD/home/dconf/gnome-terminal.txt
+
 # Custom script for work files
 if [[ -f ./work/install.sh ]]; then
     ./work/install.sh
