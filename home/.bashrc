@@ -21,6 +21,10 @@ shopt -s checkwinsize
 # Make less more friendly for non-text input files
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
+# Track command execution time via DEBUG trap
+_cmd_start=
+trap '_cmd_start=${_cmd_start:-$SECONDS}' DEBUG
+
 # Generate PS1 after each command
 PS1='\t \w \$ ' # default
 __prompt_command() {
@@ -40,10 +44,37 @@ __prompt_command() {
     fi
     prompt_symbol='\[\e['$prompt_symbol_color'\]\\$\[\e[m\]'
 
-    prefix=''
-    [ ! -z $VIRTUAL_ENV ] && prefix='(venv) '
+    venv=''
+    if [ ! -z $VIRTUAL_ENV ]; then
+        venv='(venv) '
+    fi
 
-    PS1="$prefix$time $dir $prompt_symbol "
+    # Show current git branch
+    branch=$(git branch --show-current 2>/dev/null)
+    if [ -n "$branch" ]; then
+        branch='\[\e[33m\]'"($branch)"'\[\e[m\] '
+    fi
+
+    if [ -n "$_cmd_start" ]; then
+        local secs=$(( SECONDS - _cmd_start ))
+        if [ $secs -ge 10 ]; then
+            local elapsed
+            if [ $secs -ge 3600 ]; then
+                elapsed=$(printf '%dh%dm%ds' \
+                    $(( secs/3600 )) \
+                    $(( secs%3600/60 )) \
+                    $(( secs%60 )))
+            elif [ $secs -ge 60 ]; then
+                elapsed=$(printf '%dm%ds' $(( secs/60 )) $(( secs%60 )))
+            else
+                elapsed="${secs}s"
+            fi
+            echo -e "\e[1;33mTook ${elapsed}\e[m"
+        fi
+    fi
+    _cmd_start=
+
+    PS1="$time $dir $branch$venv$prompt_symbol "
 
     # Set directory name as a title for local shell tab,
     # hostname without domain - for SSH sessions
@@ -88,6 +119,3 @@ fi
 if [ -f "$HOME/.bashrc_work" ]; then
     source "$HOME/.bashrc_work"
 fi
-
-# Run starship prompt
-eval "$(starship init bash)"
