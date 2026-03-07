@@ -3,20 +3,17 @@ new-tab-position='next'
 theme-variant='light'
 
 [legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9]
-audible-bell=false
 background-color='rgb(244,242,241)'
-bold-is-bright=false
-cell-height-scale=1.25
-cell-width-scale=1.0
-cursor-colors-set=false
-font='Fira Code 11'
+bold-color-same-as-fg=true
+bold-is-bright=true
+cursor-background-color='rgb(133,153,173)'
+cursor-colors-set=true
 foreground-color='rgb(51,64,77)'
 highlight-background-color='rgb(209,217,224)'
 highlight-colors-set=true
 highlight-foreground-color='rgb(51,64,77)'
-palette=['rgb(51,64,77)', 'rgb(220,50,47)', 'rgb(172,115,57)', 'rgb(172,115,57)', 'rgb(83,128,172)', 'rgb(154,100,180)', 'rgb(42,161,152)', 'rgb(238,232,213)', 'rgb(0,43,54)', 'rgb(203,75,22)', 'rgb(88,110,117)', 'rgb(101,123,131)', 'rgb(131,148,150)', 'rgb(108,113,196)', 'rgb(147,161,161)', 'rgb(244,242,241)']
+palette=['rgb(51,64,77)', 'rgb(203,77,77)', 'rgb(51,153,68)', 'rgb(221,140,60)', 'rgb(83,128,172)', 'rgb(154,100,180)', 'rgb(100,167,180)', 'rgb(199,204,209)', 'rgb(133,153,173)', 'rgb(203,77,77)', 'rgb(51,153,68)', 'rgb(221,140,60)', 'rgb(83,128,172)', 'rgb(154,100,180)', 'rgb(100,167,180)', 'rgb(244,242,241)']
 scrollback-lines=100000
-use-system-font=false
+scrollback-unlimited=false
 use-theme-colors=false
-use-theme-transparency=false
 visible-name='Sandpaper'
