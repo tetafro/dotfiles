@@ -33,5 +33,4 @@
 
     // Replaced by the SingleTrailingNewLine plugin
     // "ensure_newline_at_eof_on_save": true,
-    "index_files": true,
 }
