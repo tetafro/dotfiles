@@ -18,29 +18,35 @@ fi
 editor=/usr/bin/subl
 
 # Alias
-if grep -q "^alias $cmd=" ~/.bash_aliases; then
-    echo "Alias in ~/.bash_aliases"
-    if [[ $edit == "true" ]]; then
-        $editor ~/.bash_aliases
-    else
-        # Find the declaration and all following lines that
-        # start with a space
-        alias=$(awk -v cmd="$cmd" '
-            $0 ~ "^alias " cmd "=" {
-                print
-                in_alias=1
-                next
-            }
-            in_alias && /^ / {
-                print
-                next
-            }
-            in_alias { in_alias=0 }
-        ' ~/.bash_aliases)
-        echo "$alias"
+for file in ~/.bash_aliases ~/.bashrc_work; do
+    if [[ ! -f $file ]]; then
+        continue
     fi
-    exit 0
-fi
+
+    if grep -q "^alias $cmd=" $file; then
+        echo "Alias in $file"
+        if [[ $edit == "true" ]]; then
+            $editor $file
+        else
+            # Find the declaration and all following lines that
+            # start with a space
+            alias=$(awk -v cmd="$cmd" '
+                $0 ~ "^alias " cmd "=" {
+                    print
+                    in_alias=1
+                    next
+                }
+                in_alias && /^ / {
+                    print
+                    next
+                }
+                in_alias { in_alias=0 }
+            ' $file)
+            echo "$alias"
+        fi
+        exit 0
+    fi
+done
 
 # Find the file
 file=$(which "$cmd")
