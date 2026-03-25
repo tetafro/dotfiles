@@ -6,6 +6,15 @@ from typing import Optional
 
 
 TABLE_SEP_RE = re.compile(r"^(\|\s*-+\s*)+(\|\s*)?$")
+EMOJIS = {
+    "\u274c", # red cross
+    "\u2705", # green checkmark
+}
+
+
+def emojis_count(text: str):
+    """Number of emojis in a string."""
+    return sum(1 for ch in text if ch in EMOJIS)
 
 
 def line_text(view: sublime.View, row: int) -> str:
@@ -95,7 +104,8 @@ def format_table(view: sublime.View, edit: sublime.Edit, region: sublime.Region)
             if row_num == 1:
                 continue
             if col_num < len(row):
-                max_len = max(max_len, len(row[col_num]))
+                row_len = len(row[col_num]) + emojis_count(row[col_num])
+                max_len = max(max_len, row_len)
         widths[col_num] = max(3, max_len)
 
     # Build formatted rows
@@ -105,7 +115,10 @@ def format_table(view: sublime.View, edit: sublime.Edit, region: sublime.Region)
         if row_num == 1:  # separator
             parts = [" " + ("-" * widths[c]) + " " for c in range(cols_num)]
         else:
-            parts = [" " + row[c].ljust(widths[c]) + " " for c in range(cols_num)]
+            parts = [
+                " " + row[c].ljust(widths[c] - emojis_count(row[c])) + " "
+                for c in range(cols_num)
+            ]
         formatted.append("|" + "|".join(parts) + "|")
 
     view.replace(edit, region, "\n".join(formatted) + "\n")
