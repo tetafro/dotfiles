@@ -14,7 +14,12 @@ for item in $(ls -A ./home/.local/bin); do
     ln -sf "$PWD/home/.local/bin/$item" ~/.local/bin/$item
 done
 
-ln -sf $PWD/home/.config/starship.toml ~/.config/starship.toml
+for item in $(ls -A ./home/etc); do
+    if [[ -f ./home/$item ]]; then
+        ln -sf "$PWD/home/etc/$item" /etc/$item
+    fi
+done
+
 ln -sfn $PWD/home/.config/mpv ~/.config/mpv
 rm -rf ~/.config/sublime-text/Packages/User
 rm -rf ~/.config/sublime-text/Packages/Default
