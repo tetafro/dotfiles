@@ -15,8 +15,8 @@ for item in $(ls -A ./home/.local/bin); do
 done
 
 for item in $(ls -A ./home/etc); do
-    if [[ -f ./home/$item ]]; then
-        ln -sf "$PWD/home/etc/$item" /etc/$item
+    if [[ ! -f /etc/$item ]]; then
+        sudo ln -sf "$PWD/home/etc/$item" /etc/$item
     fi
 done
 
