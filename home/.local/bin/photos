@@ -23,6 +23,27 @@ for file in *.jpg; do
         continue
     fi
 
+    if [[ "$file" =~ IMG_.* ]]; then
+        file_new="${file#IMG_}"
+        echo "  Rename: $file_new"
+        mv "$file" "$file_new"
+        file="$file_new"
+    fi
+
+    if [[ "$file" =~ photo_([0-9]{4})-([0-9]{2})-([0-9]{2})_([0-9]{2})-([0-9]{2})-([0-9]{2}) ]]; then
+        year="${BASH_REMATCH[1]}"
+        month="${BASH_REMATCH[2]}"
+        day="${BASH_REMATCH[3]}"
+        hour="${BASH_REMATCH[4]}"
+        minute="${BASH_REMATCH[5]}"
+        second="${BASH_REMATCH[6]}"
+
+        file_new="${year}${month}${day}_${hour}${minute}${second}.jpg"
+        echo "  Rename: $file_new"
+        mv "$file" "$file_new"
+        file="$file_new"
+    fi
+
     # Use the metadata date as the filename
     date="$(exiftool -ignoreMinorErrors -DateTimeOriginal "$file")"
     if [[ "$date" =~ ([0-9]{4}):([0-9]{2}):([0-9]{2})[[:space:]]([0-9]{2}):([0-9]{2}):([0-9]{2}) ]]; then
@@ -44,7 +65,6 @@ for file in *.jpg; do
 
     # Use the filename as the metadata date
     name="${file%.jpg}"
-    name="${name#IMG_}"
     # Strip last "_xxx" groups, if there are more than 2 groups (date and time)
     if [[ "${name//[^_]/}" -eq 2 ]]; then
         name="${name%_*}"
