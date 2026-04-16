@@ -14,12 +14,6 @@ for item in $(ls -A ./home/.local/bin); do
     ln -sf "$PWD/home/.local/bin/$item" ~/.local/bin/$item
 done
 
-for item in $(ls -A ./home/etc); do
-    if [[ ! -f /etc/$item ]]; then
-        sudo ln -sf "$PWD/home/etc/$item" /etc/$item
-    fi
-done
-
 ln -sfn $PWD/home/.config/mpv ~/.config/mpv
 rm -rf ~/.config/sublime-text/Packages/User
 rm -rf ~/.config/sublime-text/Packages/Default
@@ -35,6 +29,10 @@ mkdir -p ~/.codex
 for item in $(ls -A ./home/.codex); do
     ln -sf "$PWD/home/.codex/$item" ~/.codex/$item
 done
+
+# Keyd configs need to be on the /root partition
+sudo mkdir -p /etc/keyd
+sudo cp -r $PWD/home/etc/keyd/* /etc/keyd
 
 dconf load /org/gnome/terminal/ < $PWD/home/dconf/gnome-terminal.txt
 
