@@ -8,8 +8,8 @@ PATTERNS = {
     'yml': 'Packages/YAML/YAML.sublime-syntax',
     'yaml': 'Packages/YAML/YAML.sublime-syntax',
     '.profile': 'Packages/ShellScript/Bash.sublime-syntax',
+    '.bashrc*': 'Packages/ShellScript/Bash.sublime-syntax',
     'bash': 'Packages/ShellScript/Bash.sublime-syntax',
-    'bashrc': 'Packages/ShellScript/Bash.sublime-syntax',
     'sh': 'Packages/ShellScript/Bash.sublime-syntax',
     'zsh': 'Packages/ShellScript/Bash.sublime-syntax',
     '.helmignore': 'Packages/Git Formats/Git Ignore.sublime-syntax',
@@ -18,6 +18,7 @@ PATTERNS = {
     '**/templates/*.yaml': 'Packages/Go/YAML (Go).sublime-syntax',
     '**/templates/*.tpl': 'Packages/Go/YAML (Go).sublime-syntax',
 }
+
 
 class SyntaxMapperListener(sublime_plugin.EventListener):
     """Simple Sublime Text plugin for mapping file extensions to syntax."""
@@ -36,9 +37,15 @@ class SyntaxMapperListener(sublime_plugin.EventListener):
         base_name = os.path.basename(file_name)
 
         for pattern, syntax in PATTERNS.items():
-            # If pattern contains asterisk, treat as glob
-            if '*' in pattern:
+            # If the pattern contains an asterisk, that's a glob. If the pattern
+            # contains a slash, that's a glob for the full path. Otherwise,
+            # that's the exact extension match.
+            if '*' in pattern and '/' in pattern:
                 if fnmatch(file_name, pattern):
+                    self.set_syntax(view, syntax)
+                    return
+            elif '*' in pattern:
+                if fnmatch(base_name, pattern):
                     self.set_syntax(view, syntax)
                     return
             else:
