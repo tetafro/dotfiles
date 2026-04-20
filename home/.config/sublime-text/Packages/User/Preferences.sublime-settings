@@ -31,6 +31,6 @@
     "trim_trailing_white_space_on_save": "all",
     "word_wrap": true,
 
-    // Replaced by the SingleTrailingNewLine plugin
+    // Replaced by single_trailing_newline.py
     // "ensure_newline_at_eof_on_save": true,
 }

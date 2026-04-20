@@ -1,6 +1,7 @@
 import sublime
 import sublime_plugin
 
+
 class RenameActiveFileCommand(sublime_plugin.WindowCommand):
     """
     Rename a file when it is focused in the sidebar.
