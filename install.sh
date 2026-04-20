@@ -32,7 +32,7 @@ done
 
 # Keyd configs need to be on the /root partition
 sudo mkdir -p /etc/keyd
-sudo cp -r $PWD/home/etc/keyd/* /etc/keyd
+sudo cp -rf $PWD/home/etc/keyd/* /etc/keyd
 
 dconf load /org/gnome/terminal/ < $PWD/home/dconf/gnome-terminal.txt
 
