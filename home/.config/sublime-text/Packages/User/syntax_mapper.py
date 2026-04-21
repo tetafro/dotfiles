@@ -1,6 +1,6 @@
+import os
 import sublime
 import sublime_plugin
-import os
 from fnmatch import fnmatch
 
 
