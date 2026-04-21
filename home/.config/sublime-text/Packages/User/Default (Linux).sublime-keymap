@@ -58,7 +58,7 @@
         "args": {"parser": "markdown", "target": "browser"},
     },
     { "keys": ["alt+d"], "command": "file_diff_clipboard" },
-
+    { "keys": ["ctrl+alt+s"], "command": "save_markdown" },
 
     // Git
     { "keys": ["alt+g"], "command": "git_gutter_diff_popup" },
