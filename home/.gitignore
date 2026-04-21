@@ -2,6 +2,7 @@
 .vscode/
 tmp/
 vendor/
+__pycache__/
 *.log
 .DS_Store
 .env
