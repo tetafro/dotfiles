@@ -5,18 +5,22 @@ from fnmatch import fnmatch
 
 
 PATTERNS = {
-    'yml': 'Packages/YAML/YAML.sublime-syntax',
-    'yaml': 'Packages/YAML/YAML.sublime-syntax',
-    '.profile': 'Packages/ShellScript/Bash.sublime-syntax',
-    '.bashrc*': 'Packages/ShellScript/Bash.sublime-syntax',
-    'bash': 'Packages/ShellScript/Bash.sublime-syntax',
-    'sh': 'Packages/ShellScript/Bash.sublime-syntax',
-    'zsh': 'Packages/ShellScript/Bash.sublime-syntax',
-    '.helmignore': 'Packages/Git Formats/Git Ignore.sublime-syntax',
-    '.dockerignore': 'Packages/Git Formats/Git Ignore.sublime-syntax',
+    # Yaml/Go templates
     '**/templates/*.yml': 'Packages/Go/YAML (Go).sublime-syntax',
     '**/templates/*.yaml': 'Packages/Go/YAML (Go).sublime-syntax',
     '**/templates/*.tpl': 'Packages/Go/YAML (Go).sublime-syntax',
+    # Gitignore
+    '.helmignore': 'Packages/Git Formats/Git Ignore.sublime-syntax',
+    '.dockerignore': 'Packages/Git Formats/Git Ignore.sublime-syntax',
+    # Shell
+    '.bashrc*': 'Packages/ShellScript/Bash.sublime-syntax',
+    '.profile': 'Packages/ShellScript/Bash.sublime-syntax',
+    'bash': 'Packages/ShellScript/Bash.sublime-syntax',
+    'sh': 'Packages/ShellScript/Bash.sublime-syntax',
+    'zsh': 'Packages/ShellScript/Bash.sublime-syntax',
+    # YAML
+    'yml': 'Packages/YAML/YAML.sublime-syntax',
+    'yaml': 'Packages/YAML/YAML.sublime-syntax',
 }
 
 
