@@ -4,6 +4,9 @@ import sublime
 import sublime_plugin
 
 
+MARKDOWN_SYNTAX = "Packages/Markdown/Markdown.sublime-syntax"
+
+
 class SaveMarkdownCommand(sublime_plugin.TextCommand):
     """
     Save the active markdown file using a filename derived from its first H1.
@@ -18,6 +21,8 @@ class SaveMarkdownCommand(sublime_plugin.TextCommand):
         if view.settings().get("is_widget"):
             debug("active view is not an editor")
             return
+
+        view.set_syntax_file(MARKDOWN_SYNTAX)
 
         # Get the filename from the header line
         first_line = view.substr(view.line(0))
