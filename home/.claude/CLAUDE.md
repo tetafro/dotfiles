@@ -11,6 +11,9 @@
   to structure texts.
 - Use 80 chars per line limit in general. For code or links this might be
   violated.
+- Avoid creating many tiny helper functions with self-explanatory names. Prefer
+  inlining simple logic and adding a concise comment when clarification is
+  needed.
 
 ## Tone and behavior
 
