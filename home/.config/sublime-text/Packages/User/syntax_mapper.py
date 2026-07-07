@@ -72,6 +72,11 @@ class SyntaxMapperListener(sublime_plugin.EventListener):
                         self.set_syntax(view, syntax)
                         return
 
+        # Set syntax based on the file content
+        first_line = view.substr(view.line(0)).strip()
+        if first_line in ('#!/bin/bash', '#!/usr/bin/env bash'):
+            self.set_syntax(view, PATTERNS['bash'])
+
     def set_syntax(self, view, syntax_name):
         # If full path is provided, use it directly
         if syntax_name.startswith('Packages/'):
