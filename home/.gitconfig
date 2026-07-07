@@ -17,6 +17,7 @@
 	autoStash = true
 [push]
 	default = current
+	autoSetupRemote = true
 [filter "lfs"]
 	process = git-lfs filter-process
 	required = true
