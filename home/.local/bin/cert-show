@@ -3,7 +3,11 @@
 
 cert="$1"
 
-if [[ -f "$cert" ]]; then
+if [[ -p /dev/stdin ]]; then
+    echo "Checking stdin..."
+    echo "---"
+    openssl storeutl -noout -text -certs /dev/stdin
+elif [[ -f "$cert" ]]; then
     echo "Checking local file..."
     echo "---"
     count=$(grep -c "BEGIN CERTIFICATE" "$cert")
