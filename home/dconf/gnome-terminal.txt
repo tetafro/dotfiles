@@ -1,5 +1,6 @@
 [legacy]
 new-tab-position='next'
+new-terminal-mode='tab'
 theme-variant='light'
 
 [legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9]
@@ -8,6 +9,7 @@ bold-color-same-as-fg=true
 bold-is-bright=true
 cursor-background-color='rgb(133,153,173)'
 cursor-colors-set=true
+font='Ubuntu Mono 12'
 foreground-color='rgb(51,64,77)'
 highlight-background-color='rgb(209,217,224)'
 highlight-colors-set=true
@@ -15,5 +17,6 @@ highlight-foreground-color='rgb(51,64,77)'
 palette=['rgb(51,64,77)', 'rgb(203,77,77)', 'rgb(51,153,68)', 'rgb(221,140,60)', 'rgb(83,128,172)', 'rgb(154,100,180)', 'rgb(100,167,180)', 'rgb(199,204,209)', 'rgb(133,153,173)', 'rgb(203,77,77)', 'rgb(51,153,68)', 'rgb(221,140,60)', 'rgb(83,128,172)', 'rgb(154,100,180)', 'rgb(100,167,180)', 'rgb(244,242,241)']
 scrollback-lines=100000
 scrollback-unlimited=false
+use-system-font=false
 use-theme-colors=false
 visible-name='Sandpaper'
