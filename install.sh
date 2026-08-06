@@ -30,10 +30,6 @@ for item in $(ls -A ./home/.codex); do
     ln -sf "$PWD/home/.codex/$item" ~/.codex/$item
 done
 
-# Keyd configs need to be on the /root partition
-sudo mkdir -p /etc/keyd
-sudo cp -rf $PWD/home/etc/keyd/* /etc/keyd
-
 dconf load /org/gnome/terminal/ < $PWD/home/dconf/gnome-terminal.txt
 
 # Custom script for work files
