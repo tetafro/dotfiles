@@ -1,5 +1,14 @@
 # ~/.profile: executed by the command interpreter for login shells.
 
+# Env
+if [ -f /usr/bin/subl ]; then
+    export EDITOR="/usr/bin/subl --wait"
+elif [ -f /usr/bin/vim ]; then
+    export EDITOR=/usr/bin/vim
+else
+    export EDITOR=/usr/bin/vi
+fi
+
 # Paths settings
 if [ -d "$HOME/.local/bin" ] ; then
     export PATH="$HOME/.local/bin:$PATH"
