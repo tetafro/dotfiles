@@ -42,6 +42,7 @@ alias venv='if [ -d ./venv ]; then \
     fi'
 alias k='kubectl'
 alias kctx='kubectx'
+alias python-web='python3 -m http.server 8000 --bind 0.0.0.0'
 
 # Directories
 alias cd-dump="cd $HOME/dump"
@@ -49,5 +50,6 @@ alias cd-dev="cd $HOME/dev"
 alias cd-playground="cd $HOME/dev/playground"
 alias cd-pet="cd $HOME/dev/pet"
 alias cd-github="cd $HOME/dev/github"
+alias cd-cka="cd $HOME/dev/github/CK-X"
 alias cd-dotfiles="cd $HOME/dev/pet/dotfiles"
 alias cd-notes="cd $HOME/notes"
