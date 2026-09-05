@@ -2,13 +2,30 @@
 # Backup files from local computer to network storage.
 set -euo pipefail
 
-read -p "Set password: " password
-
 # Magic variable for duration
 SECONDS=0
 
 nfs=$HOME/mnt/denis
-dst=$nfs/backup/os/$(date +%Y_%m_%d)
+dst=$nfs/backup/laptop/$(date +%Y%m%d)
+
+function backup_dir {
+    path=$1
+    dir=$(basename "$path")
+    parent=$(dirname "$path")
+    backup="$dst/${dir#.}.tar.gz.enc"
+
+    echo "Backup '$path' to '$backup'"
+    echo "Ensure permissions $path"
+    sudo chown -R $USER:$USER $path
+    echo "Archive $path"
+    tar -cz -C "$parent" "$path" | \
+        openssl aes-256-cbc \
+            -md sha512 -iter 1000 -pbkdf2 -salt \
+            -k "$password" \
+            -out "$backup"
+}
+
+read -s -p "Set password: " password
 
 echo "Starting..."
 
@@ -18,32 +35,10 @@ mount $nfs
 echo "Create destination directory"
 mkdir -p $dst
 
-exceptions=( desktop mnt )
-for dir in ~/*/; do
-    dir=$(basename "$dir")
-    backup="$dst/$dir.tar.gz.enc"
-
-    skip=false
-    for e in "${exceptions[@]}"; do
-        if [[ "$e" == "$(basename "$dir")" ]]; then
-            skip=true
-            break
-        fi
-    done
-    if [[ "$skip" == "true" ]]; then
-        echo "Skip '$dir'"
-        continue
-    fi
-
-    echo "Backup '$dir' to '$backup'"
-    echo "Ensure permissions $dir"
-    sudo chown -R $USER:$USER $dir
-    echo "Archive $dir"
-    tar -cz -C $HOME $dir | \
-    openssl aes-256-cbc -md sha512 -iter 1000 -pbkdf2 -salt \
-    -k "$password" \
-    -out "$dst/$dir.tar.gz.enc"
-done
+backup_dir ~/dev
+backup_dir ~/notes
+backup_dir ~/.config/openvpn
+backup_dir ~/.ssh
 
 duration=$SECONDS
 echo "Finished in $(($duration / 60))m $(($duration % 60))s"
