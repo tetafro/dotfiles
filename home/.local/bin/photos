@@ -9,10 +9,16 @@ shopt -s nullglob # protect from empty lists
 for img in *.HEIC; do
     heif-convert $img ${img%.HEIC}.jpg
 done
+for img in *.heic; do
+    heif-convert $img ${img%.heic}.jpg
+done
 for img in *.HEIF; do
     heif-convert $img ${img%.HEIF}.jpg
 done
-rm -fv *.HEIF *.HEIC
+for img in *.heif; do
+    heif-convert $img ${img%.heif}.jpg
+done
+rm -fv *.HEIC *.heic *.HEIF *.heif
 
 # Fix dates
 for file in *.jpg; do
