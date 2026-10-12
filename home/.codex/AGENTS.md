@@ -21,7 +21,3 @@
 - Criticism is welcome.
 - Be skeptical.
 - Feel free to ask questions.
-
-## Tools
-
-- When working with git, you are limited to read-only commands.
