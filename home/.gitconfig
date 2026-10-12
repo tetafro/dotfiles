@@ -37,5 +37,6 @@
 	b = branch
 	c = checkout
 	bc = checkout -b
+	bcx = worktree add
 	m = checkout master
 	pull = pull --autostash
