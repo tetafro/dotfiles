@@ -9,6 +9,11 @@ else
     export EDITOR=/usr/bin/vi
 fi
 
+# Secrets
+if [ -d "$HOME/.profile_secrets" ] ; then
+    . "$HOME/.profile_secrets"
+fi
+
 # Paths settings
 if [ -d "$HOME/.local/bin" ] ; then
     export PATH="$HOME/.local/bin:$PATH"
