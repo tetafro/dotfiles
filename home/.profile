@@ -10,7 +10,7 @@ else
 fi
 
 # Secrets
-if [ -d "$HOME/.profile_secrets" ] ; then
+if [ -f "$HOME/.profile_secrets" ] ; then
     . "$HOME/.profile_secrets"
 fi
 
