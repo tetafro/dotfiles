@@ -14,6 +14,7 @@
         "grep": "allow",
         "ls": "allow",
         "web_search": "allow",
+        "fetch_content": "allow",
     },
     "bash": {
         "ls": "allow",
