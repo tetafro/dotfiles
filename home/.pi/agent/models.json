@@ -1,0 +1,15 @@
+{
+    "providers": {
+        "homelab-qwen3.6-35b": {
+            "baseUrl": "http://llama.home/v1",
+            "api": "openai-completions",
+            "apiKey": "${LLAMA_API_KEY}",
+            "models": [{
+                "id": "qwen3.6-35b",
+                "input": ["text", "image"],
+                "contextWindow": 131072,
+                "maxTokens": 8192
+            }]
+        }
+    }
+}

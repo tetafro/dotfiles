@@ -1,0 +1,36 @@
+{
+    "defaultPolicy": {
+        "tools": "ask",
+        "bash": "ask",
+        "mcp": "ask",
+        "skills": "ask",
+        "special": "ask",
+    },
+    "tools": {
+        "read": "allow",
+        "edit": "allow",
+        "find": "allow",
+        "write": "allow",
+        "grep": "allow",
+        "ls": "allow",
+        "web_search": "allow",
+    },
+    "bash": {
+        "ls": "allow",
+        "grep": "allow",
+        "rg": "allow",
+        "file": "allow",
+        "find": "allow",
+        "find *-exec*": "ask",
+        "find *-delete*": "ask",
+        "git status": "allow",
+        "git log": "allow",
+        "make lint": "allow",
+        "make test": "allow",
+    },
+    "special": {
+        "external_directory": "ask",
+        "external_directory:/opt/pi/docs/*": "allow",
+        "external_directory:/opt/pi/examples/*": "allow",
+    }
+}

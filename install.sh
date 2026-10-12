@@ -30,6 +30,11 @@ for item in $(ls -A ./home/.codex); do
     ln -sf "$PWD/home/.codex/$item" ~/.codex/$item
 done
 
+mkdir -p ~/.pi/agent
+for item in $(ls -A ./home/.pi/agent); do
+    ln -sf "$PWD/home/.pi/agent/$item" ~/.pi/agent/$item
+done
+
 dconf load /org/gnome/terminal/ < $PWD/home/dconf/gnome-terminal.txt
 
 # Custom script for work files
