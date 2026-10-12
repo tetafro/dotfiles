@@ -8,9 +8,12 @@
     },
     "tools": {
         "read": "allow",
+        "read:/opt/pi/*": "allow",
         "edit": "allow",
+        "edit:/opt/pi/*": "deny",
         "find": "allow",
         "write": "allow",
+        "write:/opt/pi/*": "deny",
         "grep": "allow",
         "ls": "allow",
         "web_search": "allow",
@@ -31,7 +34,6 @@
     },
     "special": {
         "external_directory": "ask",
-        "external_directory:/opt/pi/docs/*": "allow",
-        "external_directory:/opt/pi/examples/*": "allow",
+        "external_directory:/opt/pi/*": "allow",
     }
 }
