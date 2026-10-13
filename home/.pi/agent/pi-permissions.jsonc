@@ -57,6 +57,8 @@
         // Make
         "make lint": "allow",
         "make test": "allow",
+        // Python compilation check
+        "python3 -m py_compile *": "allow",
     },
     "special": {
         "external_directory": "ask",
