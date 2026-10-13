@@ -20,15 +20,41 @@
         "fetch_content": "allow",
     },
     "bash": {
+        // Basic tools
         "ls": "allow",
-        "grep": "allow",
-        "rg": "allow",
         "file": "allow",
-        "find": "allow",
+        "sed *": "allow",
+        "awk *": "allow",
+        "diff *": "allow",
+        "grep *": "allow",
+        "find *": "allow",
         "find *-exec*": "ask",
         "find *-delete*": "ask",
-        "git status": "allow",
-        "git log": "allow",
+        "xargs *": "allow",
+        "true *": "allow",
+        "false *": "allow",
+        "head *": "allow",
+        "tail *": "allow",
+        "man *": "allow",
+        "col *": "allow",
+        "uname *": "allow",
+        "sha256sum *": "allow",
+        "command -v *": "allow",
+
+        // Extended tools
+        "rg *": "allow",
+        "jq *": "allow",
+        "yq *": "allow",
+        "gofmt *": "allow",
+
+        // Git
+        "git diff *": "allow",
+        "git log *": "allow",
+        "git rev-parse *": "allow",
+        "git show *": "allow",
+        "git status *": "allow",
+
+        // Make
         "make lint": "allow",
         "make test": "allow",
     },
