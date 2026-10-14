@@ -41,6 +41,11 @@
         "uname *": "allow",
         "sha256sum *": "allow",
         "command -v *": "allow",
+        "test -x *": "allow",
+        "mkdir *": "allow",
+        "sleep *": "allow",
+        "mkdir *": "allow",
+        "date": "allow",
 
         // Extended tools
         "rg *": "allow",
