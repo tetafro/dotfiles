@@ -71,7 +71,8 @@
         "make test": "allow",
         "ansible-lint *": "allow",
 
-        // Python compilation check
+        // Syntax checks
+        "bash -n *": "allow",
         "python3 -m py_compile *": "allow",
         "python3 -m compileall *": "allow",
     },
