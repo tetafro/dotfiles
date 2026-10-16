@@ -11,21 +11,24 @@
         "read:/opt/pi/*": "allow",
         "edit": "allow",
         "edit:/opt/pi/*": "deny",
-        "find": "allow",
         "write": "allow",
         "write:/opt/pi/*": "deny",
-        "grep": "allow",
-        "ls": "allow",
+        "codemode": "allow",
         "web_search": "allow",
         "fetch_content": "allow",
         "get_search_content": "allow",
+        "find": "allow",
+        "grep": "allow",
+        "ls": "allow",
     },
     "bash": {
         // Basic tools
         "ls": "allow",
         "file": "allow",
         "sed *": "allow",
+        "sed *e *": "ask",
         "awk *": "allow",
+        "awk *system(*": "ask",
         "cat *": "allow",
         "nl *": "allow",
         "echo *": "allow",
@@ -63,14 +66,18 @@
         "git show *": "allow",
         "git status *": "allow",
 
-        // Make
+        // Code validations
         "make lint": "allow",
         "make test": "allow",
+        "ansible-lint *": "allow",
+
         // Python compilation check
         "python3 -m py_compile *": "allow",
+        "python3 -m compileall *": "allow",
     },
     "special": {
         "external_directory": "ask",
         "external_directory:/opt/pi/*": "allow",
+        "external_directory:/tmp/*": "allow",
     }
 }
