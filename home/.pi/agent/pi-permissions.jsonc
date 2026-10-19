@@ -8,18 +8,59 @@
     },
     "tools": {
         "read": "allow",
-        "read:/opt/pi/*": "allow",
         "edit": "allow",
-        "edit:/opt/pi/*": "deny",
         "write": "allow",
-        "write:/opt/pi/*": "deny",
-        "codemode": "allow",
-        "web_search": "allow",
-        "fetch_content": "allow",
-        "get_search_content": "allow",
         "find": "allow",
         "grep": "allow",
         "ls": "allow",
+        "codemode": "allow",
+
+        // Web
+        "web_search": "allow",
+        "fetch_content": "allow",
+        "get_search_content": "allow",
+
+        // Pi docs
+        "read:/opt/pi": "allow",
+        "read:/opt/pi/*": "allow",
+        "grep:/opt/pi": "allow",
+        "grep:/opt/pi/*": "allow",
+        "ls:/opt/pi": "allow",
+        "ls:/opt/pi/*": "allow",
+        "find:/opt/pi": "allow",
+        "find:/opt/pi/*": "allow",
+        "edit:/opt/pi": "deny",
+        "edit:/opt/pi/*": "deny",
+        "write:/opt/pi": "deny",
+        "write:/opt/pi/*": "deny",
+
+        // Pi user settings (home)
+        "read:/home/tetafro/.pi": "allow",
+        "read:/home/tetafro/.pi/*": "allow",
+        "grep:/home/tetafro/.pi": "allow",
+        "grep:/home/tetafro/.pi/*": "allow",
+        "ls:/home/tetafro/.pi": "allow",
+        "ls:/home/tetafro/.pi/*": "allow",
+        "find:/home/tetafro/.pi": "allow",
+        "find:/home/tetafro/.pi/*": "allow",
+        "edit:/home/tetafro/.pi": "deny",
+        "edit:/home/tetafro/.pi/*": "deny",
+        "write:/home/tetafro/.pi": "deny",
+        "write:/home/tetafro/.pi/*": "deny",
+
+        // Pi user settings (work)
+        "read:/home/dkrivak/.pi": "allow",
+        "read:/home/dkrivak/.pi/*": "allow",
+        "grep:/home/dkrivak/.pi": "allow",
+        "grep:/home/dkrivak/.pi/*": "allow",
+        "ls:/home/dkrivak/.pi": "allow",
+        "ls:/home/dkrivak/.pi/*": "allow",
+        "find:/home/dkrivak/.pi": "allow",
+        "find:/home/dkrivak/.pi/*": "allow",
+        "edit:/home/dkrivak/.pi": "deny",
+        "edit:/home/dkrivak/.pi/*": "deny",
+        "write:/home/dkrivak/.pi": "deny",
+        "write:/home/dkrivak/.pi/*": "deny",
     },
     "bash": {
         // Basic tools
@@ -51,7 +92,8 @@
         "mkdir *": "allow",
         "sleep *": "allow",
         "mkdir *": "allow",
-        "date": "allow",
+        "date *": "allow",
+        "readlink *": "allow",
 
         // Extended tools
         "rg *": "allow",
@@ -70,6 +112,7 @@
         "make lint": "allow",
         "make test": "allow",
         "ansible-lint *": "allow",
+        "yamllint *": "allow",
 
         // Syntax checks
         "bash -n *": "allow",
@@ -78,7 +121,13 @@
     },
     "special": {
         "external_directory": "ask",
+        "external_directory:/opt/pi": "allow",
         "external_directory:/opt/pi/*": "allow",
+        "external_directory:/tmp": "allow",
         "external_directory:/tmp/*": "allow",
+        "external_directory:/home/tetafro/.pi": "allow",
+        "external_directory:/home/tetafro/.pi/*": "allow",
+        "external_directory:/home/dkrivak/.pi": "allow",
+        "external_directory:/home/dkrivak/.pi/*": "allow",
     }
 }
