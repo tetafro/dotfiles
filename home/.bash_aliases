@@ -10,7 +10,6 @@ alias ping='ping -c 1 -W 3'
 alias rand='cat /dev/urandom | tr -dc "a-zA-Z0-9" | fold -w 32 | head -n 1'
 alias top='top -d 30'
 alias htop='htop -d 30'
-alias python='python3'
 alias ports='sudo ss -ntlp4 | column -t'
 alias lifetime='sudo tune2fs -l $(findmnt -n -o SOURCE /) | grep "Filesystem created:"'
 alias lsof-stats='for pid in /proc/[0-9]*; do \
