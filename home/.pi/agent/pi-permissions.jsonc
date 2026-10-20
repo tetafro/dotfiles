@@ -64,8 +64,9 @@
     },
     "bash": {
         // Basic tools
-        "ls": "allow",
-        "file": "allow",
+        "ls *": "allow",
+        "wc *": "allow",
+        "file *": "allow",
         "sed *": "allow",
         "sed *e *": "ask",
         "awk *": "allow",
@@ -116,8 +117,16 @@
 
         // Syntax checks
         "bash -n *": "allow",
+        "python -m py_compile *": "allow",
         "python3 -m py_compile *": "allow",
+        "python -m compileall *": "allow",
         "python3 -m compileall *": "allow",
+
+        // Build tools
+        "docker version *": "allow",
+        "docker images *": "allow",
+        "docker ps *": "allow",
+        "docker build *": "allow",
     },
     "special": {
         "external_directory": "ask",
