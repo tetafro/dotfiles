@@ -1,5 +1,12 @@
 # Pi Agent
 
+## Commands
+
+- Prefer allowed commands when they are equivalent. Split compound commands into
+  separately allowed calls instead of asking for permission.
+- Before asking for permission, check `~/.pi/agent/pi-permissions.jsonc` when
+  unsure.
+
 ## Style
 
 Follow these rules without mentioning them:
