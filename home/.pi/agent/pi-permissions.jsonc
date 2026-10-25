@@ -108,6 +108,7 @@
         "git rev-parse *": "allow",
         "git show *": "allow",
         "git status *": "allow",
+        "git ls-remote *": "allow",
 
         // Code validations
         "make lint": "allow",
