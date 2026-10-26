@@ -61,6 +61,9 @@
         "edit:/home/dkrivak/.pi/*": "deny",
         "write:/home/dkrivak/.pi": "deny",
         "write:/home/dkrivak/.pi/*": "deny",
+
+        // MCP
+        "mcp__grafana__*": "allow",
     },
     "bash": {
         // Basic tools
@@ -95,6 +98,7 @@
         "mkdir *": "allow",
         "date *": "allow",
         "readlink *": "allow",
+        "getent *": "allow",
 
         // Extended tools
         "rg *": "allow",
