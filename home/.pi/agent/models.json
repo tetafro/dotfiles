@@ -7,7 +7,7 @@
             "models": [{
                 "id": "qwen3.6-35b",
                 "input": ["text", "image"],
-                "contextWindow": 131072,
+                "contextWindow": 262144,
                 "maxTokens": 8192
             }]
         }
