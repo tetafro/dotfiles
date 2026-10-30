@@ -99,6 +99,10 @@
         "date *": "allow",
         "readlink *": "allow",
         "getent *": "allow",
+        "free *": "allow",
+        "nproc *": "allow",
+        "du *": "allow",
+        "df *": "allow",
 
         // Extended tools
         "rg *": "allow",
@@ -132,6 +136,8 @@
         "docker images *": "allow",
         "docker ps *": "allow",
         "docker build *": "allow",
+        "docker stats *": "allow",
+        "docker inspect *": "allow",
     },
     "special": {
         "external_directory": "ask",
