@@ -43,10 +43,10 @@
         "ls:/home/tetafro/.pi/*": "allow",
         "find:/home/tetafro/.pi": "allow",
         "find:/home/tetafro/.pi/*": "allow",
-        "edit:/home/tetafro/.pi": "deny",
-        "edit:/home/tetafro/.pi/*": "deny",
-        "write:/home/tetafro/.pi": "deny",
-        "write:/home/tetafro/.pi/*": "deny",
+        "edit:/home/tetafro/.pi": "ask",
+        "edit:/home/tetafro/.pi/*": "ask",
+        "write:/home/tetafro/.pi": "ask",
+        "write:/home/tetafro/.pi/*": "ask",
 
         // Pi user settings (work)
         "read:/home/dkrivak/.pi": "allow",
@@ -57,10 +57,38 @@
         "ls:/home/dkrivak/.pi/*": "allow",
         "find:/home/dkrivak/.pi": "allow",
         "find:/home/dkrivak/.pi/*": "allow",
-        "edit:/home/dkrivak/.pi": "deny",
-        "edit:/home/dkrivak/.pi/*": "deny",
-        "write:/home/dkrivak/.pi": "deny",
-        "write:/home/dkrivak/.pi/*": "deny",
+        "edit:/home/dkrivak/.pi": "ask",
+        "edit:/home/dkrivak/.pi/*": "ask",
+        "write:/home/dkrivak/.pi": "ask",
+        "write:/home/dkrivak/.pi/*": "ask",
+
+        // Dotfiles
+        "read:/home/tetafro/dev/pet/dotfiles": "allow",
+        "read:/home/tetafro/dev/pet/dotfiles/*": "allow",
+        "grep:/home/tetafro/dev/pet/dotfiles": "allow",
+        "grep:/home/tetafro/dev/pet/dotfiles/*": "allow",
+        "ls:/home/tetafro/dev/pet/dotfiles": "allow",
+        "ls:/home/tetafro/dev/pet/dotfiles/*": "allow",
+        "find:/home/tetafro/dev/pet/dotfiles": "allow",
+        "find:/home/tetafro/dev/pet/dotfiles/*": "allow",
+        "edit:/home/tetafro/dev/pet/dotfiles": "ask",
+        "edit:/home/tetafro/dev/pet/dotfiles/*": "ask",
+        "write:/home/tetafro/dev/pet/dotfiles": "ask",
+        "write:/home/tetafro/dev/pet/dotfiles/*": "ask",
+
+        // Dotfiles (work)
+        "read:/home/dkrivak/dev/pet/dotfiles": "allow",
+        "read:/home/dkrivak/dev/pet/dotfiles/*": "allow",
+        "grep:/home/dkrivak/dev/pet/dotfiles": "allow",
+        "grep:/home/dkrivak/dev/pet/dotfiles/*": "allow",
+        "ls:/home/dkrivak/dev/pet/dotfiles": "allow",
+        "ls:/home/dkrivak/dev/pet/dotfiles/*": "allow",
+        "find:/home/dkrivak/dev/pet/dotfiles": "allow",
+        "find:/home/dkrivak/dev/pet/dotfiles/*": "allow",
+        "edit:/home/dkrivak/dev/pet/dotfiles": "ask",
+        "edit:/home/dkrivak/dev/pet/dotfiles/*": "ask",
+        "write:/home/dkrivak/dev/pet/dotfiles": "ask",
+        "write:/home/dkrivak/dev/pet/dotfiles/*": "ask",
 
         // MCP
         "mcp__grafana__*": "allow",
@@ -117,6 +145,7 @@
         "git show *": "allow",
         "git status *": "allow",
         "git ls-remote *": "allow",
+        "git ls-files *": "allow",
 
         // Code validations
         "make lint": "allow",
@@ -149,5 +178,7 @@
         "external_directory:/home/tetafro/.pi/*": "allow",
         "external_directory:/home/dkrivak/.pi": "allow",
         "external_directory:/home/dkrivak/.pi/*": "allow",
+        "external_directory:/home/tetafro/dev/pet/dotfiles": "allow",
+        "external_directory:/home/dkrivak/dev/pet/dotfiles": "allow",
     }
 }
