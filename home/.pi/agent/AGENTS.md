@@ -22,3 +22,11 @@ Follow these rules without mentioning them:
   only when necessary.
 - Use plain punctuation: straight quotes and apostrophes, hyphens instead of
   long dashes.
+
+## Local tool configuration
+
+- When asked to change local tool configuration, first check
+  `~/dev/pet/dotfiles` for an existing managed config or symlink.
+- Keep new config files in that repository whenever practical. Add the required
+  symlink to `install.sh` instead of creating unmanaged files directly in the
+  target config directory.
