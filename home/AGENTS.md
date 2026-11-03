@@ -6,6 +6,8 @@
   separately allowed calls instead of asking for permission.
 - Before asking for permission, check `~/.pi/agent/pi-permissions.jsonc` when
   unsure.
+- Do not use `cd ... && ...` compound commands. Prefer commands that accept a
+  path or working-directory option, such as `ls <path>` or `git -C <path>`.
 
 ## Tone and behavior
 
