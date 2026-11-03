@@ -90,6 +90,48 @@
         "write:/home/dkrivak/dev/pet/dotfiles": "ask",
         "write:/home/dkrivak/dev/pet/dotfiles/*": "ask",
 
+        // go-template
+        "read:/home/dkrivak/dev/pet/go-template": "allow",
+        "read:/home/dkrivak/dev/pet/go-template/*": "allow",
+        "grep:/home/dkrivak/dev/pet/go-template": "allow",
+        "grep:/home/dkrivak/dev/pet/go-template/*": "allow",
+        "ls:/home/dkrivak/dev/pet/go-template": "allow",
+        "ls:/home/dkrivak/dev/pet/go-template/*": "allow",
+        "find:/home/dkrivak/dev/pet/go-template": "allow",
+        "find:/home/dkrivak/dev/pet/go-template/*": "allow",
+        "edit:/home/dkrivak/dev/pet/go-template": "ask",
+        "edit:/home/dkrivak/dev/pet/go-template/*": "ask",
+        "write:/home/dkrivak/dev/pet/go-template": "ask",
+        "write:/home/dkrivak/dev/pet/go-template/*": "ask",
+
+        // Go modules
+        "read:/home/tetafro/.go": "allow",
+        "read:/home/tetafro/.go/*": "allow",
+        "grep:/home/tetafro/.go": "allow",
+        "grep:/home/tetafro/.go/*": "allow",
+        "ls:/home/tetafro/.go": "allow",
+        "ls:/home/tetafro/.go/*": "allow",
+        "find:/home/tetafro/.go": "allow",
+        "find:/home/tetafro/.go/*": "allow",
+        "edit:/home/tetafro/.go": "deny",
+        "edit:/home/tetafro/.go/*": "deny",
+        "write:/home/tetafro/.go": "deny",
+        "write:/home/tetafro/.go/*": "deny",
+
+        // Go modules (work)
+        "read:/home/dkrivak/.go": "allow",
+        "read:/home/dkrivak/.go/*": "allow",
+        "grep:/home/dkrivak/.go": "allow",
+        "grep:/home/dkrivak/.go/*": "allow",
+        "ls:/home/dkrivak/.go": "allow",
+        "ls:/home/dkrivak/.go/*": "allow",
+        "find:/home/dkrivak/.go": "allow",
+        "find:/home/dkrivak/.go/*": "allow",
+        "edit:/home/dkrivak/.go": "deny",
+        "edit:/home/dkrivak/.go/*": "deny",
+        "write:/home/dkrivak/.go": "deny",
+        "write:/home/dkrivak/.go/*": "deny",
+
         // MCP
         "mcp__grafana__*": "allow",
     },
@@ -152,13 +194,16 @@
         "make test": "allow",
         "ansible-lint *": "allow",
         "yamllint *": "allow",
+        "golangci-lint run *": "allow",
 
-        // Syntax checks
+        // Language tools
         "bash -n *": "allow",
         "python -m py_compile *": "allow",
         "python3 -m py_compile *": "allow",
         "python -m compileall *": "allow",
         "python3 -m compileall *": "allow",
+        "go vet *": "allow",
+        "go version *": "allow",
 
         // Build tools
         "docker version *": "allow",
@@ -179,6 +224,14 @@
         "external_directory:/home/dkrivak/.pi": "allow",
         "external_directory:/home/dkrivak/.pi/*": "allow",
         "external_directory:/home/tetafro/dev/pet/dotfiles": "allow",
+        "external_directory:/home/tetafro/dev/pet/dotfiles/*": "allow",
         "external_directory:/home/dkrivak/dev/pet/dotfiles": "allow",
+        "external_directory:/home/dkrivak/dev/pet/dotfiles/*": "allow",
+        "external_directory:/home/tetafro/.go": "allow",
+        "external_directory:/home/tetafro/.go/*": "allow",
+        "external_directory:/home/dkrivak/.go": "allow",
+        "external_directory:/home/dkrivak/.go/*": "allow",
+        "external_directory:/home/tetafro/dev/pet/go-template": "allow",
+        "external_directory:/home/tetafro/dev/pet/go-template/*": "allow",
     }
 }
