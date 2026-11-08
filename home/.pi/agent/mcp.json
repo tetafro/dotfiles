@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "grafana": {
+      "url": "https://grafana-mcp.home/mcp"
+    },
+    "torrents": {
+      "url": "https://torrents-mcp.home/mcp",
+      "description": "Search RuTracker and add or monitor Transmission downloads",
+      "exposure": "direct"
+    }
+  }
+}
