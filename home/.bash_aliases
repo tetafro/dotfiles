@@ -42,6 +42,7 @@ alias venv='if [ -d ./venv ]; then \
 alias k='kubectl'
 alias kctx='kubectx'
 alias python-web='python3 -m http.server 8000 --bind 0.0.0.0'
+alias codex='codex --no-daemon'
 
 # Directories
 alias cd-dump="cd $HOME/dump"
