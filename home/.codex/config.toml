@@ -1,0 +1,14 @@
+default_permissions = ":workspace"
+approval_policy = "on-request"
+approvals_reviewer = "auto_review"
+model = "gpt-6.1-sol"
+model_reasoning_effort = "medium"
+
+[mcp_servers.openaiDeveloperDocs]
+url = "https://developers.openai.com/mcp"
+
+[features]
+code_mode_host = true
+
+[tui]
+alternate_screen = "never"

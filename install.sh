@@ -25,10 +25,12 @@ for item in $(ls -A ./home/.claude); do
     ln -sf "$PWD/home/.claude/$item" ~/.claude/$item
 done
 
+# Codex doesn't work with symlinks
 mkdir -p ~/.codex
-for item in $(ls -A ./home/.codex); do
-    ln -sf "$PWD/home/.codex/$item" ~/.codex/$item
-done
+ln -f "$PWD/home/.codex/config.toml" ~/.codex/config.toml
+if [[ ! -f ~/.codex/local.config.toml ]]; then
+    touch ~/.codex/local.config.toml
+fi
 
 mkdir -p ~/.pi/agent
 for item in $(ls -A ./home/.pi/agent); do
