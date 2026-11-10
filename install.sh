@@ -22,12 +22,14 @@ ln -sfn $PWD/home/.config/sublime-text/Packages/Default ~/.config/sublime-text/P
 
 # Codex doesn't work with symlinks
 mkdir -p ~/.codex
+ln -f "$PWD/home/AGENTS.md" ~/.codex/AGENTS.md
 ln -f "$PWD/home/.codex/config.toml" ~/.codex/config.toml
 if [[ ! -f ~/.codex/local.config.toml ]]; then
     touch ~/.codex/local.config.toml
 fi
 
 mkdir -p ~/.pi/agent
+ln -sf "$PWD/home/AGENTS.md" ~/.pi/agent/AGENTS.md
 for item in $(ls -A ./home/.pi/agent); do
     ln -sf "$PWD/home/.pi/agent/$item" ~/.pi/agent/$item
 done
