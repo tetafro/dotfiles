@@ -7,7 +7,5 @@ __pycache__/
 .DS_Store
 .env
 .envrc
-AGENTS.md
-CLAUDE.md
 id_rsa
 id_ed25519
