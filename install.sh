@@ -20,11 +20,6 @@ rm -rf ~/.config/sublime-text/Packages/Default
 ln -sfn $PWD/home/.config/sublime-text/Packages/User ~/.config/sublime-text/Packages/User
 ln -sfn $PWD/home/.config/sublime-text/Packages/Default ~/.config/sublime-text/Packages/Default
 
-mkdir -p ~/.claude
-for item in $(ls -A ./home/.claude); do
-    ln -sf "$PWD/home/.claude/$item" ~/.claude/$item
-done
-
 # Codex doesn't work with symlinks
 mkdir -p ~/.codex
 ln -f "$PWD/home/.codex/config.toml" ~/.codex/config.toml
