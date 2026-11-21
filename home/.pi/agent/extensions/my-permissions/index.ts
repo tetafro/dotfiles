@@ -93,9 +93,9 @@ export function checkStaticRules(action: Action): Decision {
     return decision;
 }
 
-// checkToolRules determines access to a registered tool (including MCP).
+// checkToolRules checks rules for registered tools (including MCP).
 export function checkToolRules(_action: Action): Decision {
-    return { outcome: "allow", reason: "No tool rules yet" };
+    return { outcome: "allow", reason: "No matching tool rule" };
 }
 
 // checkBashRules determines access to a shell command as a whole, including
