@@ -10,7 +10,7 @@ export type Action = {
 
 // Decision is a permission verdict on a proposed action.
 export type Decision = {
-    outcome: "allow" | "deny" | "ask";
+    action: "allow" | "deny" | "ask";
     reason: string;
 };
 
@@ -27,7 +27,7 @@ export default function permissions(pi: ExtensionAPI) {
                 parentToolCallId: event.parentToolCallId,
             }, ctx, configPath);
 
-            if (decision.outcome !== "allow") {
+            if (decision.action !== "allow") {
                 return { block: true, reason: decision.reason };
             }
         } catch {
@@ -40,13 +40,13 @@ export default function permissions(pi: ExtensionAPI) {
 // authorize resolves an action to a final allow/deny verdict.
 export async function authorize(action: Action, ctx: ExtensionContext): Promise<Decision> {
     const staticDecision = checkStaticRules(action);
-    if (staticDecision.outcome !== "ask") {
+    if (staticDecision.action !== "ask") {
         return staticDecision;
     }
 
     const allowed = await askUser(action, staticDecision, ctx);
     return {
-        outcome: allowed ? "allow" : "deny",
+        action: allowed ? "allow" : "deny",
         reason: allowed ? "Approved by user" : staticDecision.reason,
     };
 }
@@ -71,7 +71,7 @@ export async function askUser(
 // checkStaticRules produces the combined static verdict based on the rules.
 export function checkStaticRules(action: Action): Decision {
     const directoryDecision = checkDirectoryRules(action);
-    if (directoryDecision?.outcome === "deny") {
+    if (directoryDecision.action === "deny") {
         return directoryDecision;
     }
 
@@ -82,12 +82,10 @@ export function checkStaticRules(action: Action): Decision {
     if (decision === undefined) {
         decision = checkToolRules(action);
     }
-    if (decision.outcome === "deny") {
+    if (decision.action === "deny") {
         return decision;
     }
-
-    // A directory `ask` can override an `allow`
-    if (directoryDecision?.outcome === "ask") {
+    if (directoryDecision.action === "ask") {
         return directoryDecision;
     }
     return decision;
@@ -95,7 +93,7 @@ export function checkStaticRules(action: Action): Decision {
 
 // checkToolRules checks rules for registered tools (including MCP).
 export function checkToolRules(_action: Action): Decision {
-    return { outcome: "allow", reason: "No matching tool rule" };
+    return { action: "allow", reason: "No matching tool rule" };
 }
 
 // checkBashRules determines access to a shell command as a whole, including
