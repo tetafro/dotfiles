@@ -53,11 +53,19 @@ export async function authorize(action: Action, ctx: ExtensionContext): Promise<
 
 // askUser requests one-time human approval if static rules didn't help.
 export async function askUser(
-    _action: Action,
-    _decision: Decision,
-    _ctx: ExtensionContext,
+    action: Action,
+    decision: Decision,
+    ctx: ExtensionContext,
 ): Promise<boolean> {
-    return false;
+    if (!ctx.hasUI || ctx.signal?.aborted) {
+        return false;
+    }
+    const args = JSON.stringify(action.input, null, 2); // pretty-print
+    const approved = await ctx.ui.confirm(
+        "Allow " + action.toolName + "?",
+        decision.reason + "\n" + action.cwd + "\n" + args,
+    );
+    return approved && !ctx.signal?.aborted;
 }
 
 // checkStaticRules produces the combined static verdict based on the rules.
