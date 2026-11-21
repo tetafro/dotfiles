@@ -36,7 +36,7 @@ ln -sf "$PWD/home/.pi/agent/models.json" ~/.pi/agent/models.json
 ln -sf "$PWD/home/.pi/agent/my-permissions.jsonc" ~/.pi/agent/my-permissions.jsonc
 ln -sf "$PWD/home/.pi/agent/settings.json" ~/.pi/agent/settings.json
 ln -sf "$PWD/home/.pi/agent/web-search.json" ~/.pi/agent/web-search.json
-ln -sf "$PWD/home/.pi/agent/extensions/permissions" ~/.pi/agent/extensions/permissions
+ln -sfn "$PWD/home/.pi/agent/extensions/my-permissions" ~/.pi/agent/extensions/my-permissions
 
 dconf load /org/gnome/terminal/ < $PWD/home/dconf/gnome-terminal.txt
 
