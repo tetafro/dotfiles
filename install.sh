@@ -33,7 +33,7 @@ mkdir -p ~/.pi/agent/extensions
 ln -sf "$PWD/home/AGENTS.md" ~/.pi/agent/AGENTS.md
 ln -sf "$PWD/home/.pi/agent/mcp.json" ~/.pi/agent/mcp.json
 ln -sf "$PWD/home/.pi/agent/models.json" ~/.pi/agent/models.json
-ln -sf "$PWD/home/.pi/agent/permissions.json" ~/.pi/agent/permissions.json
+ln -sf "$PWD/home/.pi/agent/my-permissions.jsonc" ~/.pi/agent/my-permissions.jsonc
 ln -sf "$PWD/home/.pi/agent/settings.json" ~/.pi/agent/settings.json
 ln -sf "$PWD/home/.pi/agent/web-search.json" ~/.pi/agent/web-search.json
 ln -sf "$PWD/home/.pi/agent/extensions/permissions" ~/.pi/agent/extensions/permissions

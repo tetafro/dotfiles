@@ -17,6 +17,7 @@ export type Decision = {
 // permissions is the extension's entry point. Pi calls it on load. It registers
 // the allow/deny/ask gate for tool calls.
 export default function permissions(pi: ExtensionAPI) {
+    const configPath = join(process.env.PI_CODING_AGENT_DIR || join(homedir(), ".pi", "agent"), "my-permissions.jsonc");
     pi.on("tool_call", async (event, ctx) => {
         try {
             const decision = await authorize({
@@ -24,7 +25,7 @@ export default function permissions(pi: ExtensionAPI) {
                 input: event.input,
                 cwd: ctx.cwd,
                 parentToolCallId: event.parentToolCallId,
-            }, ctx);
+            }, ctx, configPath);
 
             if (decision.outcome !== "allow") {
                 return { block: true, reason: decision.reason };
