@@ -29,10 +29,14 @@ if [[ ! -f ~/.codex/local.config.toml ]]; then
 fi
 
 mkdir -p ~/.pi/agent
+mkdir -p ~/.pi/agent/extensions
 ln -sf "$PWD/home/AGENTS.md" ~/.pi/agent/AGENTS.md
-for item in $(ls -A ./home/.pi/agent); do
-    ln -sf "$PWD/home/.pi/agent/$item" ~/.pi/agent/$item
-done
+ln -sf "$PWD/home/.pi/agent/mcp.json" ~/.pi/agent/mcp.json
+ln -sf "$PWD/home/.pi/agent/models.json" ~/.pi/agent/models.json
+ln -sf "$PWD/home/.pi/agent/permissions.json" ~/.pi/agent/permissions.json
+ln -sf "$PWD/home/.pi/agent/settings.json" ~/.pi/agent/settings.json
+ln -sf "$PWD/home/.pi/agent/web-search.json" ~/.pi/agent/web-search.json
+ln -sf "$PWD/home/.pi/agent/extensions/permissions" ~/.pi/agent/extensions/permissions
 
 dconf load /org/gnome/terminal/ < $PWD/home/dconf/gnome-terminal.txt
 
