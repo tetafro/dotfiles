@@ -173,23 +173,24 @@ export function checkDirectoryRules(action: Action, rules: DirectoryRule[] | und
     if (rules === undefined) {
         return decision;
     }
+    const modifies = action.toolName === "write" || action.toolName === "edit";
     for (const rule of rules) {
-        // Check if the path is outside of the rule's directory
+        // Check if the path is outside of the rule's directory (ignore names starting with "..")
         if (relative(rule.path, absolute).startsWith("..")) {
             continue;
         }
-        const d = {
-            action: rule.action,
-            reason: "Directory rule: " + rule.path,
+        decision = {
+            action: "ask",
+            reason: `Directory rule: ${rule.path} (${rule.action})`,
         };
-        if (rule.action === "deny") {
-            return d;
+        if (rule.action === "read" && !modifies) {
+            decision.action = "allow";
         }
-        if (decision.reason === "No matching directory rule" ||
-            decision.action !== "ask" ||
-            rule.action === "ask"
-        ) {
-            decision = d;
+        if (rule.action === "write") {
+            decision.action = "allow";
+        }
+        if (decision.action === "ask") {
+            return decision;
         }
     }
     return decision;
