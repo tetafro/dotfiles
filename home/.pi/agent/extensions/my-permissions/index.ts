@@ -173,7 +173,7 @@ export function checkDirectoryRules(action: Action, rules: DirectoryRule[] | und
     }
 
     let decision: Decision = {
-        action: "deny",
+        action: "ask",
         reason: "No matching directory rule",
     };
     if (rules === undefined) {
@@ -191,7 +191,10 @@ export function checkDirectoryRules(action: Action, rules: DirectoryRule[] | und
         if (rule.action === "deny") {
             return d;
         }
-        if (decision.action !== "ask" || rule.action === "ask") {
+        if (decision.reason === "No matching directory rule" ||
+            decision.action !== "ask" ||
+            rule.action === "ask"
+        ) {
             decision = d;
         }
     }
