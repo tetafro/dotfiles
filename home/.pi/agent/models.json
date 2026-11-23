@@ -5,7 +5,7 @@
             "api": "openai-completions",
             "apiKey": "${LLAMA_API_KEY}",
             "models": [{
-                "id": "qwen3.8-flash-next",
+                "id": "qwen3.8-flash-next-abliterated",
                 "input": ["text", "image"],
                 "contextWindow": 262144,
                 "maxTokens": 8192
