@@ -25,7 +25,7 @@ type Config = {
 // DirectoryRule sets the permission for a directory and its descendants.
 type DirectoryRule = {
     path: string;
-    action: "allow" | "deny" | "ask";
+    action: "read" | "write" | "ask";
 };
 
 // loadConfig reads and validates the permission config.
@@ -41,7 +41,7 @@ function loadConfig(path: string): Config {
         throw new Error("Expected a directories object");
     }
     for (const [path, action] of Object.entries(data.directories)) {
-        if (!["allow", "deny", "ask"].includes(action)) {
+        if (!["read", "write", "ask"].includes(action)) {
             throw new Error(`Unexpected action in directory rules: '${action}'`);
         }
         if (!isAbsolute(path)) {
@@ -116,9 +116,6 @@ export async function askUser(
 // checkStaticRules produces the combined static verdict based on the rules.
 export function checkStaticRules(action: Action, config: Config | undefined): Decision {
     const directoryDecision = checkDirectoryRules(action, config?.directories);
-    if (directoryDecision.action === "deny") {
-        return directoryDecision;
-    }
 
     let decision: Decision | undefined;
     if (action.toolName === "bash") {
@@ -126,9 +123,6 @@ export function checkStaticRules(action: Action, config: Config | undefined): De
     }
     if (decision === undefined) {
         decision = checkToolRules(action);
-    }
-    if (decision.action === "deny") {
-        return decision;
     }
     if (directoryDecision.action === "ask") {
         return directoryDecision;
@@ -156,7 +150,7 @@ export function checkDirectoryRules(action: Action, rules: DirectoryRule[] | und
 
     const input = action.input.path ?? ".";
     if (typeof input !== "string" || !input) {
-        return { action: "deny", reason: "Invalid file path" };
+        return { action: "ask", reason: "Invalid file path" };
     }
 
     // Build the full path
