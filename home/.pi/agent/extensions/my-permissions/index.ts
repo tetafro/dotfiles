@@ -42,10 +42,10 @@ function loadConfig(path: string): Config {
     }
     for (const [path, action] of Object.entries(data.directories)) {
         if (!["allow", "deny", "ask"].includes(action)) {
-            throw new Error("Unexpected action in directory rules: '${action}'");
+            throw new Error(`Unexpected action in directory rules: '${action}'`);
         }
         if (!isAbsolute(path)) {
-            throw new Error("Directory rule path is not absolute: '${path}'");
+            throw new Error(`Directory rule path is not absolute: '${path}'`);
         }
         config.directories.push({ path, action });
     }
