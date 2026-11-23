@@ -1,3 +1,16 @@
 {
-    "directories": {}
+    "directories": {
+        "/opt/pi": "read",
+        "/tmp": "write",
+
+        "/home/tetafro/.go": "read",
+        "/home/tetafro/.pi": "read",
+        "/home/tetafro/dev/pet": "read",
+        "/home/tetafro/dev/pet/go-template": "read",
+
+        "/home/dkrivak/.go": "read",
+        "/home/dkrivak/.pi": "read",
+        "/home/dkrivak/dev/pet": "read",
+        "/home/dkrivak/dev/pet/go-template": "read"
+    }
 }

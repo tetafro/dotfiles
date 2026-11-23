@@ -4,7 +4,7 @@
 
 - Prefer allowed commands when they are equivalent. Split compound commands into
   separately allowed calls instead of asking for permission.
-- Before asking for permission, check `~/.pi/agent/my-permissions.jsonc` when
+- Before asking for permission, check `~/.pi/agent/my-permissions.json` when
   unsure.
 - Do not use `cd ... && ...` compound commands. Prefer commands that accept a
   path or working-directory option, such as `ls <path>` or `git -C <path>`.
