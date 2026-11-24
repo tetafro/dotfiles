@@ -1,6 +1,6 @@
 import { readFileSync } from "node:fs";
 import { homedir } from "node:os";
-import { isAbsolute, join, relative, resolve, sep } from "node:path";
+import { isAbsolute, join, matchesGlob, relative, resolve, sep } from "node:path";
 import type { ExtensionAPI, ExtensionContext } from "@earendil-works/pi-coding-agent";
 
 // Action is a proposed tool invocation and its relevant execution context.
@@ -23,7 +23,7 @@ type Config = {
     tools: ToolRule[];
 };
 
-// ToolRule sets the permission for an exact tool name.
+// ToolRule sets the permission for a tool name.
 type ToolRule = {
     name: string;
     action: "allow" | "ask";
@@ -152,7 +152,7 @@ export function checkStaticRules(action: Action, config: Config | undefined): De
 
 // checkToolRules checks rules for registered tools (including MCP).
 export function checkToolRules(action: Action, rules: ToolRule[]): Decision {
-    const rule = rules?.find((rule) => rule.name === action.toolName);
+    const rule = rules?.find((rule) => matchesGlob(action.toolName, rule.name));
     if (rule === undefined) {
         return { action: "ask", reason: "No matching tool rule" };
     }

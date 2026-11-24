@@ -12,5 +12,19 @@
         "/home/dkrivak/.pi": "read",
         "/home/dkrivak/dev/pet": "read",
         "/home/dkrivak/dev/pet/go-template": "read"
+    },
+    "tools": {
+        "read": "allow",
+        "edit": "allow",
+        "write": "allow",
+        "find": "allow",
+        "grep": "allow",
+        "ls": "allow",
+        "codemode": "allow",
+        "web_search": "allow",
+        "fetch_content": "allow",
+        "get_search_content": "allow",
+        "mcp__grafana__*": "allow",
+        "mcp__torrents__*": "allow"
     }
 }
