@@ -166,7 +166,7 @@ export function checkBashRules(_action: Action): Decision | undefined {
 }
 
 // checkDirectoryRules checks the requested path.
-export function checkDirectoryRules(action: Action, rules: DirectoryRule[] | undefined): Decision {
+export function checkDirectoryRules(action: Action, rules: DirectoryRule[]): Decision {
     // Check only file tools here, bash filesystem access is controlled by bubblewrap
     if (!["read", "write", "edit", "ls", "find", "grep"].includes(action.toolName)) {
         return { action: "allow", reason: "Not a file tool" };
