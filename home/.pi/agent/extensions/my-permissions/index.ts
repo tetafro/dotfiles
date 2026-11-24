@@ -20,6 +20,13 @@ export type Decision = {
 // Config holds the permission rules.
 type Config = {
     directories: DirectoryRule[];
+    tools: ToolRule[];
+};
+
+// ToolRule sets the permission for an exact tool name.
+type ToolRule = {
+    name: string;
+    action: "allow" | "ask";
 };
 
 // DirectoryRule sets the permission for a directory and its descendants.
@@ -30,13 +37,14 @@ type DirectoryRule = {
 
 // loadConfig reads and validates the permission config.
 function loadConfig(path: string): Config {
-    const config: Config = { directories: [] };
+    const config: Config = { directories: [], tools: [] };
 
     const data = JSON.parse(readFileSync(path, "utf8"));
     if (!isObject(data)) {
         throw new Error("Expected a config object");
     }
 
+    // Directories
     if (!isObject(data.directories)) {
         throw new Error("Expected a directories object");
     }
@@ -49,6 +57,18 @@ function loadConfig(path: string): Config {
         }
         config.directories.push({ path, action });
     }
+
+    // Tools
+    if (!isObject(data.tools)) {
+        throw new Error("Expected a tools object");
+    }
+    for (const [name, action] of Object.entries(data.tools)) {
+        if (!["allow", "ask"].includes(action)) {
+            throw new Error(`Unexpected action in tool rules: '${action}'`);
+        }
+        config.tools.push({ name, action });
+    }
+
     return config;
 }
 
@@ -122,7 +142,7 @@ export function checkStaticRules(action: Action, config: Config | undefined): De
         decision = checkBashRules(action);
     }
     if (decision === undefined) {
-        decision = checkToolRules(action);
+        decision = checkToolRules(action, config?.tools);
     }
     if (directoryDecision.action === "ask") {
         return directoryDecision;
@@ -131,8 +151,12 @@ export function checkStaticRules(action: Action, config: Config | undefined): De
 }
 
 // checkToolRules checks rules for registered tools (including MCP).
-export function checkToolRules(_action: Action): Decision {
-    return { action: "allow", reason: "No matching tool rule" };
+export function checkToolRules(action: Action, rules: ToolRule[]): Decision {
+    const rule = rules?.find((rule) => rule.name === action.toolName);
+    if (rule === undefined) {
+        return { action: "ask", reason: "No matching tool rule" };
+    }
+    return { action: rule.action, reason: `Tool rule: ${rule.name} (${rule.action})` };
 }
 
 // checkBashRules determines access to a shell command as a whole, including
