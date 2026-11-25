@@ -1,6 +1,6 @@
 import { readFileSync } from "node:fs";
 import { homedir } from "node:os";
-import { isAbsolute, join, matchesGlob, relative, resolve, sep } from "node:path";
+import { isAbsolute, join, relative, resolve, sep } from "node:path";
 import type { ExtensionAPI, ExtensionContext } from "@earendil-works/pi-coding-agent";
 
 // Action is a proposed tool invocation and its relevant execution context.
@@ -21,12 +21,7 @@ export type Decision = {
 type Config = {
     directories: DirectoryRule[];
     tools: ToolRule[];
-};
-
-// ToolRule sets the permission for a tool name.
-type ToolRule = {
-    name: string;
-    action: "allow" | "ask";
+    bash: BashRule[];
 };
 
 // DirectoryRule sets the permission for a directory and its descendants.
@@ -35,9 +30,21 @@ type DirectoryRule = {
     action: "read" | "write" | "ask";
 };
 
+// ToolRule sets the permission for a tool name.
+type ToolRule = {
+    name: string;
+    action: "allow" | "ask";
+};
+
+// BashRule sets the permission for a shell command.
+type BashRule = {
+    pattern: string;
+    action: "allow" | "ask";
+};
+
 // loadConfig reads and validates the permission config.
 function loadConfig(path: string): Config {
-    const config: Config = { directories: [], tools: [] };
+    const config: Config = { directories: [], tools: [], bash: [] };
 
     const data = JSON.parse(readFileSync(path, "utf8"));
     if (!isObject(data)) {
@@ -67,6 +74,17 @@ function loadConfig(path: string): Config {
             throw new Error(`Unexpected action in tool rules: '${action}'`);
         }
         config.tools.push({ name, action });
+    }
+
+    // Bash
+    if (!isObject(data.bash)) {
+        throw new Error("Expected a bash object");
+    }
+    for (const [pattern, action] of Object.entries(data.bash)) {
+        if (!["allow", "ask"].includes(action)) {
+            throw new Error(`Unexpected action in bash rules: '${action}'`);
+        }
+        config.bash.push({ pattern, action });
     }
 
     return config;
@@ -135,23 +153,20 @@ export async function askUser(
 
 // checkStaticRules produces the combined static verdict based on the rules.
 export function checkStaticRules(action: Action, config: Config | undefined): Decision {
-    const directoryDecision = checkDirectoryRules(action, config?.directories);
-
-    let decision: Decision | undefined;
     if (action.toolName === "bash") {
-        decision = checkBashRules(action);
+        return checkBashRules(action, config?.bash);
     }
-    if (decision === undefined) {
-        decision = checkToolRules(action, config?.tools);
+
+    const decision = checkToolRules(action, config?.tools);
+    if (decision.action === "ask") {
+        return decision;
     }
-    if (directoryDecision.action === "ask") {
-        return directoryDecision;
-    }
-    return decision;
+
+    return checkDirectoryRules(action, config?.directories);
 }
 
 // checkToolRules checks rules for registered tools (including MCP).
-export function checkToolRules(action: Action, rules: ToolRule[]): Decision {
+export function checkToolRules(action: Action, rules: ToolRule[] | undefined): Decision {
     const rule = rules?.find((rule) => matchesGlob(action.toolName, rule.name));
     if (rule === undefined) {
         return { action: "ask", reason: "No matching tool rule" };
@@ -161,13 +176,17 @@ export function checkToolRules(action: Action, rules: ToolRule[]): Decision {
 
 // checkBashRules determines access to a shell command as a whole, including
 // chained or piped commands.
-export function checkBashRules(_action: Action): Decision | undefined {
-    return undefined;
+export function checkBashRules(action: Action, rules: BashRule[] | undefined): Decision {
+    const rule = rules?.find((rule) => matchesGlob(action.input.command as string, rule.pattern));
+    if (rule === undefined) {
+        return { action: "ask", reason: "No matching bash rule" };
+    }
+    return { action: rule.action, reason: `Bash rule: ${rule.pattern} (${rule.action})` };
 }
 
 // checkDirectoryRules checks the requested path.
-export function checkDirectoryRules(action: Action, rules: DirectoryRule[]): Decision {
-    // Check only file tools here, bash filesystem access is controlled by bubblewrap
+export function checkDirectoryRules(action: Action, rules: DirectoryRule[] | undefined): Decision {
+    // Bash commands do not have directory checks here.
     if (!["read", "write", "edit", "ls", "find", "grep"].includes(action.toolName)) {
         return { action: "allow", reason: "Not a file tool" };
     }
@@ -218,6 +237,20 @@ export function checkDirectoryRules(action: Action, rules: DirectoryRule[]): Dec
         }
     }
     return decision;
+}
+
+// matchesGlob matches a glob pattern using rexeps to avoid path-specific behavior
+// (for example `ls *` normally doesn't catch `ls /home` because slashes are special).
+function matchesGlob(value: string, pattern: string): boolean {
+    // Escape special characters, replace * and ? with regexp
+    const expression = pattern.trim().replace(/[.*+?^${}()|[\]\\]/g,
+        (char) => {
+            if (char === "*") return "[\\s\\S]*";
+            if (char === "?") return "[\\s\\S]";
+            return "\\" + char;
+        }
+    );
+    return new RegExp("^" + expression + "$").test(value.trim());
 }
 
 // isObject reports whether a value is an object.
