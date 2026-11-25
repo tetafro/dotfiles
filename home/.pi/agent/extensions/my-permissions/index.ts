@@ -66,10 +66,13 @@ function loadConfig(path: string): Config {
         if (!["read", "write", "ask"].includes(action)) {
             throw new Error(`Unexpected action in directory rules: '${action}'`);
         }
-        if (!isAbsolute(path)) {
+        const expanded = path === "~" || path.startsWith("~/")
+            ? homedir() + path.slice(1)
+            : path;
+        if (!isAbsolute(expanded)) {
             throw new Error(`Directory rule path is not absolute: '${path}'`);
         }
-        config.directories.push({ path, action });
+        config.directories.push({ path: expanded, action });
     }
 
     // Tools

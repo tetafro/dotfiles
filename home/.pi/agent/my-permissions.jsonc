@@ -1,21 +1,12 @@
 {
     "directories": {
-        "/opt/pi": "read",
         "/tmp": "write",
-
-        // Home
-        "/home/tetafro/.go": "read",
-        "/home/tetafro/.pi": "read",
-        "/home/tetafro/dev/pet": "read",
-        "/home/tetafro/dev/pet/go-template": "read",
-        "/home/tetafro/notes/": "read",
-
-        // Work
-        "/home/dkrivak/.go": "read",
-        "/home/dkrivak/.pi": "read",
-        "/home/dkrivak/dev/pet": "read",
-        "/home/dkrivak/dev/pet/go-template": "read",
-        "/home/dkrivak/notes/": "read",
+        "/opt/pi": "read",
+        "~/.go": "read",
+        "~/.pi": "read",
+        "~/notes": "read",
+        "~/dev/pet": "read",
+        "~/dev/pet/go-template": "read"
     },
     "tools": {
         "read": "allow",
