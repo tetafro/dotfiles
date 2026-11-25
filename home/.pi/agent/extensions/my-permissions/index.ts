@@ -43,10 +43,17 @@ type BashRule = {
 };
 
 // loadConfig reads and validates the permission config.
+// The config uses jsonc, but it's not real: only comments are allowed.
 function loadConfig(path: string): Config {
     const config: Config = { directories: [], tools: [], bash: [] };
 
-    const data = JSON.parse(readFileSync(path, "utf8"));
+    // Remove comments
+    const text = readFileSync(path, "utf8").
+        split("\n").
+        filter((line) => !/^\s*\/\//.test(line)).
+        join("\n");
+
+    const data = JSON.parse(text);
     if (!isObject(data)) {
         throw new Error("Expected a config object");
     }
@@ -93,7 +100,7 @@ function loadConfig(path: string): Config {
 // permissions is the extension's entry point. Pi calls it on load. It registers
 // the allow/deny/ask gate for tool calls.
 export default function permissions(pi: ExtensionAPI) {
-    const configPath = join(process.env.PI_CODING_AGENT_DIR || join(homedir(), ".pi", "agent"), "my-permissions.json");
+    const configPath = join(process.env.PI_CODING_AGENT_DIR || join(homedir(), ".pi", "agent"), "my-permissions.jsonc");
     let config: Config | undefined;
     try {
         config = loadConfig(configPath);
