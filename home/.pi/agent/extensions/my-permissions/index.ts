@@ -111,7 +111,35 @@ export default function permissions(pi: ExtensionAPI) {
         console.error(`my-permissions: ${error}`);
     }
 
+    // Allow ALL
+    let yolo = false;
+    pi.registerCommand("yolo", {
+        description: "Show or toggle permission bypass: /yolo [on|off]",
+        handler: async (args, ctx) => {
+            const mode = args.trim();
+            if (mode !== "" && mode !== "on" && mode !== "off") {
+                ctx.ui.notify("Usage: /yolo [on|off]", "warning");
+                return;
+            }
+            if (mode !== "") {
+                yolo = mode === "on";
+            }
+            ctx.ui.setStatus("my-permissions-yolo", yolo ? "YOLO" : undefined);
+            ctx.ui.notify(yolo
+                ? "YOLO on: permission checks and bash sandbox disabled."
+                : "YOLO off: permission checks and bash sandbox enabled.",
+                yolo ? "warning" : "info");
+        },
+    });
+    pi.on("session_start", (_event, ctx) => {
+        yolo = false;
+        ctx.ui.setStatus("my-permissions-yolo", undefined);
+    });
+
     pi.on("tool_call", async (event, ctx) => {
+        // Don't check anything in yolo-mode
+        if (yolo) return;
+
         try {
             const decision = await authorize({
                 toolName: event.toolName,
