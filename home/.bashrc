@@ -32,7 +32,7 @@ __prompt_command() {
 
     # Skip setting PS1 if it's not a colored terminal
     case "$TERM" in
-        xterm|xterm-color|*-256color) ;;
+        xterm|xterm-color|xterm-ghostty|*-256color) ;;
         *) return ;;
     esac
 
@@ -85,7 +85,8 @@ __prompt_command() {
     fi
     echo -en "\e]0;${title}\a"
 }
-PROMPT_COMMAND=__prompt_command
+# Use `__prompt_command`, but preserve hooks installed by other tools
+PROMPT_COMMAND=(__prompt_command "${PROMPT_COMMAND[@]}")
 
 # Enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
